@@ -4,7 +4,7 @@
 
 //Checks if a single char is within a string of tokenizers 
 bool isTokenizer(char a) {     
-	if(strchr(" ,.!?()<>{}[]\\/",a)) {
+	if(strchr("\n ,.!?()<>{}[]\\/",a)) {
 		return true;
 	} else {
 		return false;
@@ -60,7 +60,6 @@ void processWordsFromFile(char *fname, char *basis_str)
 	FILE *input_file;
 	input_file= fopen(fname, "r");
 
-	bool started_word=false;	                     //used to track the parsing of text into individual tokens
 	int c;                                           //character returned from fgetc
 	char *c_buff;                                    //used to construct token from read characters
 	int buff_index=0, word_count=0, formable_count=0;
@@ -68,28 +67,22 @@ void processWordsFromFile(char *fname, char *basis_str)
 	c_buff= (char*) malloc(max_length);	
 	do{
 		c = fgetc(input_file);
-		if(isTokenizer(c) || c==EOF) { 
-			if(started_word==true) {
-				++word_count;		
-				sortStr(c_buff,buff_index);          //alphabetizes the token before it is compared with the sorted basis string			
-				formable_count+=checkWord(c_buff, buff_index+1, basis_str);			
+		if(isTokenizer(c) || c==EOF) { 			
+			if(buff_index>0){	                     //non-negative index + reaching a tokenizer means c_buff contains a token
+				++word_count;
+				if(buff_index<max_length) {	         //token cannot be in basis if it is larger than the basis
+					sortStr(c_buff,buff_index);      //alphabetizes the token before it is compared with the sorted basis string			
+					formable_count+=checkWord(c_buff, buff_index+1, basis_str);		
+				}		
 			}
-			started_word=false;                      //resets our tracking bool so we can proceed to the next word
+			buff_index=0;			
 			memset(&c_buff[0],0,max_length);
-			buff_index=0;
 		}
-		else if(buff_index >= max_length)            //if a word is longer than the basis string then it automatically isn't formable
-		{
-			++word_count;
-			memset(&c_buff[0],0,max_length);
-			buff_index=0;	
-		} 
 		else
 		{
-			if(started_word==false) {                //determines if we are at the start of a new token
-				started_word=true;
+			if(buff_index<max_length) {	
+				c_buff[buff_index]=c;                //appends the current char to partial token 
 			}
-			c_buff[buff_index]=c;                    //appends the current char to partial token 
 			++buff_index;					
 		}
 
@@ -101,7 +94,7 @@ void processWordsFromFile(char *fname, char *basis_str)
 	printf("%s","Number of words formable from the basis string: ");
 	printf("%d\n",formable_count);
 	printf("%s","Percent of formable words: ");
-	printf("%f\n",(formable_count / (float) word_count)*100);
+	printf("%.2f\n",(formable_count / (float) word_count)*100);
 }
 
 //main function takes its from the command line
