@@ -13,11 +13,15 @@ Where S and F are the basis string and the path to the given textfile, respectiv
 Then, printed to the command line will be the percentage of formable words in F.
 
 For example, you use the example text file provide and enter:
-`./WordPercent hellomaybetext /Users/.../example.txt
+
+`./WordPercent hellomaybetext /Users/.../example.txt`
 
 The result should be:
+
 `Number of tokenized words read from file: 8`
+
 `Number of words formable from the basis string: 4`
+
 `Percent of formable words: 50.00`
 
 Assumptions
