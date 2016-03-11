@@ -26,6 +26,6 @@ Assumptions
 I considered the following characters to be my tokenizers `\n ,.!?()<>{}[]\/`
 Note that the first char is a new line, and the second is a space. End of file is also considered
 
-There is no maxmium word size within the given textfile. The program dynamically allocates memory based on the basis string.
+There is no maxmimum word size within the given textfile. The program dynamically allocates memory based on the basis string.
 
 
