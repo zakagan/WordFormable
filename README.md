@@ -11,7 +11,7 @@ The program operates on the command line. A typical way to execute it would be t
 
 Where S and F are the base string and the path to the given textfile, respectively. Then, printed to the command line, will be the percentage of formable words in F.
 
-For example, you use the example text file provide and enter:
+For example, you use the example text file provided and enter:
 
 `./WordPercent hellomaybetext /Users/.../example.txt`
 
@@ -27,7 +27,8 @@ Assumptions
 -------
 
 I considered the following characters to be my tokenizers `\n ,.!?()<>{}[]\/`
-Note that the first char is a new line, and the second is a space. End of file is also considered
+
+Note that the first char is a new line, and the second is a space. End of file is also considered.
 
 There is no maxmimum word size within the given textfile. The program dynamically allocates memory according to the length of the base string.
 
@@ -44,4 +45,4 @@ Brief Summary of the implementation
 
 5. If all partial strings (representing each set of unique characters in the token) exist in the base string, a formed word counter is incremented.
 
-6. The percentage of formed words is calculated based on the two counters, and returned via the commandline
+6. The percentage of formed words is calculated based on the two counters, and returned via the command line. The file is then closed.
