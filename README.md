@@ -3,6 +3,8 @@ WordPercent
 
 This C program determines the percent of words from a text file that can be formed from a base string.
 
+This program has been updated to address errors caused when a base string is equal in size to a formable word read from a text file.
+
 How to execute
 -------
 
