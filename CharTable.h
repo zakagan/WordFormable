@@ -7,19 +7,17 @@
 
 typedef struct table *Table;
 
-Table tableCreate(int);
+Table tableCreate();
 
 void tableDestroy(Table);
 
-int getLength(Table t);
-
 unsigned char hashFunc(const char *s);
 
-void tableInsert(Table, const char *key);
+void fillTable(const char *s, Table t);
 
-Table makeTable(const char *s);
+void clearTable(const char *s, Table t);
 
-int compareTables(Table alpha, Table beta);
+int searchTable(const char *s, Table t);
 
 void dispTable(Table t);
 

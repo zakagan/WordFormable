@@ -16,7 +16,7 @@ bool isTokenizer(char a) {
 
 //opens the provided txtfile and counts the number of words within
 //that can be made from characters in the base string.
-void processWordsFromFile(char *fname, Table base_table)
+void processWordsFromFile(char *fname, char *base_str,Table base_table)
  {
 	FILE *input_file;
 	input_file= fopen(fname, "r");
@@ -24,7 +24,7 @@ void processWordsFromFile(char *fname, Table base_table)
 	int c;                                           //character returned from fgetc
 	char *c_buff;                                    //used to construct token from read characters
 	int buff_index=0, word_count=0, formable_count=0;
-	int max_length = getLength(base_table);
+	int max_length = strlen(base_str);
 	c_buff= (char*) calloc(max_length, sizeof(char));	
 	assert(c_buff!=0);
 	do{
@@ -33,9 +33,9 @@ void processWordsFromFile(char *fname, Table base_table)
 			if(buff_index>0){	                     //non-negative index + reaching a tokenizer means c_buff contains a token
 				++word_count;
 				if(buff_index<=max_length) {	         //token cannot formed by the base if it is larger than the base
-					Table token_table=makeTable(c_buff);
-					formable_count+=compareTables(base_table, token_table);
-					tableDestroy(token_table);
+					fillTable(base_str, base_table);
+					formable_count+=searchTable(c_buff,base_table);
+					clearTable(base_str, base_table);
 				}		
 			}
 			buff_index=0;			
@@ -67,9 +67,10 @@ int main (int argc, char **argv) {
 		printf("%s\n", "first input must be the base string, and second must be the txt file path");
 		return 0;
 	}
-	Table base_table=makeTable(argv[1]);
+	char* base_str=argv[1];
 	char* fname=argv[2];
-	processWordsFromFile(fname, base_table);
+	Table base_table = tableCreate();
+	processWordsFromFile(fname, base_str, base_table);
 	tableDestroy(base_table);
 	return 0;
 }

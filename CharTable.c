@@ -5,13 +5,14 @@
 
 #include "CharTable.h"
 
+#define TABLE_SIZE 128
+
 struct table {
     int size;           /* size of the pointer table */
-    int length;              /* number of elements stored */
     int *array;
 };
 
-Table tableCreate(int size)
+Table tableCreate()
 {
     Table t;
     int i;
@@ -19,8 +20,7 @@ Table tableCreate(int size)
     t = malloc(sizeof(*t));
     assert(t != 0);
 
-    t->size = size;
-    t->length = 0;
+    t->size = TABLE_SIZE;
     t->array = malloc(sizeof(int*) * t->size);
     assert(t->array != 0);
 
@@ -35,11 +35,6 @@ void tableDestroy(Table t)
     free(t);
 }
 
-int getLength(Table t)
-{
-    return t->length;
-}
-
 unsigned char hashFunc(const char *letter)		//Trivial since we give it only single chars
 {
     return (unsigned const char) *letter;
@@ -51,7 +46,6 @@ void tableInsert(Table t, const char *key)
 {
     unsigned char h;
     assert(key);
-    t->length++;
     h = hashFunc(key);
     if (t->array[h]!=0)
     {
@@ -63,31 +57,50 @@ void tableInsert(Table t, const char *key)
     }
 }
 
-Table makeTable(const char *s)
+void tableRemove(Table t, const char *key)
 {
-    Table t=tableCreate(128);
+    unsigned char h;
+    assert(key);
+    h = hashFunc(key);
+    t->array[h]=0;
+
+}
+
+void fillTable(const char *s, Table t)
+{
     const char *us;
     for(us = s; *us; us++) {
         tableInsert(t, us);
     }
-    return t;
 }
 
-int compareTables(Table alpha, Table beta)
+void clearTable(const char *s, Table t)
 {
-    int i;
-    for(i=0; i<128; i++) {
-        if (alpha->array[i] < beta->array[i])
+    const char *us;
+    for(us = s; *us; us++) {
+        tableRemove(t, us);
+    }
+}
+
+int searchTable(const char *s, Table t)
+{
+    const unsigned char *us;
+
+    for(us = (const unsigned char *) s; *us; us++) {
+        if (t->array[*us]>0) {
+            t->array[*us]--;
+        }
+        else 
         {
             return 0;
         }
-    }
+    }    
     return 1;
 }
 
 void dispTable(Table t) {
     int i;
-    for(i=0; i<128; i++) {
+    for(i=0; i<t->size; i++) {
         printf("%c: %d\n",(char) i, t->array[i]); 
     }
 }
