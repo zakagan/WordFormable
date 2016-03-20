@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>  
 #include <stdbool.h>
+#include <assert.h>
 
 //Checks if a single char is within a string of tokenizers 
 bool isTokenizer(char a) {     
@@ -33,11 +34,7 @@ int checkWord(char *sorted_word, int str_length, char *sorted_base)
 	char *partial_word;                              //formed by concatinating all instances of a single char
 	int word_index=0, partial_index, return_val=1;	
 	partial_word= (char*) calloc(str_length, sizeof(char));
-	if(partial_word == 0)
-	{
-		printf("Memory allocation failed");
-		exit(0);
-	}
+	assert(partial_word);
 	do{	
 		partial_index=0;
 		do{	
@@ -72,17 +69,13 @@ void processWordsFromFile(char *fname, char *base_str)
 	int buff_index=0, word_count=0, formable_count=0;
 	int max_length = (int) strlen(base_str);
 	c_buff= (char*) calloc(max_length, sizeof(char));	
-	if(c_buff == 0)
-	{
-		printf("Memory allocation failed");
-		exit(0);
-	}
+	assert(c_buff);
 	do{
 		c = fgetc(input_file);
 		if(isTokenizer(c) || c==EOF) { 			
 			if(buff_index>0){	                     //non-negative index + reaching a tokenizer means c_buff contains a token
 				++word_count;
-				if(buff_index<=max_length) {	         //token cannot formed by the base if it is larger than the base
+				if(buff_index<=max_length) {	     //token cannot formed by the base if it is larger than the base
 					sortStr(c_buff,buff_index);      //alphabetizes the token before it is compared with the sorted base string			
 					formable_count+=checkWord(c_buff, buff_index, base_str);		
 				}		
