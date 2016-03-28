@@ -37,7 +37,7 @@ For example, you use the example text file provided and enter:
 
 The result should be:
 
-```shell
+```
 Number of tokenized words read from file: 7
 Number of words formable from the base string: 3
 Percent of formable words: 42.86
@@ -82,7 +82,7 @@ Basic algorithm:
 
 3. Instead of sorting the base string, it is broken down into its component characters and stored in a table. The table lists how many instances of each character is present. For example, "helloworld" would be stored as:
 
-	```shell
+	```
 	d : 1
 	e : 1
 	h : 1
