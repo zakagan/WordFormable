@@ -79,23 +79,30 @@ Basic algorithm:
 2. When a new token is found a word counter is incremented, also same as before.
 
 3. Instead of sorting the base string, it is broken down into its component characters and stored in a table. The table lists how many instances of each character is present. For example, "helloworld" would be stored as:
-	d : 1
-	e : 1
-	h : 1
-	l : 3
-	o : 2
-	r : 1
-	w : 1
 
-3. Each newly found word token is also broken down character to character, and then the base string table is consulted. If that character's frequency value in the table is greater than zero, the value is decremented by one and the alogrithm proceeds. Otherwise the word is not formable and the algorithm proceeds to the next token. 
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d : 1
 
-4. If the end of the token is sucessfully reached, the formable word counter is incremented.
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e : 1
 
-5. The character table is then cleared to prepare for the next word token,
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;h : 1
 
-6. The percentage of formed words is calculated based on the two counters, and returned via the command line. The file is then closed.
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l : 3
 
-What about the computational complexity of thetable solution? Each word token needs to be checked with the character table, character by character. Before this can be done, the table needs to be refilled from the base string in order to properly keep track for the frequency of characters. So each check depends on the length of the word token and the length of the base string (call it K). Then if there are N words in the textfile with average length M, the complexity is O(N(K+M)).
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o : 2
+
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r : 1
+
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w : 1
+
+4. Each newly found word token is also broken down character to character, and then the base string table is consulted. If that character's frequency value in the table is greater than zero, the value is decremented by one and the alogrithm proceeds. Otherwise the word is not formable and the algorithm proceeds to the next token. 
+
+5. If the end of the token is sucessfully reached, the formable word counter is incremented.
+
+6. The character table is then cleared to prepare for the next word token,
+
+7. The percentage of formed words is calculated based on the two counters, and returned via the command line. The file is then closed.
+
+What about the computational complexity of the table solution? Each word token needs to be checked with the character table, character by character. Before this can be done, the table needs to be refilled from the base string in order to properly keep track for the frequency of characters. So each check depends on the length of the word token and the length of the base string (call it K). Then if there are N words in the textfile with average length M, the complexity is O(N(K+M)).
 
 A Third Solution
 -------
@@ -104,5 +111,5 @@ Another solution to this problem has been considered, but not yet included: prec
 
 However, the challenge with this method is both computing the power set of the base string and choosing an effcient hash function. Currently this is a work in progress.
 
-The upfront complexity is extremly costly. Generating a power set of char arrays from the base string has complexity of O(2^K), where K is the length of the base string. However, if K is small and the right hash function is chosen, checking a large number of words could be acomplished extremly quickly.
+The upfront complexity is extremly costly. Generating a power set of char arrays from the base string has complexity of O(2^K), where K is the length of the base string. However, if K is small and the right hash function is chosen, checking a large number of words could be acomplished extremely quickly.
 
