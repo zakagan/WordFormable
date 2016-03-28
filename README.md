@@ -14,7 +14,7 @@ Currently two different solutions are included:
 
 1. Sorting: The base string and tokenized words from the text file are alphabetizd via quick sort and then compared.
 
-2. Simple Hash Table: Th base string is loaded into a table using a trivial hashing method, and then each tokenized word from the text file is compared with this table.
+2. Simple Hash Table: The base string is loaded into a table using a trivial hashing method, and then each tokenized word from the text file is compared with this table.
 
 How to execute
 -------
@@ -37,9 +37,9 @@ For example, you use the example text file provided and enter:
 
 The result should be:
 
-`Number of tokenized words read from file: 7
+```Number of tokenized words read from file: 7
 Number of words formable from the base string: 3
-Percent of formable words: 42.86`
+Percent of formable words: 42.86```
 
 Assumptions
 -------
@@ -81,17 +81,11 @@ Basic algorithm:
 3. Instead of sorting the base string, it is broken down into its component characters and stored in a table. The table lists how many instances of each character is present. For example, "helloworld" would be stored as:
 
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d : 1
-
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e : 1
-
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;h : 1
-
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l : 3
-
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o : 2
-
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r : 1
-
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w : 1
 
 4. Each newly found word token is also broken down character to character, and then the base string table is consulted. If that character's frequency value in the table is greater than zero, the value is decremented by one and the alogrithm proceeds. Otherwise the word is not formable and the algorithm proceeds to the next token. 
