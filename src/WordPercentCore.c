@@ -3,9 +3,14 @@
 #include <stdlib.h>  
 #include <stdbool.h>
 #include <assert.h>
-#include "CharTable.h"
 
-//Checks if a single char is within a string of tokenizers 
+#include "WordSort.h"              // Linked only for the sorting implamentation
+#include "CharTable.h"             // Linked only for the table implamentation
+
+char *fname;
+int max_length;                    // Gathered from the length of the base string
+
+// Checks if a single char is within a string of tokenizers 
 bool isTokenizer(char a) {     
 	if(strchr("\n ,.!?()<>{}[]\\/",a)) {
 		return true;
@@ -14,9 +19,9 @@ bool isTokenizer(char a) {
 	}
 }
 
-//opens the provided txtfile and counts the number of words within
-//that can be made from characters in the base string.
-void processWordsFromFile(char *fname, char *base_str,Table base_table)
+/* opens the provided txtfile, determines indvigual word tokens, and then calls a included method (checkWord) to see
+if they are formable from the base string. Finally it prints the calculated result to the command line */
+void processWordsFromFile()
  {
 	FILE *input_file;
 	input_file= fopen(fname, "r");
@@ -24,7 +29,6 @@ void processWordsFromFile(char *fname, char *base_str,Table base_table)
 	int c;                                           //character returned from fgetc
 	char *c_buff;                                    //used to construct token from read characters
 	int buff_index=0, word_count=0, formable_count=0;
-	int max_length = strlen(base_str);
 	c_buff= (char*) calloc(max_length, sizeof(char));	
 	assert(c_buff!=0);
 	do{
@@ -33,9 +37,7 @@ void processWordsFromFile(char *fname, char *base_str,Table base_table)
 			if(buff_index>0){	                     //non-negative index + reaching a tokenizer means c_buff contains a token
 				++word_count;
 				if(buff_index<=max_length) {	         //token cannot formed by the base if it is larger than the base
-					fillTable(base_str, base_table);
-					formable_count+=searchTable(c_buff,base_table);
-					clearTable(base_str, base_table);
+					formable_count+=checkWord(c_buff,buff_index);
 				}		
 			}
 			buff_index=0;			
@@ -61,16 +63,17 @@ void processWordsFromFile(char *fname, char *base_str,Table base_table)
 	printf("%.2f\n",(formable_count / (float) word_count)*100);
 }
 
-//main function takes its from the command line
+// main function which takes its inputs from the command line
 int main (int argc, char **argv) {
 	if(argc !=3) {
 		printf("%s\n", "first input must be the base string, and second must be the txt file path");
 		return 0;
 	}
 	char* base_str=argv[1];
-	char* fname=argv[2];
-	Table base_table = tableCreate();
-	processWordsFromFile(fname, base_str, base_table);
-	tableDestroy(base_table);
+	fname=argv[2];
+	max_length=strlen(base_str);
+	setUpBase(base_str, max_length);
+	processWordsFromFile();
+	cleanUpBase();
 	return 0;
 }
