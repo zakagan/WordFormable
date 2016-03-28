@@ -37,7 +37,8 @@ For example, you use the example text file provided and enter:
 
 The result should be:
 
-```Number of tokenized words read from file: 7
+```bash
+Number of tokenized words read from file: 7
 Number of words formable from the base string: 3
 Percent of formable words: 42.86```
 
@@ -80,6 +81,7 @@ Basic algorithm:
 
 3. Instead of sorting the base string, it is broken down into its component characters and stored in a table. The table lists how many instances of each character is present. For example, "helloworld" would be stored as:
 
+	'''bash
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d : 1
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e : 1
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;h : 1
@@ -87,6 +89,7 @@ Basic algorithm:
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o : 2
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r : 1
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w : 1
+	'''
 
 4. Each newly found word token is also broken down character to character, and then the base string table is consulted. If that character's frequency value in the table is greater than zero, the value is decremented by one and the alogrithm proceeds. Otherwise the word is not formable and the algorithm proceeds to the next token. 
 
