@@ -2,25 +2,30 @@
 //  CharTable.h
 //
 
-#ifndef CHARTABLE_H
-#define CHARTABLE_H
+#ifndef TABLESOLUTION_H
+#define TABLESOLUTION_H
 
-typedef struct table *Table;
+typedef struct {
+    int size;            // size of the pointer table
+    int *array;
+} Table;
 
-Table base_table;
-char* base_str;
+Table* tableCreate(int size);
 
-void dispTable(Table t);
+void tableDestroy(Table* t);
 
-// Saves the base string and builds a table that will be used to analyze tokens from the textfile
-void setUpBase(char* str, int max_length);
+unsigned char convertToUnsigned(const char c);
 
-// Cleans the data structures allocated in the heap before the routine terminates
-void cleanUpBase();
+void fillTable(Table* t, const char *s);
 
-/* Fills the table structures with chars from the base string, and then checks if a token can be formed by those chars by
-consulting the table. Returns 1 if the word can be formed from the base string, 0 otherwise. Since values in the table
-are decremented during look up, the table is cleared after completing a check */
-int checkWord(char *str, int str_length);
+void clearTable(Table* t, const char *s);
+
+Table* copyTable(Table* destination, Table* source);
+
+int compareTable(const Table* a, const Table* b);
+
+void dispTable(const Table* t);
+
+
 
 #endif
