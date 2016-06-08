@@ -1,10 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
 
 #include "WordPercentTable.h"
 
-// builds tables ands fills them with chars from the base string
+// builds tables and fills them with chars from the base string
 void setUpTables() {
     base_table=tableCreate(TABLE_SIZE);
     comparison_table=tableCreate(TABLE_SIZE);
@@ -22,9 +21,9 @@ void freeTables() {
  character then the function will report that the word is not formable*/
 int checkChar(char c)
 {
-    if (comparison_table->array[convertToUnsigned(c)]>0)
+    if (comparison_table->array[(unsigned char) c]>0)
     {
-        comparison_table->array[convertToUnsigned(c)]--;
+        comparison_table->array[(unsigned char) c]--;
         return 1;
     }
     else 

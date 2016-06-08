@@ -1,12 +1,7 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>  
-#include <stdbool.h>
-#include <assert.h>
 
 #include "WordPercentSort.h"
 
-/* Takes an alhabetized word and an alphabetized base string
+/* Takes an alphabetized word and an alphabetized base string
 returns 1 if the word can be formed from the base string, 0 otherwise */
 int checkWord(char *token_str, int str_length) 
 {	
@@ -36,6 +31,9 @@ int checkWord(char *token_str, int str_length)
 		}
 	} while(next_char!='\0');
 	free(partial_word);
+	// if (return_val) {
+	// 	printf("%s\n", token_str);
+	// }
 	return return_val;
 }
 

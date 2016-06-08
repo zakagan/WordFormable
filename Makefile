@@ -6,7 +6,7 @@
 # Name of the executable to create
 EXECUTABLE_1 = WordPercentSort
 EXECUTABLE_2 = WordPercentTable
-EXECUTABLE_3 = PowerSetStringTest
+EXECUTABLE_3 = WordPercentPrecompute
 SOURCE_DIR = src
 OBJECT_DIR= build
 
@@ -22,11 +22,12 @@ LDFLAGS = -g
 CORE_OBJ= Parsing.o
 METHOD_1_OBJ = WordPercentSort.o WordSort.o 
 METHOD_2_OBJ = WordPercentTable.o CharTable.o
-METHOD_3_OBJ = PowerSetString.o WordSort.o 
+METHOD_3_OBJ = WordPercentPowerSet.o HashMap.o SinglyLinkedList.o CharTable.o
 CORE_FILE = $(addprefix $(OBJECT_DIR)/, $(CORE_OBJ))
 METHOD_1_FILE = $(addprefix $(OBJECT_DIR)/, $(METHOD_1_OBJ))
 METHOD_2_FILE = $(addprefix $(OBJECT_DIR)/, $(METHOD_2_OBJ))
 METHOD_3_FILE = $(addprefix $(OBJECT_DIR)/, $(METHOD_3_OBJ))
+
 
 # Create the object_files directory only if it does not exist. 
 	

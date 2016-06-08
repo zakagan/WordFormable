@@ -1,7 +1,3 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <assert.h>
 
 #include "CharTable.h"
 
@@ -13,7 +9,7 @@ Table* tableCreate(int size)
     t = malloc(sizeof(Table)); 
     assert(t != 0);
     t->size = size;
-    t->array =  calloc(t->size,sizeof(int*));
+    t->array = calloc(t->size,sizeof(int*));
     assert(t->array != 0);
 
     return t;
@@ -26,37 +22,20 @@ void tableDestroy(Table* t)
     free(t);
 }
 
-// Trivial hash function for converting characters into unsigned number vals
-unsigned char convertToUnsigned(const char c)
-{
-    unsigned const char acsii_val = c;
-    return acsii_val;                             //Trivial since we give it only single chars
-}
-
-
 // inserts a new entry into the table structure
-void tableInsert(Table* t, const char *key)
+void tableInsert(Table* t, const char key)
 {
     unsigned char h;
-    assert(key);
-    h = convertToUnsigned(*key);
-    if (t->array[h]!=0)
-    {
-    	t->array[h]++;
-    }
-    else 
-    {	
-	    t->array[h]=1;
-    }
+    h = key;          // index table by ascii value
+    t->array[h]++; 
 }
 
 // removes a single entry from the table structure
-void tableRemove(Table* t, const char *key)
+void tableRemove(Table* t, const char key)
 {
     unsigned char h;
-    assert(key);
-    h = convertToUnsigned(*key);
-    t->array[h]=0;
+    h = key;
+    t->array[h]--;
 
 }
 
@@ -65,37 +44,49 @@ void fillTable(Table* t, const char *s)
 {
     const char *us;
     for(us = s; *us; us++) {
-        tableInsert(t, us);
+        tableInsert(t, *us);
     }
 }
 
-// Clears the entire table structure
-void clearTable(Table* t, const char *s)
+// removes one word from a table structure
+void removeWordTable(Table* t, const char *s)
 {
     const char *us;
     for(us = s; *us; us++) {
-        tableRemove(t, us);
+        tableRemove(t, *us);
     }
 }
 
-Table* copyTable(Table* destination, Table* source)
+// fully clears the table, leaving all entries equal to 0
+void clearTable(Table* t)
 {
+    int i;            
+    for(i = 0; i < t->size; i++) {
+        t->array[i]=0;
+    }
+}
+
+// copies the array of one table, to another, given that the later has already been initialized
+Table* copyTable(Table* destination, const Table* source)
+{
+    int i;
     if (destination->size != source->size) {
         return 0;
     } else {
-        for (int i = 0; i < destination->size; ++i)
+        for (i = 0; i < destination->size; ++i)
         {
             destination->array[i] = source->array[i];
         }
         return destination;
     }    
 }
-
+// returns 1 if the two tables are the same, 0 otherwise
 int compareTable(const Table* a, const Table* b) {
+    int i;
     if (a->size != b->size) {
         return 0;
     } else {
-        for (int i = 0; i < a->size; ++i)
+        for (i = 0; i < a->size; ++i)
         {
             if (a->array[i] != b->array[i]) {
                 return 0;
@@ -108,9 +99,12 @@ int compareTable(const Table* a, const Table* b) {
 
 //  Prints the table to the commandline, used for lazy debugging
 void dispTable(const Table* t) {
-    int i;
+    int i, n;
     for(i=0; i<t->size; i++) {
-        printf("%c: %d\n",(char) i, t->array[i]); 
+        n = t->array[i];
+        if(n) {
+            printf("%c: %d\n",(char) i, n); 
+        }
     }
 }
 

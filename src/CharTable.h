@@ -5,27 +5,28 @@
 #ifndef TABLESOLUTION_H
 #define TABLESOLUTION_H
 
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <assert.h>
+
 typedef struct {
     int size;            // size of the pointer table
     int *array;
 } Table;
 
 Table* tableCreate(int size);
-
 void tableDestroy(Table* t);
 
-unsigned char convertToUnsigned(const char c);
+void tableInsert(Table* t, const char key);
+void tableRemove(Table* t, const char key);
 
 void fillTable(Table* t, const char *s);
+void removeWordTable(Table* t, const char *s);
+void clearTable(Table* t);
 
-void clearTable(Table* t, const char *s);
-
-Table* copyTable(Table* destination, Table* source);
-
+Table* copyTable(Table* destination, const Table* source);
 int compareTable(const Table* a, const Table* b);
-
 void dispTable(const Table* t);
-
-
 
 #endif
