@@ -11,8 +11,6 @@
 #include "Parsing.h"
 #include <string.h>
 
-char *fname;
-int max_length;
 HashMap* power_set_map; 
 
 #define TABLE_SIZE 128   // Chosen based on the size of the standard ASCII character set

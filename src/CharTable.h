@@ -27,6 +27,7 @@ void clearTable(Table* t);
 
 Table* copyTable(Table* destination, const Table* source);
 int compareTable(const Table* a, const Table* b);
+//int isFormableTable(const Table* a, const Table* b);
 void dispTable(const Table* t);
 
 #endif

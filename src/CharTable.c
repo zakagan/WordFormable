@@ -96,7 +96,6 @@ int compareTable(const Table* a, const Table* b) {
     }    
 }
 
-
 //  Prints the table to the commandline, used for lazy debugging
 void dispTable(const Table* t) {
     int i, n;
@@ -108,3 +107,20 @@ void dispTable(const Table* t) {
     }
 }
 
+// returns 1 if the 1st table can be formed from the 2nd, 0 otherwise
+/*
+int isFormableTable(const Table* a, const Table* b) {
+    int i;
+    if (a->size != b->size) {
+        return 0;
+    } else {
+        for (i = 0; i < a->size; ++i)
+        {
+            if (a->array[i] > b->array[i]) {
+                return 0;
+            }
+        }
+        return 1;
+    }    
+}
+*/

@@ -3,20 +3,6 @@
 
 #include "WordPercentTable.h"
 
-// builds tables and fills them with chars from the base string
-void setUpTables() {
-    base_table=tableCreate(TABLE_SIZE);
-    comparison_table=tableCreate(TABLE_SIZE);
-    fillTable(base_table, base_str);
-    copyTable(comparison_table, base_table);   
-}
-
-// frees memory used for tables
-void freeTables() {
-    tableDestroy(base_table);
-    tableDestroy(comparison_table);
-}
-
 /* The char being examined is decremented from the comparison table. If the table has run out of that
  character then the function will report that the word is not formable*/
 int checkChar(char c)
@@ -35,11 +21,11 @@ int checkChar(char c)
 /* opens the provided txtfile, and compares each letter with a table of letters from the base string. 
 The function keeps track of whether or not the word is formable. Then when a tokenizer is found the 
 word counter updates, and so does the formable word counter, depernding on its status */
-void processCharsFromFile()
+void processCharsFromFile(char *fname)
  {
     FILE *input_file;                                  //used to construct token from read characters
     int word_count=0, formable_count=0;
-    int buff_index=0, is_formable=1;
+    int buff_index=0, is_formable=1;                   //assume token is formable until checkChar returns otherwise  
     int c;                                             //character returned from fgetc
 
     input_file= fopen(fname, "r");
@@ -75,10 +61,19 @@ int main (int argc, char **argv) {
         printf("%s\n", "first input must be the base string, and second must be the txt file path");
         return 0;
     }
+    char *fname, *base_str;
     base_str=argv[1];
     fname=argv[2];
-    setUpTables();
-    processCharsFromFile();
-    freeTables();
+
+    base_table=tableCreate(TABLE_SIZE);
+    comparison_table=tableCreate(TABLE_SIZE);
+    fillTable(base_table, base_str);
+    copyTable(comparison_table, base_table); 
+
+    processCharsFromFile(fname);
+    
+    tableDestroy(base_table);
+    tableDestroy(comparison_table);
+
     return 0;
 }

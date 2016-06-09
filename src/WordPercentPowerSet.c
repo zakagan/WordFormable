@@ -32,7 +32,7 @@ void calculatePowerSet(char *str, int str_length) {
 
 /* opens the provided txtfile, determines indvigual word tokens, and then calls a included method (checkWord) to see
 if they are formable from the base string. Finally it prints the calculated result to the command line */
-void processWordsFromFile()
+void processWordsFromFile(char *fname, int max_length)
  {
 	FILE *input_file;                                  //used to construct token from read characters
 	int word_count=0, formable_count=0, buff_index=0;
@@ -73,13 +73,14 @@ int main (int argc, char **argv) {
 		printf("%s\n", "first input must be the base string, and second must be the txt file path");
 		return 0;
 	}
-	char* base_str;
+	char *fname, *base_str;
+	int max_length;
 	base_str=argv[1];
 	fname=argv[2];
 	max_length = strlen(base_str);
 	power_set_map = hashMapCreate((1 << (max_length+2)) -1);
 	calculatePowerSet(base_str, max_length);
-	processWordsFromFile();
+	processWordsFromFile(fname, max_length);
 
 	hashMapDestroy(power_set_map);
 	return 0;

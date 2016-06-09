@@ -40,26 +40,28 @@ void hashMapDestroy(HashMap* m)
     free(m);
 }
 
-// inserts a new entry into the hash map structure
-void hashMapInsert(HashMap* m, Node* n)
+// inserts a new entry into the hash map structure, returns 1 in case of a collision
+int hashMapInsert(HashMap* m, Node* n)
 {
     size_t h;
     Node* chained_entry;
     h = djb2Hash(n->T) % m->size;
     //printf("Hash insert at %zu out of %d\n", h, m->size);
-    chained_entry = m->map[h];      //this hash table uses chaining to resolve collisons
+    chained_entry = m->map[h];      //this hash table uses chaining to resolve collisions
     if (chained_entry==0) {
 		push(&m->map[h], n->T, 0);
+        return 0;
 	} else {
 		while(chained_entry) {
 			if(compareTable(chained_entry->T, n->T) ) {
                 //printf("\t\t Duplicate Detected!\n");
-				return;   // Duplicate are not added again to the chain
+				return 0;   // Duplicate are not added again to the chain
 			}
 			chained_entry = chained_entry->next;
 		}
-        //printf("\t\t Collison Detected!\n");
+        //printf("\t\t Collision Detected!\n");
 		push(&m->map[h], n->T, 0);
+        return 1;
 	} 
 }
 
