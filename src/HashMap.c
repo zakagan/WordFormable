@@ -68,7 +68,6 @@ int checkHashMapForTable(const HashMap* m, const Table* char_table) {
     chained_entry = m->map[h];
     while(chained_entry) {
         if (compareTable(chained_entry->T, char_table)) {
-            printf("*new entry*\n");
             return 1;
         }
         chained_entry = chained_entry->next;

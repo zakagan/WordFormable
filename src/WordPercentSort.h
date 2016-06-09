@@ -13,9 +13,6 @@
 #include "WordSort.h" 
 #include "Parsing.h"
 
-
-char *fname;
-char *base_str;
-int max_length;                    // Gathered from the length of the base string
+char *base_str, *c_buff, *partial_buff;              
 
 #endif
