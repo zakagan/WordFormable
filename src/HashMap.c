@@ -3,9 +3,11 @@
 // Hash function used to store nodes based on their strings
 size_t djb2Hash(const Table* t) {
 	size_t hash = 5381;
-	int i;
-	for (i=0; i< t->size; i++) {
-		hash = ((hash << 5) + hash) ^ (i * t->array[i]);
+	int i, j;
+	for (i=0; i < t->size; i++) {
+        for(j=0; j < t->array[i]; j++) {
+		  hash = ((hash << 5) + hash) ^ i;
+        }
 	}
 	return hash;
 }
@@ -44,6 +46,7 @@ void hashMapInsert(HashMap* m, Node* n)
     size_t h;
     Node* chained_entry;
     h = djb2Hash(n->T) % m->size;
+    //printf("Hash insert at %zu out of %d\n", h, m->size);
     chained_entry = m->map[h];      //this hash table uses chaining to resolve collisons
     if (chained_entry==0) {
 		push(&m->map[h], n->T, 0);

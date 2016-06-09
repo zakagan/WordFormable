@@ -77,7 +77,7 @@ int main (int argc, char **argv) {
 	base_str=argv[1];
 	fname=argv[2];
 	max_length = strlen(base_str);
-	power_set_map = hashMapCreate((1 << (max_length+2)));
+	power_set_map = hashMapCreate((1 << (max_length+2)) -1);
 	calculatePowerSet(base_str, max_length);
 	processWordsFromFile();
 
