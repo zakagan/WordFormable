@@ -69,16 +69,23 @@ void processWordsFromFile(char *fname, int max_length)
 
 // main function which takes its inputs from the command line
 int main (int argc, char **argv) {
-	if(argc !=3) {
-		printf("%s\n", "first input must be the base string, and second must be the txt file path");
+	char *fname, *base_str;
+	int max_length, buckets=0;
+	if(argc < 3 || argc > 4) {
+		printf("First input must be the base string, and second must be the txt file path.\n");
+		printf("A third, optional input may be included to set the number of hash table buckets\n");
 		return 0;
 	}
-	char *fname, *base_str;
-	int max_length;
 	base_str=argv[1];
 	fname=argv[2];
 	max_length = strlen(base_str);
-	power_set_map = hashMapCreate((1 << (max_length+2)) -1);
+	if (argc==4) {
+		buckets = atoi(argv[3]);   //if invalid numeric, buckets will be set to 0 and replace in next conditional
+	} 
+	if (buckets < 1) {
+		buckets = (1 << (max_length+2))-1;
+	}
+	power_set_map = hashMapCreate(buckets); 
 	calculatePowerSet(base_str, max_length);
 	processWordsFromFile(fname, max_length);
 

@@ -20,7 +20,6 @@ typedef struct {
 size_t djb2Hash(const Table* char_table);
 
 HashMap* hashMapCreate(const size_t size);
-
 void hashMapDestroy(HashMap* m);
 
 int hashMapInsert(HashMap* m, Node* n);

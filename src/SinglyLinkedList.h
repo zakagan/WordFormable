@@ -19,7 +19,6 @@ typedef struct node {
 } Node;
 
 void push(Node **head_node, const Table* char_table, const int last_index);
-
 Node* pop(Node **head_node);
 
 void destroyStack(Node *stack);

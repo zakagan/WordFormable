@@ -55,7 +55,7 @@ int hashMapInsert(HashMap* m, Node* n)
 		while(chained_entry) {
 			if(compareTable(chained_entry->T, n->T) ) {
                 //printf("\t\t Duplicate Detected!\n");
-				return 0;   // Duplicate are not added again to the chain
+				return 0;   // Duplicates are not added again to the chain
 			}
 			chained_entry = chained_entry->next;
 		}
