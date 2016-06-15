@@ -8,7 +8,6 @@ int checkWord(char *token_str, int str_length)
 	char cur_char, next_char;
 	char *base_pointer=base_str;
 	int word_index=0, partial_index, return_val=1;	
-	sortStr(token_str,str_length);                   //alphabetizes the token before it is compared with the sorted base string				
 	do{	
 		partial_index=0;
 		do{	
@@ -33,10 +32,14 @@ int checkWord(char *token_str, int str_length)
 if they are formable from the base string. Finally it prints the calculated result to the command line */
 void processWordsFromFile(char* fname, int max_length)
 {
-	FILE *input_file;                                  //used to construct token from read characters
+	FILE *input_file;                                 
+	char* c_buff;                                         
 	int word_count=0, formable_count=0, buff_index=0;
-	int c;                                             //character returned from fgetc
+	int c;                                                //character returned from fgetc
 
+	c_buff= calloc(max_length, sizeof(char));	    //used to build word tokens as read from the provided file
+	assert(c_buff);
+	
 	input_file= fopen(fname, "r");
 	do{
 		c = fgetc(input_file);
@@ -44,6 +47,7 @@ void processWordsFromFile(char* fname, int max_length)
 			if(buff_index>0){	                     //non-negative index + reaching a tokenizer means c_buff contains a token
 				++word_count;
 				if(buff_index<=max_length) {	         //token cannot formed by the base if it is larger than the base
+					sortStr(c_buff,buff_index);                   //alphabetizes the token before it is compared with the sorted base string				
 					formable_count+=checkWord(c_buff,buff_index);
 				}		
 			}
@@ -61,6 +65,7 @@ void processWordsFromFile(char* fname, int max_length)
 	} while(c!=EOF);
 
 	fclose(input_file);
+	free(c_buff);
 	reportResults(word_count, formable_count);
 }
 
@@ -78,14 +83,11 @@ int main (int argc, char **argv) {
 	max_length=strlen(base_str);
 	sortStr(base_str, max_length);
 
-	c_buff= calloc(max_length, sizeof(char));	//used to build word tokens as read from the provided file
-	assert(c_buff);
 	partial_buff= calloc(max_length, sizeof(char));    //used to hold series of matching characters within a token for comparison w/ sorted base string
 	assert(partial_buff);       
 
 	processWordsFromFile(fname, max_length);
 
-	free(c_buff);
 	free(partial_buff);
 
 	return 0;

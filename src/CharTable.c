@@ -9,7 +9,7 @@ Table* tableCreate(int size)
     t = malloc(sizeof(Table)); 
     assert(t != 0);
     t->size = size;
-    t->array = calloc(t->size,sizeof(int*));
+    t->array = calloc(t->size, sizeof(int*));
     assert(t->array != 0);
 
     return t;
@@ -96,19 +96,7 @@ int compareTable(const Table* a, const Table* b) {
     }    
 }
 
-//  Prints the table to the commandline, used for lazy debugging
-void dispTable(const Table* t) {
-    int i, n;
-    for(i=0; i<t->size; i++) {
-        n = t->array[i];
-        if(n) {
-            printf("%c: %d\n",(char) i, n); 
-        }
-    }
-}
-
 // returns 1 if the 1st table can be formed from the 2nd, 0 otherwise
-/*
 int isFormableTable(const Table* a, const Table* b) {
     int i;
     if (a->size != b->size) {
@@ -123,4 +111,17 @@ int isFormableTable(const Table* a, const Table* b) {
         return 1;
     }    
 }
-*/
+
+
+//  Prints the table to the commandline, used for lazy debugging
+void dispTable(const Table* t) {
+    int i, n;
+    for(i=0; i<t->size; i++) {
+        n = t->array[i];
+        if(n) {
+            printf("%c: %d\n",(char) i, n); 
+        }
+    }
+}
+
+

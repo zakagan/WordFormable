@@ -13,6 +13,6 @@
 #include "WordSort.h" 
 #include "Parsing.h"
 
-char *base_str, *c_buff, *partial_buff;              
+char *base_str, *partial_buff;              
 
 #endif
