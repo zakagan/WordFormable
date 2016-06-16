@@ -1,7 +1,9 @@
 WordPercent
 =============
 
-Solving one problem using multiple different methods can be a great learning experience. No where is that more apparent than in computer science, where different algorithmic solutions can be analyzed in detail.
+This is project that I have been working on in order to better understand fundamental data structures. Here I apply arrays, structs, linked lists, and hash maps im order to solve one proplem in a variety of methods.
+
+One of the great things about computer science problems is that there is never just one way to solve them. While each solution may not be equal, they each have their own strengths and weaknesses, which we can explore in detail.
 
 This particular problem is based on a fairly basic programming interview question. However, its different solutions require understanding and clever application of different types of data structures. 
 
@@ -52,7 +54,7 @@ Number of words formable from the base string: 3
 Percent of formable words: 42.86
 ```
 
-WordPercentPrecompute can optionally take a third input: the number of buckets for the hash map. If no third input is provided, the program defaults to a load factor of aproximately 25%. For more detail, see the section on WordPercentPrecompute's implementation and complexity.
+The two precomputing solutions can optionally take a third input: the number of buckets for the hash map. If no third input is provided, the program defaults to a load factor of aproximately 25%. For more detail, see the section on WordPercentPrecompute's implementation and complexity.
 
 Assumptions
 -------
