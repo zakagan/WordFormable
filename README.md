@@ -49,8 +49,11 @@ For example, use the example text file provided and enter:
 The result should be:
 
 ```
+Base string length: 10
+Number of chars read from file: 305
 Number of tokenized words read from file: 7
 Number of words formable from the base string: 3
+Average word length: 43.57
 Percent of formable words: 42.86
 ```
 
