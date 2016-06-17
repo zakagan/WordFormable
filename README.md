@@ -107,7 +107,7 @@ This solution needs to sort words N<sub>k</sub> words using quick sort. Sorting 
 
 This algorithm uses strstr to accomplish this searching, which has complexity O(K+M<sub>k</sub>) using GCC. Thus the time complexity of checking a single word token is O(M<sub>k</sub>\*Log(M<sub>k</sub>)+(K+M<sub>k</sub>)), and doing so for the N<sub>k</sub> words requires O(N<sub>k</sub>\*(M<sub>k</sub>*Log(M<sub>k</sub>)+(K+M<sub>k</sub>))).
 
-Since M<sub>k</sub> <= K, the length of the base string tends to contribute more to the overall complexity. The worst case scenario being where N<sub>k</sub> = N, M<sub>k</sub>=M, and M = K. Thus time complexity becomes O(N\*K\*Log(K)).
+Since M<sub>k</sub> <= K, the length of the base string tends to contribute more to the overall complexity. The worst case scenario being where N<sub>k</sub> = N, M<sub>k</sub>=M, and M = K. Thus the time complexity becomes O(N\*K\*Log(K)).
 
 More On WordPercentTable
 -------
@@ -192,15 +192,17 @@ So, as long as the cost of precomputing the base string's power set does not bec
 More On WordPercentPrecomputeTable
 -------
 
-This fourth solution is very similar to the third, so I won't go over the algorithm step by step. Where it differs is that instead of using char arrays and sorting, it hashes character tables into an array of integers (the hash maps "buckets"). 
+This fourth solution is very similar to the third, so I won't go over the algorithm step by step. Where it differs is that instead of using char arrays and sorting, it hashes character tables into an array of integers (the hash map's "buckets"). 
 
 The character tables themselves are not stored in the hash map when the power set is generated. If an element of the base string character table's power set gets hashed to a particular bucket, the integer in that location is set to 1. Unfilled buckets remain set to 0.
 
-That way, when a token's character table is looked up within the hash map, a hash hit or miss can be easily determined based on the integer value. However, because of collisions the algorithm cannot be certain that a hash hit guarantees the character table holds a formable word. So, in the case of a hash hit, it then compares the token's character table with a character table formed from the base string. This is done slightly differently than in the initial character table solution, since the routine is checking word by word rather than character by character.
+That way, when a token's character table is looked up within the hash map, a hash hit or miss can be easily determined based on the integer value. However, because of collisions, the algorithm cannot be certain that a hash hit guarantees the character table holds a formable word. So, in the case of a hash hit, it then compares the token's character table with a character table formed from the base string. This is done slightly differently than in the initial character table solution, since the routine is checking word by word rather than character by character and then refilling the table at the end of a token.
 
 ### Computational Complexity:
 
-Like in the previous solution, calculating the power set from the base string has complexity on the order of O(2^K). However comparing character tables in the case of a hash hit is O(1). Thus the complexity of checking for formable words after precomputing will be on the same order as the second solution.
+Like in the previous solution, calculating the power set from the base string has complexity on the order of O(2^K). However comparing character tables in the case of a hash hit is O(1). And, unlike in the previous precomputing solution, multiple elements hashed to the same bucket does not result in the need for additional checks.
+
+Thus the complexity of checking for formable words after precomputing will be on the same order as the second solution. Computation times should be faster in comparison, so long as the the costs of precomputing are not overwhelming (ie the base string is relatively short).
 
 Do you even understand computational complexity anyway?
 -------
