@@ -54,7 +54,7 @@ Number of chars read from file: 305
 Number of tokenized words read from file: 7
 Number of words formable from the base string: 3
 Average word length: 43.57
-Percent of formable words: 42.86
+Percent of formable words: 42.86%
 ```
 
 The two precomputing solutions can optionally take a third input: the number of buckets for the hash map. If no third input is provided, the program defaults to a load factor of approximately 25%.
@@ -68,7 +68,16 @@ Note that the first character represents new line, the second is a space, and th
 
 There is no maximum word size for the given text-file, or maximum length of the base string. Each solution takes care of dynamically allocating memory. That said, the precomputing solutions can run into memory limitations if the base string is too lengthy. For more detail about the techniques used for precomputing formable words and storing them in hash maps, please check this related project where I explore the topic in detail: repo.
 
-In the sections below I will go into greater detail about each solution. In terms of time complexity of each solution, I consider three main contributing factors. The first is the number of words in the text-file, which I refer to as N. The second is the average length of a word, referred to as M. Third is the length of the base string, refereed to as K.
+In the sections below I will go into greater detail about each solution. In terms of time complexity of each solution, I consider three main contributing factors:
+
+1. **K** = The length of the base string
+2. **N** = the total number of words within the text-file
+3. **M** = the average length of words in the text-file
+
+However, each solution is designed to stop work on a word token if its length exceeds K. So, more often than not the following derived factors will be used to explore complexity:
+
+1. **N<sup>*</sup>** = the total number of words within the text-file with length <= K
+2. **M<sup>*</sup>** = the average length of words within the text-file with length <= K
 
 Finally, I tend to use the term 'char array' and 'string' interchangeably. Since this project is done in C, all strings are stored as arrays of characters (known as cstrings to C++ programmers).
 
@@ -94,11 +103,11 @@ This was my first solution to this problem. It focuses on dynamically storing, s
 
 ### Computational Complexity:
 
-Let there be N words in the textfile, with average length M. This solution needs to sort all N words using quick sort, with exhibits complexity O(M*log(M)). However, the computational cost of sorting each string is often overshadowed by the cost of searching for collections of duplicate characters within the sorted base string.
+This solution needs to sort words N<sup>*</sup> words using quick sort. Sorting each word this way with exhibits complexity O(M<sup>*</sup> *log(M<sup>*</sup>)). However, the computational cost of sorting each string is often overshadowed by the cost of searching for collections of duplicate characters within the sorted base string.
 
-This algorithm uses strstr to accomplish this searching, which has complexity O(K+M) using GCC, where K is the length of the base string. Thus the time complexity of checking a single word token is O(M*Log(M)+K+M), and doing so for the N words in the file requires O(N*(M*Log(M)+K+M)).
+This algorithm uses strstr to accomplish this searching, which has complexity O(K+M<sup>*</sup>) using GCC. Thus the time complexity of checking a single word token is O(M<sup>*</sup>*Log(M<sup>*</sup>)+K+M<sup>*</sup>), and doing so for the N<sup>*</sup> words requires O(N<sup>*</sup>*(M<sup>*</sup>*Log(M<sup>*</sup>)+K+M<sup>*</sup>)).
 
-In general, M tends to not vary too widely across text-files. Additionally, if a token's length exceeds that of the base string, the routine will know immediately that it is unformable and proceed to the next token. So complexity is limited by K, with the worst case being where M = K. So the worst case time complexity becomes O(N*K*(Log(K)+K)).
+Since M<sup>*</sup> <= K, the length of the base string tends to contribute more to the overall complexity. The worst case scenario being where N<sup>*</sup> = N, M<sup>*</sup>=M, and M = K. Thus time complexity becomes O(N*K*Log(K)).
 
 More On WordPercentTable
 -------
@@ -139,7 +148,7 @@ Each word token needs to be checked with the character table, character by chara
 
 So the time complexity of each individual token comparison is fairly constant, leaving the total time complexity of this solution to be O(N).
 
-Thus WordPercentTable is dependent only on the number of words within the file. This leads to a somewhat unexpected result where, given two files with identical file size, the calculation will complete faster for the file with a larger M. That's because the text-file's size is proportional to N*M, so the file with longer words will also have a fewer total number of words.
+Thus WordPercentTable is dependent primarily on the total number of words within the file. This leads to a somewhat unexpected result where, given two files with identical file size, the calculation will complete faster for the file with a larger M. That's because the text-file's size is proportional to N*M, so the file with longer words will also have a fewer total number of words.
 
 More On WordPercentPrecomputeSort
 -------
@@ -176,7 +185,9 @@ The lower the load factor on the hash map, the fewer collisions and the faster i
 
 Once it comes to using the hash map for comparisons, looking up a stored char array is only O(1). However if the hash map entry is nonempty, the token must be sorted and then each node's char array is compared until a matching string is found or the entry is out of nodes. This comparison method is slightly different than the one done in the first solution: here the routine is checking for exact matches using strncmp rather than searching for matching partial arrays using strstr.
 
-Best case scenario is that there are few collisions. GNU's strncmp function is determined (in terms of complexity) by the shorter input string, while strstr is determined by the longer. However, eventually the cost of precomputing the power set of a larger base string will overwhelm any performance gains from not having to search through it on each loop. Shorter calculations times would likely only occur when both the load factor and the percent of formable words are already relatively low.
+Best case scenario is that there are few collisions. GNU's strncmp function is linear in complexity, which in this context becomes O(M<sup>*</sup>). When combined with sorting, the complexity of checking a single word token after a hash hit becomes O(M<sup>*</sup>*Log(M<sup>*</sup>)+M<sup>*</sup>). However, only a fraction of the N<sup>*</sup> words passed through the hash function will actually result in hash hits.
+
+So, as long as the cost of precomputing the base string's power set does not become overwelming and the hash map's load factor is small, this solution should see shorted calculation times than the original sorting solution.
 
 More On WordPercentPrecomputeTable
 -------
@@ -196,6 +207,4 @@ Do you even understand computational complexity anyway?
 
 Not really. I'm still learning the theory, and as it turns out reality can be very different. 
 
-The solutions that use character tables tend to be slower than those using sorted character arrays. This seems strange, since sorting (even quick sort) is more intensive than filling tables. However the GCC functions used for the two sorting solutions are very well optimized, and my character tables probably aren't
-
-Using the linux ``time`` command, I have measured the time taken to calculate a variety of solutions. By plotting these computation times with the various that influenced them... 
+The solutions that use character tables tend to be slower than those using sorted character arrays. This seems strange, since sorting (even quick sort) is more intensive than filling tables. However the GCC functions used for the two sorting solutions are very well optimized, and my character tables probably aren't.

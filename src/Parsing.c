@@ -22,5 +22,5 @@ void reportResults(int str_length, int total_chars, int total_words, int total_f
 	printf("%s","Average word length: ");
 	printf("%.2f\n",(total_chars / (float) total_words));
 	printf("%s","Percent of formable words: ");
-	printf("%.2f\n",(total_formable_words / (float) total_words)*100);
+	printf("%.2f%%\n",(total_formable_words / (float) total_words)*100);
 }

@@ -34,7 +34,7 @@ void processWordsFromFile(char* fname, int max_length)
 {
 	FILE *input_file;                                 
 	char* c_buff;                                         
-	int char_count=0, word_count=0, formable_count=0, buff_index=0;
+	int char_count=0, word_count=0, formable_count=0, buff_index=0;   //canidate_count?
 	int c;                                                //character returned from fgetc
 
 	c_buff= calloc(max_length, sizeof(char));	    //used to build word tokens as read from the provided file
