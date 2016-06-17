@@ -33,7 +33,7 @@ if they are formable from the base string. Finally it prints the calculated resu
 void processWordsFromFile(char *fname, int max_length)
  {
 	FILE *input_file;                                 
-	int word_count=0, formable_count=0, buff_index=0;
+	int char_count=0, word_count=0, formable_count=0, buff_index=0;
 	int c;                                             //character returned from fgetc
 	Table * temp_table = tableCreate(TABLE_SIZE);
 
@@ -43,6 +43,7 @@ void processWordsFromFile(char *fname, int max_length)
 		if(isTokenizer(c) || c==EOF) { 			
 			if(buff_index>0){	                     //non-negative index + reaching a tokenizer means c_buff contains a token
 				++word_count;
+				char_count += buff_index;
 				if(buff_index<=max_length && checkHashMapEntry(power_set_map, temp_table)) {	       
 				  //token cannot formed by the base if it is larger than the base, if not the case consult hash map
 					formable_count += isFormableTable(temp_table,base_str_table);    //if in hash map, confirm whether it is formable
@@ -63,7 +64,7 @@ void processWordsFromFile(char *fname, int max_length)
 
 	tableDestroy(temp_table);
 	fclose(input_file);
-	reportResults(word_count, formable_count);
+	reportResults(max_length,char_count, word_count, formable_count);
 }
 
 // main function which takes its inputs from the command line

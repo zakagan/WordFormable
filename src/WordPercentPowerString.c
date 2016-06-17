@@ -31,7 +31,7 @@ void processWordsFromFile(char *fname, int max_length)
 	FILE* input_file;      
 	char* c_buff;
 	Node* temp_stack;
-	int word_count=0, formable_count=0, buff_index=0;
+	int char_count=0, word_count=0, formable_count=0, buff_index=0;
 	int c;                                             //character returned from fgetc
 
 	c_buff= calloc(max_length, sizeof(char));	//used to build word tokens as read from the provided file
@@ -43,6 +43,7 @@ void processWordsFromFile(char *fname, int max_length)
 		if(isTokenizer(c) || c==EOF) { 			
 			if(buff_index>0){	                     //non-negative index + reaching a tokenizer means c_buff contains a token
 				++word_count;
+				char_count += buff_index;
 				if(buff_index<=max_length) {	         //token cannot formed by the base if it is larger than the base            			
 					temp_stack = collectHashMapEntry(power_set_map, c_buff, buff_index);
 					if (temp_stack) {
@@ -66,7 +67,7 @@ void processWordsFromFile(char *fname, int max_length)
 
 	fclose(input_file);
 	free(c_buff);
-	reportResults(word_count, formable_count);
+	reportResults(max_length,char_count, word_count, formable_count);
 }
 
 // main function which takes its inputs from the command line

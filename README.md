@@ -3,7 +3,7 @@ WordPercent
 
 This is project that I have been working on in order to better understand fundamental data structures. Here I apply arrays, structs, linked lists, and hash maps in order to solve one problem in a variety of methods.
 
-One of the great things about computer science problems is that there is never just one way to solve them. While each solution may not be equal, they each have their own strengths and weaknesses, which we can explore in detail.
+One of the great things about computer science problems is that there is never just one way to solve them. While every solution may not be equal, they each have their own strengths and weaknesses, which we can explore in detail.
 
 This particular problem is based on a fairly basic programming interview question. However, its different solutions require understanding and clever application of different types of data structures. 
 
@@ -54,7 +54,7 @@ Number of words formable from the base string: 3
 Percent of formable words: 42.86
 ```
 
-The two precomputing solutions can optionally take a third input: the number of buckets for the hash map. If no third input is provided, the program defaults to a load factor of approximately 25%. 
+The two precomputing solutions can optionally take a third input: the number of buckets for the hash map. If no third input is provided, the program defaults to a load factor of approximately 25%.
 
 Assumptions
 -------
@@ -64,6 +64,8 @@ I consider the following characters to be my tokenizers ``\n \t,.!?\";:()<>{}[]\
 Note that the first character represents new line, the second is a space, and the third represents a tab. End of file is also considered. Practically every ASCII symbol other than a letter or number is included-- except for dashes. Microsoft Word considers compound words to be single words, and I have followed that convention as well.
 
 There is no maximum word size for the given text-file, or maximum length of the base string. Each solution takes care of dynamically allocating memory. That said, the precomputing solutions can run into memory limitations if the base string is too lengthy. For more detail about the techniques used for precomputing formable words and storing them in hash maps, please check this related project where I explore the topic in detail: repo.
+
+In the sections below I will go into greater detail about each solution. In terms of time complexity of each solution, I consider three main contributing factors. The first is the number of words in the text-file, which I refer to as N. The second is the average length of a word, referred to as M. Third is the length of the base string, refereed to as K.
 
 Finally, I tend to use the term 'char array' and 'string' interchangeably. Since this project is done in C, all strings are stored as arrays of characters (known as cstrings to C++ programmers).
 
@@ -89,16 +91,16 @@ This was my first solution to this problem. It focuses on dynamically storing, s
 
 ### Computational Complexity:
 
-Let there be N words in the textfile, each word with average length M. This solution needs to sort all N words using quick sort, with exhibits complexity O(M*log(M)). However, the computational cost of sorting each string is often overshadowed by the cost of searching for collections of duplicate characters within the sorted base string.
+Let there be N words in the textfile, with average length M. This solution needs to sort all N words using quick sort, with exhibits complexity O(M*log(M)). However, the computational cost of sorting each string is often overshadowed by the cost of searching for collections of duplicate characters within the sorted base string.
 
-This algorithm uses strstr to accomplish this searching, which has complexity O(K+M) using GCC, where K is the length of the base string. Thus the time complexity is O(N*(K+M)*M*Log(M)).
+This algorithm uses strstr to accomplish this searching, which has complexity O(K+M) using GCC, where K is the length of the base string. Thus the time complexity of checking a single word token is O(M*Log(M)+K+M), and doing so for the N words in the file requires O(N*(M*Log(M)+K+M)).
 
-In general, M tends to not vary too widely across text files. K however can be very long, in in that case will be the second largest contributing factor to this solution's time complexity. The first will be still be N, the number of words in the text file to check.
+In general, M tends to not vary too widely across text-files. Additionally, if a token's length exceeds that of the base string, the routine will know immediately that it is unformable and proceed to the next token. So complexity is limited by K, with the worst case being where M = K. So the worst case time complexity becomes O(N*K*(Log(K)+K)).
 
 More On WordPercentTable
 -------
 
-This solution takes advantage of a structs, arrays, and vector-like operations.
+This solution takes advantage of a structs, arrays, and vector-like operations in C.
 
 ### Basic algorithm:
 
@@ -132,7 +134,9 @@ This visualization omits characters with zero values.
 
 Each word token needs to be checked with the character table, character by character. Before this can be done, the table needs to be recopied from the base string in order to properly keep track for the frequency of characters. If the table used for comparisons was refilled directly from the base string, it's computation time would depend on the length of the base string. But instead this table is recopied from the original character table, which is filled from reading the base string only once, on initialization. Since the size of the ASCII table is constant at 128 characters, reloading the comparison table requires constant time.
 
-So each check within the main loop depends on the average length of words within the text file M. Then if there are N words in the textfile, the complexity is O(N*M).
+So the time complexity of each individual token comparison is fairly constant, leaving the total time complexity of this solution to be O(N).
+
+Thus WordPercentTable is dependent only on the number of words within the file. This leads to a somewhat unexpected result where, given two files with identical file size, the calculation will complete faster for the file with a larger M. That's because the text-file's size is proportional to N*M, so the file with longer words will also have a fewer total number of words.
 
 More On WordPercentPrecomputeSort
 -------
@@ -184,11 +188,11 @@ That way, when a token's character table is looked up within the hash map, a has
 
 Like in the previous solution, calculating the power set from the base string has complexity on the order of O(2^K). However comparing character tables in the case of a hash hit is O(1). Thus the complexity of checking for formable words after precomputing will be on the same order as the second solution.
 
-Do you really understand computational complexity anyway?
+Do you even understand computational complexity anyway?
 -------
 
 Not really. I'm still learning the theory, and as it turns out reality can be very different. 
 
 The solutions that use character tables tend to be slower than those using sorted character arrays. This seems strange, since sorting (even quick sort) is more intensive than filling tables. However the GCC functions used for the two sorting solutions are very well optimized, and my character tables probably aren't
 
-Soon I will update this project with the results of timing these different solutions in action.
+Using the linux ``time`` command, I have measured the time taken to calculate a variety of solutions. By plotting these computation times with the various that influenced them... 

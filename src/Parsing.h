@@ -10,6 +10,6 @@
 #include <string.h>
 
 int isTokenizer(const char a);
-void reportResults(int total_words,int total_formable_words);
+void reportResults(int str_length, int total_chars, int total_words, int total_formable_words);
 
 #endif
