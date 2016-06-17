@@ -103,9 +103,9 @@ This was my first solution to this problem. It focuses on dynamically storing, s
 
 ### Computational Complexity:
 
-This solution needs to sort words N<sup>\*</sup> words using quick sort. Sorting each word this way with exhibits complexity O(M<sup>\*</sup> *log(M<sup>\*</sup>)). However, the computational cost of sorting each string is often overshadowed by the cost of searching for collections of duplicate characters within the sorted base string.
+This solution needs to sort words N<sup>\*</sup> words using quick sort. Sorting each word this way with exhibits complexity O(M<sup>\*</sup>\*log(M<sup>\*</sup>)). However, the computational cost of sorting each string is often overshadowed by the cost of searching for collections of duplicate characters within the sorted base string.
 
-This algorithm uses strstr to accomplish this searching, which has complexity O(K+M<sup>\*</sup>) using GCC. Thus the time complexity of checking a single word token is O(M<sup>\*</sup>*Log(M<sup>\*</sup>)+K+M<sup>\*</sup>), and doing so for the N<sup>\*</sup> words requires O(N<sup>\*</sup>*(M<sup>\*</sup>*Log(M<sup>\*</sup>)+K+M<sup>\*</sup>)).
+This algorithm uses strstr to accomplish this searching, which has complexity O(K+M<sup>\*</sup>) using GCC. Thus the time complexity of checking a single word token is O(M<sup>\*</sup>\*Log(M<sup>\*</sup>)+K+M<sup>\*</sup>), and doing so for the N<sup>\*</sup> words requires O(N<sup>\*</sup>*(M<sup>\*</sup>*Log(M<sup>\*</sup>)+K+M<sup>\*</sup>)).
 
 Since M<sup>\*</sup> <= K, the length of the base string tends to contribute more to the overall complexity. The worst case scenario being where N<sup>\*</sup> = N, M<sup>\*</sup>=M, and M = K. Thus time complexity becomes O(N*K*Log(K)).
 
@@ -185,7 +185,7 @@ The lower the load factor on the hash map, the fewer collisions and the faster i
 
 Once it comes to using the hash map for comparisons, looking up a stored char array is only O(1). However if the hash map entry is nonempty, the token must be sorted and then each node's char array is compared until a matching string is found or the entry is out of nodes. This comparison method is slightly different than the one done in the first solution: here the routine is checking for exact matches using strncmp rather than searching for matching partial arrays using strstr.
 
-Best case scenario is that there are few collisions. GNU's strncmp function is linear in complexity, which in this context becomes O(M<sup>\*</sup>). When combined with sorting, the complexity of checking a single word token after a hash hit becomes O(M<sup>\*</sup>*Log(M<sup>\*</sup>)+M<sup>\*</sup>). However, only a fraction of the N<sup>\*</sup> words passed through the hash function will actually result in hash hits.
+Best case scenario is that there are few collisions. GNU's strncmp function is linear in complexity, which in this context becomes O(M<sup>\*</sup>). When combined with sorting, the complexity of checking a single word token after a hash hit becomes O(M<sup>\*</sup>\*Log(M<sup>\*</sup>)+M<sup>\*</sup>). However, only a fraction of the N<sup>\*</sup> words passed through the hash function will actually result in hash hits.
 
 So, as long as the cost of precomputing the base string's power set does not become overwelming and the hash map's load factor is small, this solution should see shorted calculation times than the original sorting solution.
 
