@@ -180,7 +180,7 @@ The character tables themselves are not stored in the hash map when the power se
 
 That way, when a token's character table is looked up within the hash map, a hash hit or miss can be easily determined based on the integer value. However, because of collisions we cannot be certain that a hash hit guarantees the character table holds a formable word. So, in the case of a hash hit, we then compare the token's character table with a character table formed from the base string. This is done slightly differently than in the initial character table solution, since we are checking word by word rather than character by character.
 
- ### Computational Complexity:
+### Computational Complexity:
 
 Like in the previous solution, calculating the power set from the base string has complexity on the order of O(2^K). However comparing character tables in the case of a hash hit is O(1). Thus the complexity of checking for formable words after precomputing will be on the same order as the second solution.
 
