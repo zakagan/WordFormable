@@ -1,6 +1,7 @@
 
 #include "WordPercentPowerString.h"
 
+// Generates the hash map  from the base string, and loads the result into the hash map
 void calculatePowerSet(char *str, int str_length) {
 	int i;
 	Node *item=NULL, *temp_stack = NULL;

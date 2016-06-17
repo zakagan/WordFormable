@@ -3,7 +3,7 @@ WordPercent
 
 This is project that I have been working on in order to better understand fundamental data structures. Here I apply arrays, structs, linked lists, and hash maps in order to solve one problem in a variety of methods.
 
-One of the great things about computer science problems is that there is never just one way to solve them. While every solution may not be equal, they each have their own strengths and weaknesses, which we can explore in detail.
+One of the great things about computer science problems is that there is never just one way to solve them. While every solution may not be equal, they each have their own strengths and weaknesses, which can be explored in detail.
 
 This particular problem is based on a fairly basic programming interview question. However, its different solutions require understanding and clever application of different types of data structures. 
 
@@ -14,7 +14,7 @@ Given a text file, determine the total percentage of words contained within that
 
 This includes the frequency of a given character. For example, "Mississippi" is not formable if there is only one "s" character in the base string. At least four separate "s" chars must be present, along with all of the rest of the required letters, in order to form that word.
 
-Three different solutions are included:
+Four different solutions are included:
 
 1. **Sorting**: The base string and tokenized words from the text file are alphabetized via quick sort and then compared.
 
@@ -174,7 +174,7 @@ Because the power set of the base string must be generated, long base strings wi
 
 The lower the load factor on the hash map, the fewer collisions and the faster it will be to fill and read strings from it. This is why the load factor defaults to about 25%, without manually specifying the number of buckets. However, this means that the size of the hash map also scales exponentially: if there are 2^K entries it will default to 2^(K+1)-1 buckets.
 
-Once it comes to using the hash map for comparisons, looking up a stored char array is only O(1). However if the hash map entry is nonempty, the token must be sorted and then each node's char array is compared until a matching string is found or the entry is out of nodes. This comparison method is slightly different than the one done in the first solution: here we are checking for exact matches using strncmp rather than searching for matching partial arrays using strstr.
+Once it comes to using the hash map for comparisons, looking up a stored char array is only O(1). However if the hash map entry is nonempty, the token must be sorted and then each node's char array is compared until a matching string is found or the entry is out of nodes. This comparison method is slightly different than the one done in the first solution: here the routine is checking for exact matches using strncmp rather than searching for matching partial arrays using strstr.
 
 Best case scenario is that there are few collisions. GNU's strncmp function is determined (in terms of complexity) by the shorter input string, while strstr is determined by the longer. However, eventually the cost of precomputing the power set of a larger base string will overwhelm any performance gains from not having to search through it on each loop. Shorter calculations times would likely only occur when both the load factor and the percent of formable words are already relatively low.
 
@@ -183,9 +183,9 @@ More On WordPercentPrecomputeTable
 
 This fourth solution is very similar to the third, so I won't go over the algorithm step by step. Where it differs is that instead of using char arrays and sorting, it hashes character tables into an array of integers (the hash maps "buckets"). 
 
-The character tables themselves are not stored in the hash map when the power set is generated. If an element of the base string character table's power set gets hashed to a particular bucket, the integer in that location is set to 1. Unfilled buckets are remain set to 0.
+The character tables themselves are not stored in the hash map when the power set is generated. If an element of the base string character table's power set gets hashed to a particular bucket, the integer in that location is set to 1. Unfilled buckets remain set to 0.
 
-That way, when a token's character table is looked up within the hash map, a hash hit or miss can be easily determined based on the integer value. However, because of collisions we cannot be certain that a hash hit guarantees the character table holds a formable word. So, in the case of a hash hit, we then compare the token's character table with a character table formed from the base string. This is done slightly differently than in the initial character table solution, since we are checking word by word rather than character by character.
+That way, when a token's character table is looked up within the hash map, a hash hit or miss can be easily determined based on the integer value. However, because of collisions the algorithm cannot be certain that a hash hit guarantees the character table holds a formable word. So, in the case of a hash hit, it then compares the token's character table with a character table formed from the base string. This is done slightly differently than in the initial character table solution, since the routine is checking word by word rather than character by character.
 
 ### Computational Complexity:
 
