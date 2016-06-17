@@ -105,7 +105,7 @@ This was my first solution to this problem. It focuses on dynamically storing, s
 
 This solution needs to sort words N<sub>k</sub> words using quick sort. Sorting each word this way with exhibits complexity O(M<sub>k</sub>\*log(M<sub>k</sub>)). However, the computational cost of sorting each string is often overshadowed by the cost of searching for collections of duplicate characters within the sorted base string.
 
-This algorithm uses strstr to accomplish this searching, which has complexity O(K+M<sub>k</sub>) using GCC. Thus the time complexity of checking a single word token is O(M<sub>k</sub>\*Log(M<sub>k</sub>)+K+M<sub>k</sub>), and doing so for the N<sub>k</sub> words requires O(N<sub>k</sub>*(M<sub>k</sub>*Log(M<sub>k</sub>)+K+M<sub>k</sub>)).
+This algorithm uses strstr to accomplish this searching, which has complexity O(K+M<sub>k</sub>) using GCC. Thus the time complexity of checking a single word token is O(M<sub>k</sub>\*Log(M<sub>k</sub>)+(K+M<sub>k</sub>)), and doing so for the N<sub>k</sub> words requires O(N<sub>k</sub>\*(M<sub>k</sub>*Log(M<sub>k</sub>)+(K+M<sub>k</sub>))).
 
 Since M<sub>k</sub> <= K, the length of the base string tends to contribute more to the overall complexity. The worst case scenario being where N<sub>k</sub> = N, M<sub>k</sub>=M, and M = K. Thus time complexity becomes O(N\*K\*Log(K)).
 
