@@ -14,7 +14,7 @@ Given a text file, determine the total percentage of words contained within that
 
 This includes the frequency of a given character. For example, "Mississippi" is not formable if there is only one "s" character in the base string. At least four separate "s" chars must be present, along with all of the rest of the required letters, in order to form that word.
 
-Four different solutions are included:
+The real challenge of this problem lies with efficiently determining the formability of a word token. Four different solutions are included:
 
 1. **Sorting**: The base string and tokenized words from the text file are alphabetized via quick sort and then compared.
 
@@ -107,7 +107,7 @@ This solution needs to sort words N<sub>k</sub> words using quick sort. Sorting 
 
 This algorithm uses strstr to accomplish this searching, which has complexity O(K+M<sub>k</sub>) using GCC. Thus the time complexity of checking a single word token is O(M<sub>k</sub>\*Log(M<sub>k</sub>)+(K+M<sub>k</sub>)), and doing so for the N<sub>k</sub> words requires O(N<sub>k</sub>\*(M<sub>k</sub>*Log(M<sub>k</sub>)+(K+M<sub>k</sub>))).
 
-Since M<sub>k</sub> <= K, the length of the base string tends to contribute more to the overall complexity. The worst case scenario being where N<sub>k</sub> = N, M<sub>k</sub>=M, and M = K. Thus the time complexity becomes O(N\*K\*Log(K)).
+Since M<sub>k</sub> <= K, the length of the base string tends to contribute more to the overall complexity. The worst case scenario being where N<sub>k</sub> = N, M<sub>k</sub>=M, and M = K. Thus the time complexity becomes O(N\*(K\*Log(K)+K)).
 
 More On WordPercentTable
 -------
