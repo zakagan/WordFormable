@@ -2,7 +2,7 @@
 #include "WordPercentPowerString.h"
 
 // Generates the hash map  from the base string, and loads the result into the hash map
-void calculatePowerSet(char *str, int str_length) {
+void calculatePowerSet(const char *str, const int str_length) {
 	int i;
 	Node *item=NULL, *temp_stack = NULL;
 	// this stack will be populated and used to replace the need for recursive calls
@@ -27,7 +27,7 @@ void calculatePowerSet(char *str, int str_length) {
 
 /* opens the provided txtfile, determines indvigual word tokens, and then calls a included method (checkWord) to see
 if they are formable from the base string. Finally it prints the calculated result to the command line */
-void processWordsFromFile(char *fname, int max_length)
+void processWordsFromFile(const char *fname, const int max_length)
  {
 	FILE* input_file;      
 	char* c_buff;
@@ -39,6 +39,11 @@ void processWordsFromFile(char *fname, int max_length)
 	assert(c_buff);
 
 	input_file= fopen(fname, "r");
+	if(input_file==NULL) {                          //Prevents seg fault crash if there is a problem with the provided file
+		printf("Improper file name: %s\n",fname);
+		return;
+	}
+
 	do{
 		c = fgetc(input_file);
 		if(isTokenizer(c) || c==EOF) { 			
@@ -73,8 +78,10 @@ void processWordsFromFile(char *fname, int max_length)
 
 // main function which takes its inputs from the command line
 int main (int argc, char **argv) {
-	char *fname, *base_str;
+	const char *fname;
+	char *base_str;
 	int max_length, buckets=0;
+
 	if(argc < 3 || argc > 4) {
 		printf("First input must be the base string, and second must be the txt file path.\n");
 		printf("A third, optional input may be included to set the number of hash map buckets\n");

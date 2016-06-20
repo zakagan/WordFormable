@@ -2,7 +2,7 @@
 
 /* Takes an alphabetized word and an alphabetized base string
 returns 1 if the word can be formed from the base string, 0 otherwise */
-int checkWord(char *token_str, int str_length) 
+int checkWord(const char *token_str, const int str_length) 
 {	
 
 	char cur_char, next_char;
@@ -30,17 +30,22 @@ int checkWord(char *token_str, int str_length)
 
 /* opens the provided txtfile, determines indvigual word tokens, and then calls a included method (checkWord) to see
 if they are formable from the base string. Finally it prints the calculated result to the command line */
-void processWordsFromFile(char* fname, int max_length)
+void processWordsFromFile(const char* fname, const int max_length)
 {
 	FILE *input_file;                                 
 	char* c_buff;                                         
-	int char_count=0, word_count=0, formable_count=0, buff_index=0;   //canidate_count?
+	int char_count=0, word_count=0, formable_count=0, buff_index=0;
 	int c;                                                //character returned from fgetc
 
 	c_buff= calloc(max_length, sizeof(char));	    //used to build word tokens as read from the provided file
 	assert(c_buff);
 	
-	input_file= fopen(fname, "r");
+	input_file= fopen(fname, "r");                 
+	if(input_file==NULL) {                          //Prevents seg fault crash if there is a problem with the provided file
+		printf("Improper file name: %s\n",fname);
+		return;
+	}
+
 	do{
 		c = fgetc(input_file);
 		if(isTokenizer(c) || c==EOF) { 			
@@ -72,7 +77,8 @@ void processWordsFromFile(char* fname, int max_length)
 
 // main function which takes its inputs from the command line
 int main (int argc, char **argv) {
-	char* fname;
+	const char *fname;
+	char* base_str;
 	int max_length;  								  // Based on length taken from the base string
 	if(argc !=3) {
 		printf("first input must be the base string, and second must be the txt file path\n");
