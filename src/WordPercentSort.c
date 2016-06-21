@@ -78,7 +78,6 @@ void processWordsFromFile(const char* fname, const int max_length)
 // main function which takes its inputs from the command line
 int main (int argc, char **argv) {
 	const char *fname;
-	char* base_str;
 	int max_length;  								  // Based on length taken from the base string
 	if(argc !=3) {
 		printf("first input must be the base string, and second must be the txt file path\n");
