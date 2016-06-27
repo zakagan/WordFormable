@@ -5,7 +5,7 @@ return_dir=`pwd`
 cd "${0%/*}"
 
 input_path="../test_files/"
-input_name="words256"
+input_name="words128"
 extension=".txt"
 input_file=$input_path$input_name$extension
 
