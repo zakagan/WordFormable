@@ -1,13 +1,12 @@
 #!/bin/bash
 clear
 
-return_dir=pwd
+return_dir=`pwd`
 cd "${0%/*}"
 
 path="../test_files/"
 name="worst_case"
 extension=".txt"
-
 prefix=$path$name
 
 worst_case_array[0]="\"\""
@@ -37,4 +36,4 @@ for ((i=0;i<=26;i+=2)); do
 done
 rm $temp_file
 
-cd return_dir
+cd $return_dir

@@ -1,11 +1,11 @@
 #!/bin/bash
 clear
 
-return_dir=pwd
+return_dir=`pwd`
 cd "${0%/*}"
 
 input_path="../test_files/"
-input_name="words512"
+input_name="words256"
 extension=".txt"
 input_file=$input_path$input_name$extension
 
@@ -13,7 +13,9 @@ results_path="../test_results/"
 results_name="results_len_base"
 results_file=$results_path$results_name$extension
 
-base_str_0=("" "" "" "" "")
+executable_path="../"
+
+base_str_0=("\"\"" "\"\"" "\"\"" "\"\"" "\"\"")
 base_str_2=("so" "vq" "us" "ih" "jg")
 base_str_4=("srks" "aysr" "qevz" "qmrz" "ltat")
 base_str_6=("tbualw" "tfcuiy" "niulid" "nhkzwd" "zfjqfq")
@@ -38,23 +40,24 @@ for ((i=0;i<=26;i+=2)); do
 	done	
 done
 
-for executable in ./WordPercentSort ./WordPercentTable ./WordPercentPrecomputeSort ./WordPercentPrecomputeTable; do
+for executable in WordPercentSort WordPercentTable WordPercentPrecomputeSort WordPercentPrecomputeTable; do
 
 	echo "" 1>> $results_file
-	echo "$executable" 1>> $results_file
+	echo "SOLUTION: $executable" 1>> $results_file
 
 	for ((i=0;i<=26;i+=2)); do
 
 		echo "" 1>> $results_file
-		echo "base string length: $i" 1>> $results_file
-		echo "" 1>> $results_file
+		echo "FILE: $input_file" 1>> $results_file
+		echo "LENGTH: $i" 1>> $results_file
 		array_var=base_str_$i[0]
-		(time $executable ${!array_var} $input_file) >> $results_file 2>&1
+		echo "$executable_path$executable ${!array_var} $input_file" 1>> $results_file
+		(time $executable_path$executable ${!array_var} $input_file) >> $results_file 2>&1
 		for ((j=1;j<=4;j++)); do
 			array_var=base_str_$i[$j]
-			(time $executable ${!array_var} $input_file) 2>> $results_file 1> /dev/null
+			(time $executable_path$executable ${!array_var} $input_file) 2>> $results_file 1> /dev/null
 		done
 	done
 done
 
-cd return_dir 
+cd $return_dir 

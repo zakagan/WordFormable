@@ -1,16 +1,22 @@
 #!/bin/bash
 clear
 
-return_dir=pwd
+return_dir=`pwd`
 cd "${0%/*}"
 
 path="../test_files/"
 name="words"
+predix=$path$name
 extension=".txt"
-copies=("" "2" "4" "8" "16" "32" "64" "128" "256" "512")
 
-for ((i=0;i<${#copies[@]};i++)); do
-	rm $path$name${copies[i]}$extension
+declare -a ITERATIONS
+for num in {0..9}; do 
+	ITERATIONS[$num]=$((2**$num))
 done
 
-cd return_dir
+
+for ((i=0;i<${#ITERATIONS[@]};i++)); do
+	rm $path$name${ITERATIONS[i]}$extension
+done
+
+cd $return_dir

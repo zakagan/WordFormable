@@ -63,7 +63,7 @@ void processCharsFromFile(const char *fname, const int max_length)
 
 // main function which takes its inputs from the command line
 int main (int argc, char **argv) {
-    const char *fname, *dot;
+    const char *fname;
     char *base_str;
     int max_length;                                   // Based on length taken from the base string
    
@@ -74,12 +74,6 @@ int main (int argc, char **argv) {
     base_str=argv[1];
     fname=argv[2];
     max_length= strlen(base_str);
-
-    dot = strchr(fname, '.');
-    if (!dot || dot == fname) {
-        printf("Improper file name: %s\n",fname);
-        return 0;
-    }
 
     base_table=tableCreate(TABLE_SIZE);
     comparison_table=tableCreate(TABLE_SIZE);

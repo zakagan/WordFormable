@@ -1,19 +1,28 @@
 #!/bin/bash
 clear
 
-return_dir=pwd
+return_dir=`pwd`
 cd "${0%/*}"
 
 path="../test_files/"
 name="words"
+prefix=$path$name
 extension=".txt"
-copies=("" "2" "4" "8" "16" "32" "64" "128" "256" "512")
 
-cat /usr/share/dict/words > $path$name$extension
-
-for ((i=1;i<${#copies[@]};i++)); do
-	cat $path$name${copies[$i-1]}$extension >> $path$name${copies[i]}$extension
-	cat $path$name${copies[$i-1]}$extension >> $path$name${copies[i]}$extension
+declare -a ITERATIONS
+for num in {0..9}; do 
+	ITERATIONS[$num]=$((2**$num))
 done
 
-cd return_dir
+iter_val=ITERATIONS[0]
+cat /usr/share/dict/words > $prefix${!iter_val}$extension
+
+for ((i=1; i<${#ITERATIONS[@]}; i++)); do
+	iter_val_prev=$iter_val
+	iter_val=ITERATIONS[$i]
+	for j in {1..2}; do
+	cat $prefix${!iter_val_prev}$extension >> $prefix${!iter_val}$extension
+	done
+done
+
+cd $return_dir
