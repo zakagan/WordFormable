@@ -16,6 +16,10 @@ executable_path="../"
 
 results_file=$result_path$result_name$extension
 
+if [ ! -d "$result_path" ]; then
+  mkdir $result_path
+fi
+
 base_strings=("ougzvhsrwf" "ruyajlwigx" "wwufpxuwrg" "bznpflexir" "hqayyznmxr")
 
 echo "Testing N: file length by word count w/ ten char base strings"  1> $results_file

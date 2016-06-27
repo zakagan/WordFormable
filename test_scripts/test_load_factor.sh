@@ -19,6 +19,10 @@ results_file=$result_path$result_name$extension
 
 executable_path="../"
 
+if [ ! -d "$result_path" ]; then
+  mkdir $result_path
+fi
+
 echo "Testing load factor"  1> $results_file
 echo "Max buckets = $bucket_max" 1>> $results_file
 echo "" 1>> $results_file

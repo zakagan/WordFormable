@@ -15,6 +15,10 @@ results_file=$result_path$result_name$extension
 
 executable_path="../"
 
+if [ ! -d "$result_path" ]; then
+  mkdir $result_path
+fi
+
 worst_case_array[0]="\"\""
 worst_case_array[2]="ov"
 worst_case_array[4]="agD3"

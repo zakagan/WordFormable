@@ -15,6 +15,10 @@ results_file=$results_path$results_name$extension
 
 executable_path="../"
 
+if [ ! -d "$result_path" ]; then
+  mkdir $result_path
+fi
+
 base_str_0=("\"\"" "\"\"" "\"\"" "\"\"" "\"\"")
 base_str_2=("so" "vq" "us" "ih" "jg")
 base_str_4=("srks" "aysr" "qevz" "qmrz" "ltat")
