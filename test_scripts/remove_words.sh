@@ -4,10 +4,14 @@ clear
 return_dir=`pwd`
 cd "${0%/*}"
 
-path="../test_files/"
+path="../test_files/words/"
 name="words"
-predix=$path$name
+prefix=$path$name
 extension=".txt"
+
+if [ ! -d "$path" ]; then
+  mkdir -p $path
+fi
 
 declare -a ITERATIONS
 for num in {0..9}; do 
@@ -16,7 +20,7 @@ done
 
 
 for ((i=0;i<${#ITERATIONS[@]};i++)); do
-	rm $path$name${ITERATIONS[i]}$extension
+	rm $prefix${ITERATIONS[i]}$extension
 done
 
 cd $return_dir

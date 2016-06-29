@@ -4,10 +4,14 @@ clear
 return_dir=`pwd`
 cd "${0%/*}"
 
-path="../test_files/"
+path="../test_files/worst_case/"
 name="worst_case"
 extension=".txt"
 prefix=$path$name
+
+if [ ! -d "$path" ]; then
+  mkdir -p $path
+fi
 
 worst_case_array[0]="\"\""
 worst_case_array[2]="ov"

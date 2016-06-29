@@ -4,7 +4,7 @@ clear
 return_dir=`pwd`
 cd "${0%/*}"
 
-input_path="../test_files/"
+input_path="../test_files/worst_case/"
 input_name="worst_case"
 extension=".txt"
 input_prefix=$input_path$input_name
