@@ -1,11 +1,9 @@
 WordPercent
 =============
 
-This is project that I have been working on in order to better understand fundamental data structures. Here I apply arrays, structs, linked lists, and hash maps in order to solve one problem in a variety of methods.
-
 One of the great things about computer science problems is that there is never just one way to solve them. While every solution may not be equal, they each have their own strengths and weaknesses, which can be explored in detail.
 
-This particular problem is based on a fairly basic programming interview question. However, its different solutions require understanding and clever application of different types of data structures. 
+This particular problem is based on a fairly basic programming interview question. However, its different solutions require understanding and clever application of different types of data structures.
 
 The Challenge
 -------
