@@ -1,5 +1,4 @@
-!/bin/bash
-clear
+#!/bin/bash
 
 return_dir=pwd
 cd "${0%/*}"
