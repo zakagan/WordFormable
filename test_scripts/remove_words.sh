@@ -22,6 +22,6 @@ for ((i=0;i<${#ITERATIONS[@]};i++)); do
 	rm $prefix${ITERATIONS[i]}$extension
 done
 
-rm $path
+rm -r $path
 
 cd $return_dir

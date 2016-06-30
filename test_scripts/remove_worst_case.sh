@@ -17,6 +17,6 @@ for ((i=0;i<=26;i+=2)); do
 	rm $prefix$i$extension
 done
 
-rm $path
+rm -r $path
 
 cd $return_dir
