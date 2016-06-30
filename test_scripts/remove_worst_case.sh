@@ -10,7 +10,7 @@ prefix=$path$name
 extension=".txt"
 
 if [ ! -d "$path" ]; then
-  mkdir -p $path
+  mkdir -p "$path"
 fi
 
 for ((i=0;i<=26;i+=2)); do

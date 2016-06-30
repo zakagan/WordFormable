@@ -10,7 +10,7 @@ extension=".txt"
 prefix=$path$name
 
 if [ ! -d "$path" ]; then
-  mkdir -p $path
+  mkdir -p "$path"
 fi
 
 worst_case_array[0]="\"\""

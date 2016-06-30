@@ -17,7 +17,7 @@ executable_path="../"
 results_file=$result_path$result_name$extension
 
 if [ ! -d "$result_path" ]; then
-  mkdir $result_path
+  mkdir "$result_path"
 fi
 
 base_strings=("ougzvhsrwf" "ruyajlwigx" "wwufpxuwrg" "bznpflexir" "hqayyznmxr")
