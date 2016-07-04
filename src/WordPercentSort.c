@@ -30,21 +30,14 @@ int checkWord(const char *token_str, const int str_length)
 
 /* opens the provided txtfile, determines indvigual word tokens, and then calls a included method (checkWord) to see
 if they are formable from the base string. Finally it prints the calculated result to the command line */
-void processWordsFromFile(const char* fname, const int max_length)
-{
-	FILE *input_file;                                 
+void processWordsFromFile(FILE* input_file, const int max_length)
+{                             
 	char* c_buff;                                         
 	int char_count=0, word_count=0, formable_count=0, buff_index=0;
 	int c;                                                //character returned from fgetc
 
 	c_buff= calloc(max_length, sizeof(char));	    //used to build word tokens as read from the provided file
 	assert(c_buff);
-	
-	input_file= fopen(fname, "r");                 
-	if(input_file==NULL) {                          //Prevents seg fault crash if there is a problem with the provided file
-		printf("Improper file name: %s\n",fname);
-		return;
-	}
 
 	do{
 		c = fgetc(input_file);
@@ -70,31 +63,19 @@ void processWordsFromFile(const char* fname, const int max_length)
 
 	} while(c!=EOF);
 
-	fclose(input_file);
 	free(c_buff);
 	reportResults(max_length, char_count, word_count, formable_count);
 }
 
-// main function which takes its inputs from the command line
-int main (int argc, char **argv) {
-	const char *fname;
-	int max_length;  								  // Based on length taken from the base string
-	if(argc !=3) {
-		printf("first input must be the base string, and second must be the txt file path\n");
-		return 0;
-	}
-	base_str=argv[1];
-	fname=argv[2];
+void beginSolution(char* provided_base_str,FILE* input_file, const int max_length, const int buckets) {
 
-	max_length=strlen(base_str);
+	base_str=provided_base_str;
 	sortStr(base_str, max_length);
-
+	
 	partial_buff= calloc(max_length, sizeof(char));    //used to hold series of matching characters within a token for comparison w/ sorted base string
 	assert(partial_buff);       
 
-	processWordsFromFile(fname, max_length);
+	processWordsFromFile(input_file, max_length);
 
 	free(partial_buff);
-
-	return 0;
 }

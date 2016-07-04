@@ -1,6 +1,3 @@
-#include <stdlib.h>
-#include <stdio.h>
-
 #include "WordPercentTable.h"
 
 /* The char being examined is decremented from the comparison table. If the table has run out of that
@@ -21,18 +18,11 @@ int checkChar(const char c)
 /* opens the provided txtfile, and compares each letter with a table of letters from the base string. 
 The function keeps track of whether or not the word is formable. Then when a tokenizer is found the 
 word counter updates, and so does the formable word counter, depernding on its status */
-void processCharsFromFile(const char *fname, const int max_length)
+void processCharsFromFile(FILE* input_file, const int max_length)
  {
-    FILE *input_file;                                  //used to construct token from read characters
     int char_count=0, word_count=0, formable_count=0;
     int buff_index=0, is_formable=1;                   //assume token is formable until checkChar returns otherwise  
     int c;                                             //character returned from fgetc
-
-    input_file= fopen(fname, "r");          
-    if(input_file==NULL) {                             //Prevents seg fault crash if there is a problem with the provided file
-        printf("Improper file name: %s\n",fname);  
-        return;
-    }
 
     do{
         c = fgetc(input_file);                       //gets next character
@@ -57,33 +47,19 @@ void processCharsFromFile(const char *fname, const int max_length)
 
     } while(c!=EOF);
 
-    fclose(input_file);
     reportResults(max_length, char_count, word_count, formable_count);
 }
 
-// main function which takes its inputs from the command line
-int main (int argc, char **argv) {
-    const char *fname;
-    char *base_str;
-    int max_length;                                   // Based on length taken from the base string
-   
-    if(argc !=3) {
-        printf("%s\n", "first input must be the base string, and second must be the txt file path");
-        return 0;
-    }
-    base_str=argv[1];
-    fname=argv[2];
-    max_length= strlen(base_str);
+
+void beginSolution(char* base_str, FILE* input_file, const int max_length, const int buckets) {
 
     base_table=tableCreate(TABLE_SIZE);
     comparison_table=tableCreate(TABLE_SIZE);
     fillTable(base_table, base_str);
     copyTable(comparison_table, base_table); 
 
-    processCharsFromFile(fname,max_length);
+    processCharsFromFile(input_file, max_length);
     
     tableDestroy(base_table);
     tableDestroy(comparison_table);
-
-    return 0;
 }

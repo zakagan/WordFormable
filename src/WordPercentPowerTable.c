@@ -31,18 +31,11 @@ void calculatePowerSet(const char* str, const int str_length) {
 
 /* opens the provided txtfile, determines indvigual word tokens, and then calls a included method (checkWord) to see
 if they are formable from the base string. Finally it prints the calculated result to the command line */
-void processWordsFromFile(const char *fname, const int max_length)
- {
-	FILE *input_file;                                 
+void processWordsFromFile(FILE* input_file, const int max_length)
+ {                             
 	int char_count=0, word_count=0, formable_count=0, buff_index=0;
 	int c;                                             //character returned from fgetc
 	Table * temp_table = tableCreate(TABLE_SIZE);
-
-	input_file= fopen(fname, "r");
-	if(input_file==NULL) {                          //Prevents seg fault crash if there is a problem with the provided file
-		printf("Improper file name: %s\n",fname);
-		return;
-	}
 
 	do{
 		c = fgetc(input_file);
@@ -69,41 +62,18 @@ void processWordsFromFile(const char *fname, const int max_length)
 	} while(c!=EOF);
 
 	tableDestroy(temp_table);
-	fclose(input_file);
 	reportResults(max_length,char_count, word_count, formable_count);
 }
 
-// main function which takes its inputs from the command line
-int main (int argc, char **argv) {
-	const char *fname;
-	char *base_str;
-	int max_length, buckets=0;
-
-	if(argc < 3 || argc > 4) {
-		printf("First input must be the base string, and second must be the txt file path.\n");
-		printf("A third, optional input may be included to set the number of hash map buckets\n");
-		return 0;
-	}
-
-	base_str=argv[1];
-	fname=argv[2];
-	max_length = strlen(base_str);
-
-	if (argc==4) {
-		buckets = atoi(argv[3]);   //if invalid numeric, buckets will be set to 0 and replace in next conditional
-	} 
-	if (buckets < 1) {
-		buckets = (1 << (max_length+2))-1;
-	}
+void beginSolution(char* base_str, FILE* input_file, const int max_length, const int buckets) {
 
 	base_str_table = tableCreate(TABLE_SIZE);
 	fillTable(base_str_table,base_str);
 
 	power_set_map = hashMapCreate(buckets); 
 	calculatePowerSet(base_str, max_length);
-	processWordsFromFile(fname, max_length);
+	processWordsFromFile(input_file, max_length);
 
 	tableDestroy(base_str_table);
 	hashMapDestroy(power_set_map);
-	return 0;
 }

@@ -64,3 +64,8 @@ for executable in WordPercentSort WordPercentTable WordPercentPrecomputeSort Wor
 done
 
 cd $return_dir 
+
+### What a slow computation
+### real	40m31.513s
+### user	40m31.949s
+### sys	0m0.336s
