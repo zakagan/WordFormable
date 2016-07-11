@@ -1,27 +1,22 @@
 #include "HashMapString.h"
 
-/* Hash function used to store nodes based on their strings. Results with the same collection of letters
- are hashed to the same value, regardless of ordering, hence it is communicative. */
-size_t communicativeStringHash(const char* str) {
-	size_t hash = 5381;
-	int c;
-    while ((c=*str++)) {
-        hash = hash ^ (c * 109);
-    }
-	return hash;
-}
-
 // Creates memory space for a hash map of character & their frequency values within the base string
 HashMap* hashMapCreate(size_t size)
 {
     HashMap* m;
 
     m = malloc(sizeof(HashMap));
-    assert(m != 0);
+    if (m==NULL){
+        printf("Memory allocation failed: HashMap pointer m\n");
+        exit(0);
+    }
 
     m->size = size;
     m->map = calloc(size, sizeof(Node*));
-    assert(m->map != 0);
+    if (m->map==NULL){
+        printf("Memory allocation failed: Node pointer pointer m->Map\n");
+        exit(0);
+    }
 
     return m;
 }

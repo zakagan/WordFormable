@@ -6,7 +6,7 @@
 EXECUTABLE_1 = WordPercentSort
 EXECUTABLE_2 = WordPercentTable
 EXECUTABLE_3 = WordPercentPrecomputeSort
-EXECUTABLE_4 = WordPercentPrecomputeTable
+EXECUTABLE_4 = WordPercentPrecomputeInts
 SOURCE_DIR = src
 OBJECT_DIR = build
 
@@ -26,7 +26,7 @@ INDEPENDENT_OBJ:= $(patsubst $(SOURCE_DIR)/%.c, $(OBJECT_DIR)/%.o, $(INDEPENDENT
 METHOD_1_FLAG=SORT
 METHOD_2_FLAG=TABLE
 METHOD_3_FLAG=POWERSTRING
-METHOD_4_FLAG=POWERTABLE
+METHOD_4_FLAG=POWERINTS
 
 MAIN_1 := $(DEPENDENT_MAIN:.c=)_$(METHOD_1_FLAG).o
 MAIN_2 := $(DEPENDENT_MAIN:.c=)_$(METHOD_2_FLAG).o
@@ -37,10 +37,10 @@ MAIN_OBJ:= $(MAIN_1) $(MAIN_2) $(MAIN_3) $(MAIN_4)
 MAIN_OBJ:= $(addprefix $(OBJECT_DIR)/,$(MAIN_OBJ))
 
 CORE_OBJ= Parsing.o
-METHOD_1_OBJ = $(MAIN_1) $(CORE_OBJ) WordPercentSort.o WordSort.o 
+METHOD_1_OBJ = $(MAIN_1) $(CORE_OBJ) WordPercentSort.o WordSort.o CheckWordByPartials.o
 METHOD_2_OBJ = $(MAIN_2) $(CORE_OBJ) WordPercentTable.o CharTable.o
-METHOD_3_OBJ = $(MAIN_3) $(CORE_OBJ) WordPercentPowerString.o HashMapString.o SinglyLinkedString.o WordSort.o
-METHOD_4_OBJ = $(MAIN_4) $(CORE_OBJ) WordPercentPowerTable.o HashMapTable.o SinglyLinkedTable.o CharTable.o
+METHOD_3_OBJ = $(MAIN_3) $(CORE_OBJ) WordPercentPowerString.o HashMapString.o CommunicativeHashFunction.o SinglyLinkedString.o WordSort.o
+METHOD_4_OBJ = $(MAIN_4) $(CORE_OBJ) WordPercentPowerInts.o CheckWordByPartials.o HashMapInts.o CommunicativeHashFunction.o SinglyLinkedString.o WordSort.o
 
 METHOD_1_FILE = $(addprefix $(OBJECT_DIR)/, $(METHOD_1_OBJ))
 METHOD_2_FILE = $(addprefix $(OBJECT_DIR)/, $(METHOD_2_OBJ))

@@ -1,13 +1,14 @@
 //
-//  WordPercentPowerString.h
+//  WordPercentPowerInts.h
 //
 
-#ifndef WORDPERCENTPOWERSTRING_H
-#define WORDPERCENTPOWERSTRING_H
+#ifndef WORDPERCENTPOWERINTS_H
+#define WORDPERCENTPOWERINTS_H
 
 #include "CharTable.h"
 #include "SinglyLinkedString.h"
-#include "HashMapString.h"
+#include "HashMapInts.h"
+#include "CheckWordByPartials.h"
 #include "WordSort.h"
 #include "Parsing.h"
 #include <stdlib.h>

@@ -8,8 +8,8 @@
 	#include "WordPercentTable.h"
 #elif USE_POWERSTRING
 	#include "WordPercentPowerString.h"
-#elif USE_POWERTABLE
-	#include "WordPercentPowerTable.h"
+#elif USE_POWERINTS
+	#include "WordPercentPowerInts.h"
 #else
 	#error "Solution flag must be specified during linking, check the Makefile.\n"
 #endif
@@ -18,18 +18,24 @@
 int main (int argc, char **argv) {
 	const char *fname;
 	FILE *input_file;
-	char *base_str;
-	int max_length, buckets=0;
+	char *base_str, *c_buff;
+	int max_length, buckets=0, silence=0;
 
-	#if !defined(USE_POWERSTRING) && !defined(USE_POWERTABLE)
-		if(argc !=3) {
-			printf("First input must be the base string, and second must be the txt file path.\n");
+	#if !defined(USE_POWERSTRING) && !defined(USE_POWERINTS)
+		if(argc < 3 || argc > 4) {
+			printf("Two inputs are required: 1st the base string, and 2nd the path to your text file.\n"
+				"Optionally, you may silence formable word printing by adding the integer '1' as a 3rd input.\n"
+				"An example of properly formated inputs: \n"
+				"%s helloworld examples_files/example.txt 1\n", argv[0]);
 			return 0;
 		}
 	#else
-		if(argc < 3 || argc > 4) {
-			printf("First input must be the base string, and second must be the txt file path.\n");
-			printf("A third, optional input may be included to set the number of hash map buckets\n");
+		if(argc < 3 || argc > 5) {
+		printf("Two inputs are required: 1st the base string, and 2nd the path to your text file.\n"
+				"Optionally, you may silence formable word printing by adding the integer '1' as a 3rd input.\n"
+				"As another, optional input you can specify the number of hash buckets to be used.\n"
+				"An example of properly formated inputs: \n"
+				"%s helloworld examples_files/example.txt 1 63\n", argv[0]);
 			return 0;
 		}
 	#endif
@@ -38,14 +44,26 @@ int main (int argc, char **argv) {
 	fname=argv[2];
 	max_length = strlen(base_str);
 
-	#if defined(USE_POWERSTRING) || defined(USE_POWERTABLE)
-		if (argc==4) {
-			buckets = atoi(argv[3]);   //if invalid numeric, buckets will be set to 0 and replace in next conditional
+	c_buff= calloc(max_length, sizeof(char));	    //used to build word tokens as read from the provided file
+	if (c_buff==NULL){
+		printf("Memory allocation failed: char pointer c_buff\n");
+		exit(0);
+	}	
+
+	if (argc >= 4) {
+		silence=atoi(argv[3]);
+	} 
+
+	#if defined(USE_POWERSTRING) || defined(USE_POWERINTS)
+		if (argc==5) {
+			buckets = atoi(argv[4]);   //if invalid numeric, buckets will be set to 0 and replace in next conditional
 		} 
 		if (buckets <= 0) {
 			buckets = (1 << (max_length+2))-1;
-			printf("Invalid entry for num of hash buckets: must be a positive, non-zero integer.\n");
-			printf("Defaulting to %d hash buckets",buckets);
+			if (argc==5) {
+				printf("Invalid entry for num of hash buckets: must be a positive, non-zero integer.\n"
+					"Defaulting to %d hash buckets",buckets);
+			}
 		}
 	#endif
 
@@ -55,8 +73,9 @@ int main (int argc, char **argv) {
 		return 0;
 	}
 
-	beginSolution(base_str, input_file, max_length, buckets);
+	processTokensFromFile(base_str, input_file, c_buff, max_length, silence, buckets);
 
+	free(c_buff);
 	fclose(input_file);
 
 	return 0;
