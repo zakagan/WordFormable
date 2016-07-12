@@ -1,7 +1,7 @@
 
 #include "WordPercentPowerInts.h"
 
-// Generates the hash map  from the base string, and loads the result into the hash map
+// Generates the power set from the base string, and loads the result into the hash map
 void calculatePowerSet(const char *str, const int str_length, HashMap* power_set_map) {
 	int i;
 	Node *item=NULL, *temp_stack = NULL;
@@ -12,7 +12,7 @@ void calculatePowerSet(const char *str, const int str_length, HashMap* power_set
 	// The empty string is not added to the hash table because the routine will never have to look it up
 	while(temp_stack!=NULL) {
 		item=pop(&temp_stack);
-		hashMapUpdate(power_set_map, item->S);
+		hashMapUpdate(power_set_map, item->S);                  //counts the number of entries to each bin, no pushing of nodes
 
 		for(i=item->last_index; i<str_length-1; i++){           //iterates last item through the size of the subset
 			push(&temp_stack, item->S, item->length+1, i+1);
@@ -22,8 +22,9 @@ void calculatePowerSet(const char *str, const int str_length, HashMap* power_set
 	}
 }
 
-/* parses the provided txtfile, determines indvigual word tokens, and then calls a included method () to see
-if they are formable from the base string. Finally it prints the calculated result to the command line */
+/* Parses the provided txtfile, determines indvigual word tokens, and then attempts to check their validity. First the token's length
+ is considered, and then it is looked up within the hash map of integers. If a hash hit is found, the token is checked via the inclided 
+ checkWord function. Finally the data gathered is send to the reportResults function */
 void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, const int max_length, const int silence, const int buckets) 
  {  
 	int char_count=0, word_count=0, formable_count=0, buff_index=0;
@@ -70,5 +71,5 @@ void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, const
 	hashMapDestroy(power_set_map);
 	free(partial_buff);
 	
-	reportResults(max_length,char_count, word_count, formable_count);
+	reportResults(max_length, char_count, word_count, formable_count);
 }

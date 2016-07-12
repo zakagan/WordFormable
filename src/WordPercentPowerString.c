@@ -1,7 +1,7 @@
 
 #include "WordPercentPowerString.h"
 
-// Generates the hash map  from the base string, and loads the result into the hash map
+// Generates the power set from the base string, and loads the result into the hash map
 void calculatePowerSet(const char *str, const int str_length, HashMap* power_set_map) {
 	int i;
 	Node *item=NULL, *temp_stack = NULL;
@@ -12,7 +12,7 @@ void calculatePowerSet(const char *str, const int str_length, HashMap* power_set
 	// The empty string is not added to the hash table because the routine will never have to look it up
 	while(temp_stack!=NULL) {
 		item=pop(&temp_stack);
-		hashMapInsert(power_set_map, item);
+		hashMapInsert(power_set_map, item);                     // Inserts the node into the hash map, possibly forming a chain
 
 		for(i=item->last_index; i<str_length-1; i++){           //iterates last item through the size of the subset
 			push(&temp_stack, item->S, item->length+1, i+1);
@@ -22,8 +22,10 @@ void calculatePowerSet(const char *str, const int str_length, HashMap* power_set
 	}
 }
 
-/* parses the provided txtfile, determines indvigual word tokens, and then calls a included method () to see
-if they are formable from the base string. Finally it prints the calculated result to the command line */
+/* Parses the provided txtfile, determines indvigual word tokens, and then attempts to check their validity. First the token's length
+ is considered, and then it is looked up within the hash map. If there is a hash hit then the chain at that hash entry is searched for
+ a string matching the token. If a match is found then the token is determined to be formable. Finally the data gathered is send to
+ the reportResults function */
 void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, const int max_length, const int silence, const int buckets) 
  {  
 	Node* temp_stack;
@@ -65,7 +67,7 @@ void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, const
 	} while(c!=EOF);
 
 	hashMapDestroy(power_set_map);
-	
+
 	reportResults(max_length,char_count, word_count, formable_count);
 }
 

@@ -28,8 +28,9 @@ void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, const
 
     base_table=tableCreate(TABLE_SIZE);
     comparison_table=tableCreate(TABLE_SIZE);
+
     fillTable(base_table, base_str);
-    index=generateIndex(base_table);
+    index=generateIndex(base_table);                         //used to rebuild only the necessary parts of the table
     copyTableFromIndex(comparison_table, base_table, index);
 
     do{

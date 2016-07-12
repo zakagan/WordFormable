@@ -13,7 +13,7 @@ HashMap* hashMapCreate(const size_t size)
 
     m->size = size;
     m->map = calloc(size, sizeof(unsigned int));
-    if (m==NULL){
+    if (m->map==NULL){
         printf("Memory allocation failed: unsigned int pointer m->map\n");
         exit(0);
     }

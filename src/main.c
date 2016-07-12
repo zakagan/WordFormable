@@ -21,6 +21,7 @@ int main (int argc, char **argv) {
 	char *base_str, *c_buff;
 	int max_length, buckets=0, silence=0;
 
+	//Determines which help message to display, depending on the solution flag
 	#if !defined(USE_POWERSTRING) && !defined(USE_POWERINTS)
 		if(argc < 3 || argc > 4) {
 			printf("Two inputs are required: 1st the base string, and 2nd the path to your text file.\n"
@@ -40,8 +41,8 @@ int main (int argc, char **argv) {
 		}
 	#endif
 
-	base_str=argv[1];
-	fname=argv[2];
+	base_str=argv[1];                               //the base string from which a token's "formablity" is based
+	fname=argv[2];									// the provided text file name
 	max_length = strlen(base_str);
 
 	c_buff= calloc(max_length, sizeof(char));	    //used to build word tokens as read from the provided file
@@ -50,10 +51,12 @@ int main (int argc, char **argv) {
 		exit(0);
 	}	
 
+	// This flag determines whether the found formable words are silenced or not
 	if (argc >= 4) {
 		silence=atoi(argv[3]);
 	} 
 
+	//depending on if the solution relies on a hash map, this will provide a default bucket size
 	#if defined(USE_POWERSTRING) || defined(USE_POWERINTS)
 		if (argc==5) {
 			buckets = atoi(argv[4]);   //if invalid numeric, buckets will be set to 0 and replace in next conditional
@@ -70,9 +73,10 @@ int main (int argc, char **argv) {
 	input_file= fopen(fname, "r");                 
 	if(input_file==NULL) {                          //Prevents seg fault crash if there is a problem with the provided file
 		printf("Improper file name: %s\n",fname);
-		return 0;
+		exit(0);
 	}
 
+	// Process by which each solution gathers data and then sends it to be reported
 	processTokensFromFile(base_str, input_file, c_buff, max_length, silence, buckets);
 
 	free(c_buff);

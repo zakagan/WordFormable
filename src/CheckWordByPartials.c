@@ -1,7 +1,12 @@
 #include "CheckWordByPartials.h"
 
-/* Takes an alphabetized word and an alphabetized base string
-returns 1 if the word can be formed from the base string, 0 otherwise */
+/* Takes an alphabetized word and an alphabetized base string returns 1 if the word
+ can be formed from the base string, 0 otherwise . 
+
+ It does so by grouping each unique char with others like it. For example, all the 'a's 
+ will be gathered together into partial_buff. Then, if that partial segment of the token
+ exists within the base string, the function will proceed to the next unique char. If the
+ partial does not exist then the token is not formable */
 int checkWord(const char *token_str, const char *base_str, char *partial_buff, const int str_length) 
 {	
 	char cur_char, next_char;
@@ -16,11 +21,11 @@ int checkWord(const char *token_str, const char *base_str, char *partial_buff, c
 			++partial_index;
 			++word_index;
 		} while(cur_char==next_char);
-		base_pointer=strstr(base_pointer, partial_buff);  //Updates starting point for comparision, to reduce redundent checks
+		base_pointer=strstr(base_pointer, partial_buff);       //Updates starting point for comparision, to reduce redundent checks
 		memset(&partial_buff[0],0,str_length * sizeof(char));  //resets partial_buff so it can collect the instances of the next char
-		if(!base_pointer)                            //checks if all instances of this char can be found within the base
+		if(!base_pointer)                                      //checks if all instances of this char can be found within the base
 		{
-			return_val= 0;                           //result if partial_buff could not be found in the base
+			return_val= 0;                                     //result if partial_buff could not be found in the base
 			break;
 		}
 	} while(next_char!='\0');

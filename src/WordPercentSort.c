@@ -1,7 +1,7 @@
 #include "WordPercentSort.h"
 
-/* parses the provided txtfile, determines indvigual word tokens, and then calls a included method (checkWord) to see
-if they are formable from the base string. Finally it prints the calculated result to the command line */
+/* parses the provided txtfile, determines indvigual word tokens, and then calls a included function (checkWord) to see
+if they are formable from the base string. Finally it sends the cllected data to the reportResults function*/
 void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, const int max_length, const int silence, const int buckets)
 {                             
 	char *partial_buff;                                         

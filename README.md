@@ -1,4 +1,4 @@
-WordPercent
+WordFormable
 =============
 
 One of the great things about computer science problems is that there is never just one way to solve them. While every solution may not be equal, they each have their own strengths and weaknesses, which can be explored in detail.

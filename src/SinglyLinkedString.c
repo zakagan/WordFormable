@@ -3,10 +3,16 @@
 // creates a node for a singularly linked list and appends itself to the top of the stack 
 void push(Node **head_node, const char* cstring, const int cstring_length, const int last_index) {
 	Node* temp_node = malloc(sizeof(Node));
-	assert(temp_node != 0);
+	if (temp_node==NULL){
+		printf("Memory allocation failed: Node pointer temp_node\n");
+		exit(0);
+	}
 
 	temp_node->S = calloc(sizeof(char), cstring_length + 1); // + 1 for final '\0' 
-	assert(temp_node->S != 0); 
+	if (temp_node->S==NULL){
+		printf("Memory allocation failed: char pointer temp_node->S\n");
+		exit(0);
+	}
 	strncpy(temp_node->S,cstring,cstring_length);
 
 	temp_node->length = cstring_length;

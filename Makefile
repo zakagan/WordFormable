@@ -3,10 +3,10 @@
 ### Definitions Section ###
 
 # Name of the executable to create
-EXECUTABLE_1 = WordPercentSort
-EXECUTABLE_2 = WordPercentTable
-EXECUTABLE_3 = WordPercentPrecomputeSort
-EXECUTABLE_4 = WordPercentPrecomputeInts
+EXECUTABLE_1 = WordFormablePartials
+EXECUTABLE_2 = WordFormableTable
+EXECUTABLE_3 = WordFormablePrecomputeStrings
+EXECUTABLE_4 = WordFormablePrecomputeHybrid
 SOURCE_DIR = src
 OBJECT_DIR = build
 
@@ -36,11 +36,10 @@ MAIN_4 := $(DEPENDENT_MAIN:.c=)_$(METHOD_4_FLAG).o
 MAIN_OBJ:= $(MAIN_1) $(MAIN_2) $(MAIN_3) $(MAIN_4)
 MAIN_OBJ:= $(addprefix $(OBJECT_DIR)/,$(MAIN_OBJ))
 
-CORE_OBJ= Parsing.o
-METHOD_1_OBJ = $(MAIN_1) $(CORE_OBJ) WordPercentSort.o WordSort.o CheckWordByPartials.o
-METHOD_2_OBJ = $(MAIN_2) $(CORE_OBJ) WordPercentTable.o CharTable.o
-METHOD_3_OBJ = $(MAIN_3) $(CORE_OBJ) WordPercentPowerString.o HashMapString.o CommunicativeHashFunction.o SinglyLinkedString.o WordSort.o
-METHOD_4_OBJ = $(MAIN_4) $(CORE_OBJ) WordPercentPowerInts.o CheckWordByPartials.o HashMapInts.o CommunicativeHashFunction.o SinglyLinkedString.o WordSort.o
+METHOD_1_OBJ = $(MAIN_1) Parsing.o WordPercentSort.o WordSort.o CheckWordByPartials.o
+METHOD_2_OBJ = $(MAIN_2) Parsing.o WordPercentTable.o CharTable.o
+METHOD_3_OBJ = $(MAIN_3) Parsing.o WordPercentPowerString.o HashMapString.o CommunicativeHashFunction.o SinglyLinkedString.o WordSort.o
+METHOD_4_OBJ = $(MAIN_4) Parsing.o WordPercentPowerInts.o CheckWordByPartials.o HashMapInts.o CommunicativeHashFunction.o SinglyLinkedString.o WordSort.o
 
 METHOD_1_FILE = $(addprefix $(OBJECT_DIR)/, $(METHOD_1_OBJ))
 METHOD_2_FILE = $(addprefix $(OBJECT_DIR)/, $(METHOD_2_OBJ))
