@@ -3,49 +3,61 @@
 return_dir=`pwd`
 cd "${0%/*}"
 
-base_string_length=10
-base_strings=("ougzvhsrwf" "ruyajlwigx" "wwufpxuwrg" "bznpflexir" "hqayyznmxr")
-bucket_max=$(( 1<<(base_string_length+4) ))
+time_stamp=`date +%Y-%m-%d__%H_%M_%S`
+
+extension=".txt"
 
 input_path="../test_files/words/"
 input_name="words512"
-extension=".txt"
 input_file=$input_path$input_name$extension
 
 results_path="../test_results/"
-results_name="results_load_factor"
-results_file=$result_path$result_name$extension
+mkdir -p $results_path
+results_path="${results_path}load_factor_"
+results_prefix="results_LF_"
+results_suffix="_${time_stamp}${extension}"
 
 executable_path="../"
+executables=("WordFormablePowerPC" "WordFormablePowerHP")
 
-if [ ! -d "$results_path" ]; then
-  mkdir -p "$results_path"
-fi
+base_string_length=10
+base_strings=("ougzvhsrwf" "ruyajlwigx" "wmofpxunrg" "bznpflexir" "hqajyznmxr")
+bucket_max=$(( 1<<(base_string_length+4) ))
 
-echo "Testing load factor"  1> $results_file
-echo "Max buckets = $bucket_max" 1>> $results_file
-echo "" 1>> $results_file
+n=0
+results_path_attempt="${results_path}${n}/"
+while ! mkdir "$results_path_attempt"  2> /dev/null; do
+	n=$((n+1))
+	results_path_attempt="${results_path}${n}/"
+done
+results_path=$results_path_attempt
 
-for string in ${base_strings[@]}; do
-	echo $string 1>> $results_file
+#Header
+for executable in ${executables[@]}; do
+	results_file=$results_path$results_prefix$executable$results_suffix
+	echo "Testing load factor"  1> $results_file
+	echo "SOLUTION: $executable" 1>> $results_file
+	echo "Max buckets = $bucket_max" 1>> $results_file
+	echo "" 1>> $results_file
+	for string in ${base_strings[@]}; do
+		echo $string 1>> $results_file
+	done
 done
 
-for executable in WordPercentPrecomputeSort WordPercentPrecomputeTable; do
-
-	echo "" 1>> $results_file
-	echo "SOLUTION: $executable" 1>> $results_file
-
-	for ((buckets=2;buckets<=$bucket_max;buckets<<1)); do
-
+#Tests
+for ((buckets=2;buckets<=$bucket_max;buckets=$buckets<<1)); do
+	true_buckets=$((buckets-1))
+	for executable in ${executables[@]}; do
+		results_file=$results_path$results_prefix$executable$results_suffix
 		echo "" 1>> $results_file
 		echo "FILE: $input_file" 1>> $results_file
-		echo "BINS: $((buckets-1))" 1>> $results_file
-		echo "$executable_path$executable ${base_strings[0]} $input_file $((buckets-1))" 1>> $results_file
-		(time $executable_path$executable ${base_strings[0]} $input_file $((buckets-1))) >> $results_file 2>&1
+		echo "BINS: $true_buckets" 1>> $results_file
+		echo "$executable_path$executable ${base_strings[0]} $input_file 1 $true_buckets" 1>> $results_file
+		(time $executable_path$executable ${base_strings[0]} $input_file 1 $true_buckets) >> $results_file 2>&1
 		for ((j=1;j<=4;j++)); do
-			(time $executable_path$executable ${base_strings[$j]} $input_file $((buckets-1))) 2>> $results_file 1> /dev/null
+			(time $executable_path$executable ${base_strings[$j]} $input_file 1 $true_buckets) 2>> $results_file 1> /dev/null
 		done
-	done
+	done	
 done
 
 cd $return_dir 

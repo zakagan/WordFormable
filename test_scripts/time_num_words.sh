@@ -3,54 +3,62 @@
 return_dir=`pwd`
 cd "${0%/*}"
 
+time_stamp=`date +%Y-%m-%d__%H_%M_%S`
+
+extension=".txt"
+
 input_path="../test_files/words/"
 input_name="words"
 input_prefix=$input_path$input_name
 
 results_path="../test_results/"
-results_name="results_num_words"
-extension=".txt"
+mkdir -p $results_path
+results_path="${results_path}num_words_"
+results_prefix="results_NW_"
+results_suffix="_${time_stamp}${extension}"
 
 executable_path="../"
+executables=("WordFormablePartials" "WordFormableTable" "WordFormablePowerPC" "WordFormablePowerHP")
 
-results_file=$result_path$result_name$extension
-
-if [ ! -d "$results_path" ]; then
-  mkdir -p "$results_path"
-fi
-
-base_strings=("ougzvhsrwf" "ruyajlwigx" "wwufpxuwrg" "bznpflexir" "hqayyznmxr")
-
-echo "Testing N: file length by word count w/ ten char base strings"  1> $results_file
+base_strings=("nflgpclzzv" "zhibxmytxh" "ndxourzhin" "btxqsvwxfz" "kkwwkdaofg")
 
 declare -a ITERATIONS
 for num in {0..9}; do 
 	ITERATIONS[$num]=$((2**$num))
 done
 
-echo "" 1>> $results_file
-for string in ${base_strings[@]}; do
-	echo $string 1>> $results_file
+n=0
+results_path_attempt="${results_path}${n}/"
+while ! mkdir "$results_path_attempt" 2> /dev/null; do
+	n=$((n+1))
+	results_path_attempt="${results_path}${n}/"
 done
-echo "" 1>> $results_file
+results_path=$results_path_attempt
 
-for executable in WordPercentSort WordPercentTable WordPercentPrecomputeSort WordPercentPrecomputeTable; do
-
-	echo "" 1>> $results_file
+#Header
+for executable in ${executables[@]}; do
+	results_file=$results_path$results_prefix$executable$results_suffix
+	echo "Testing N: file length by word count w/ ten char base strings"  1> $results_file
 	echo "SOLUTION: $executable" 1>> $results_file
+	echo "" 1>> $results_file
+	for string in ${base_strings[@]}; do
+		echo $string 1>> $results_file
+	done
+done
 
-	for ((i=0; i<${#ITERATIONS[@]}; i++)); do
-		iter_val=ITERATIONS[$i]
+#Tests
+for iter_val in ${ITERATIONS[@]}; do
+	for executable in ${executables[@]}; do
+		results_file=$results_path$results_prefix$executable$results_suffix
 		string_var=base_strings[0]
-
 		echo "" 1>> $results_file
-		echo "FILE: $input_prefix${!iter_val}$extension" 1>> $results_file
-		echo "XWORDS: ${!iter_val}" 1>> $results_file
-		echo "$executable_path$executable ${!string_var} $input_prefix${!iter_val}$extension" 1>> $results_file
-		(time $executable_path$executable ${!string_var} $input_prefix${!iter_val}$extension) >> $results_file 2>&1
+		echo "FILE: $results_file" 1>> $results_file
+		echo "XWORDS: $iter_val" 1>> $results_file
+		echo "$executable_path$executable ${!string_var} $input_prefix$iter_val$extension 1" 1>> $results_file
+		(time $executable_path$executable ${!string_var} $input_prefix$iter_val$extension 1) >> $results_file 2>&1
 		for ((j=1;j<=4;j++)); do
 			string_var=base_strings[$j]
-			(time $executable_path$executable ${!string_var} $input_prefix${!iter_val}$extension) 2>> $results_file 1> /dev/null
+			(time $executable_path$executable ${!string_var} $input_prefix$iter_val$extension 1) 2>> $results_file 1> /dev/null
 		done
 	done
 done

@@ -5,8 +5,8 @@
 # Name of the executable to create
 EXECUTABLE_1 = WordFormablePartials
 EXECUTABLE_2 = WordFormableTable
-EXECUTABLE_3 = WordFormablePrecomputeStrings
-EXECUTABLE_4 = WordFormablePrecomputeHybrid
+EXECUTABLE_3 = WordFormablePowerPC
+EXECUTABLE_4 = WordFormablePowerHP
 SOURCE_DIR = src
 OBJECT_DIR = build
 

@@ -26,7 +26,7 @@ int main (int argc, char **argv) {
 		if(argc < 3 || argc > 4) {
 			printf("Two inputs are required: 1st the base string, and 2nd the path to your text file.\n"
 				"Optionally, you may silence formable word printing by adding the integer '1' as a 3rd input.\n"
-				"An example of properly formated inputs: \n"
+				"An example of properly formatted inputs: \n"
 				"%s helloworld examples_files/example.txt 1\n", argv[0]);
 			return 0;
 		}
@@ -35,7 +35,7 @@ int main (int argc, char **argv) {
 		printf("Two inputs are required: 1st the base string, and 2nd the path to your text file.\n"
 				"Optionally, you may silence formable word printing by adding the integer '1' as a 3rd input.\n"
 				"As another, optional input you can specify the number of hash buckets to be used.\n"
-				"An example of properly formated inputs: \n"
+				"An example of properly formatted inputs: \n"
 				"%s helloworld examples_files/example.txt 1 63\n", argv[0]);
 			return 0;
 		}
