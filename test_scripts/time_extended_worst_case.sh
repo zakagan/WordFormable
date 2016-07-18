@@ -13,18 +13,18 @@ input_prefix=$input_path$input_name
 
 results_path="../test_results/"
 mkdir -p $results_path
-results_path="${results_path}worst_case_"
-results_prefix="results_WC_"
+results_path="${results_path}extended_worst_case"
+results_prefix="results_EWC_"
 results_suffix="_${time_stamp}${extension}"
 
 executable_path="../"
-executables=("WordFormablePartials" "WordFormableTable" "WordFormablePowerPC" "WordFormablePowerHP")
+executables=("WordFormablePartials" "WordFormableTable")
 
 test_quotes="\"\""
 test_str="zyxwvutsrqponmlkjihgfedcba9876543210-ZYXWVUTSRQPONMLKJIHGFEDCBA"
 
-WC_STR_LEN=()
-for ((i=0;i<=24;i+=2)); do 
+EWC_STR_LEN=()
+for ((i=25;i<=60;i+=5)); do 
 	WC_STR_LEN+=($i)
 done
 
@@ -46,7 +46,7 @@ for executable in ${executables[@]}; do
 done
 
 #Tests
-for len in ${WC_STR_LEN[@]}; do
+for len in ${EWC_STR_LEN[@]}; do
 	for executable in ${executables[@]}; do
 		results_file=$results_path$results_prefix$executable$results_suffix
 		input_file=$input_prefix$len$extension

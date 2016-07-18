@@ -12,12 +12,12 @@ if [ ! -d "$path" ]; then
   mkdir -p "$path"
 fi
 
-WC_STR_LEN=()
-for ((i=0;i<=24;i+=2)); do 
+EWC_STR_LEN=()
+for ((i=25;i<=60;i+=5)); do 
 	WC_STR_LEN+=($i)
 done
 
-for len in ${WC_STR_LEN[@]}; do
+for len in ${EWC_STR_LEN[@]}; do
 	rm $prefix$len$extension
 done
 
