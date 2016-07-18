@@ -21,7 +21,7 @@ executable_path="../"
 executables=("WordFormablePowerPC" "WordFormablePowerHP")
 
 base_string_length=10
-base_strings=("ougzvhsrwf" "ruyajlwigx" "wmofpxunrg" "bznpflexir" "hqajyznmxr")
+base_strings=("ougzvhsrwf" "ruyajlwigx" "wmofpxunrg" "bznpflexir" "hqajyznmxr") #random strings purged of repeating chars
 bucket_max=$(( 1<<(base_string_length+4) ))
 
 n=0

@@ -19,9 +19,15 @@ temp_name="temp"
 temp_file=$path$temp_name$extension
 
 WC_STR_LEN=()
-for ((i=0;i<=24;i+=2)); do 
-	WC_STR_LEN+=($i)
-done
+if (( "$1" != "e" )) || (( "$1" != "extended" )); then
+	for ((i=0;i<=24;i+=2)); do 
+		WC_STR_LEN+=($i)
+	done
+else
+	for ((i=25;i<=60;i+=5)); do 
+		WC_STR_LEN+=($i)
+	done
+fi
 
 for len in ${WC_STR_LEN[@]}; do
 	current_file=$prefix$len$extension

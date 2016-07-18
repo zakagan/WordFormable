@@ -22,15 +22,26 @@ echo "Timing hash map solutions over various load factors."
 echo "Removing average case files."
 ./remove_words.sh
 
-####GENERATES WORST CASE TESTING FILES####
-echo "Generating worst case test files."
+####GENERATES INITIAL WORST CASE TESTING FILES####
+echo "Generating initial worst case test files."
 ./setup_worst_case.sh
-####TEST SCRIPTS FOR WORST CASE SCENARIO####
-echo "Timing solutions over length of base string in the worst case scenario."
+####TEST SCRIPTS FOR INITIAL WORST CASE SCENARIO####
+echo "Timing solutions over length of base string in the initial worst case scenario."
 ./time_worst_case.sh
-####DELETES WORST CASE TESTING FILES####
-echo "Removing worst case files."
+####DELETES INITIAL WORST CASE TESTING FILES####
+echo "Removing initial worst case files."
 ./remove_worst_case.sh
+
+####GENERATES EXTENDED WORST CASE TESTING FILES####
+echo "Generating extended worst case test files."
+./setup_worst_case.sh e
+####TEST SCRIPTS FOR EXTENDED WORST CASE SCENARIO####
+echo "Timing solutions over length of base string in the extended worst case scenario."
+./time_worst_case.sh e
+####DELETES EXTENDED WORST CASE TESTING FILES####
+echo "Removing extended worst case files."
+./remove_worst_case.sh e
+
 
 echo "Testing sequence completed."
 

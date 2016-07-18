@@ -20,7 +20,12 @@ results_suffix="_${time_stamp}${extension}"
 executable_path="../"
 executables=("WordFormablePartials" "WordFormableTable" "WordFormablePowerPC" "WordFormablePowerHP")
 
-base_strings=("nflgpclzzv" "zhibxmytxh" "ndxourzhin" "btxqsvwxfz" "kkwwkdaofg")
+base_strings=()
+for ((i=1;i<=5;i++)); do
+	base_strings+="$(env LC_CTYPE=C tr -dc "a-z" < /dev/urandom | head -c 10)"
+done
+
+("nflgpclzzv" "zhibxmytxh" "ndxourzhin" "btxqsvwxfz" "kkwwkdaofg")
 
 declare -a ITERATIONS
 for num in {0..9}; do 
@@ -41,6 +46,7 @@ for executable in ${executables[@]}; do
 	echo "Testing N: file length by word count w/ ten char base strings"  1> $results_file
 	echo "SOLUTION: $executable" 1>> $results_file
 	echo "" 1>> $results_file
+	echo "Base strings:" 1>> $results_file
 	for string in ${base_strings[@]}; do
 		echo $string 1>> $results_file
 	done
