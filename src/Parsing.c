@@ -2,10 +2,10 @@
 
 // Checks if a single char is within a string of tokenizers 
 int isTokenizer(const char a) {     
-	if(strchr("\n \t,.!?\";:()<>{}[]\\/_@#$%%^&*+=|`~",a)) {
-		return 1;
-	} else {
+	if(strchr("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-",a)) {
 		return 0;
+	} else {
+		return 1;
 	}
 }
 

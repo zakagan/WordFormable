@@ -24,7 +24,7 @@ test_quotes="\"\""
 test_str="Zx8wV2Ts3qP4Nm5kJ6Hg7eD1Ba"
 
 WC_STR_LEN=()
-for ((i=0;i<=26;i+=2)); do 
+for ((i=0;i<=24;i+=2)); do 
 	WC_STR_LEN+=($i)
 done
 
