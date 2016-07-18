@@ -10,7 +10,7 @@ void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, const
 
 	sortStr(base_str, max_length);
 
-	partial_buff= calloc(max_length, sizeof(char));    //used to hold series of matching characters within a token for comparison w/ sorted base string
+	partial_buff= calloc(max_length+1, sizeof(char));    //used to hold series of matching characters within a token for comparison w/ sorted base string
 	if (partial_buff==NULL){
 		printf("Memory allocation failed: char pointer partial_buff\n");
 		exit(0);
