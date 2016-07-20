@@ -24,16 +24,16 @@ test_quotes="\"\""
 test_str="zyxwvutsrqponmlkjihgfedcba9876543210-ZYXWVUTSRQPONMLKJIHGFEDCBA"
 
 WC_STR_LEN=()
-if (( "$1" != "e" )) || (( "$1" != "extended" )); then
+if [ "${1:0:1}" != "e" ] && [ "${1:0:1}" != "E" ]; then
 	for ((i=0;i<=24;i+=2)); do 
 		WC_STR_LEN+=($i)
 	done
 else
+	results_path="${results_path}E_"
+	results_prefix="${results_prefix}E_"
+	executables=("WordFormablePartials" "WordFormableTable")
 	for ((i=25;i<=60;i+=5)); do 
 		WC_STR_LEN+=($i)
-		results_path="${results_path}E_"
-		results_prefix="${results_prefix}E_"
-		executables=("WordFormablePartials" "WordFormableTable")
 	done
 fi
 
