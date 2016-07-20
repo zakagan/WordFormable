@@ -38,7 +38,7 @@ for len in ${WC_STR_LEN[@]}; do
 	fi
 
 	echo $current_str > $current_file
-	for ((j=0;j=<24;j++)); do
+	for ((j=0;j<=24;j++)); do
 		cat $current_file > $temp_file
 		cat $temp_file >> $current_file
 	done

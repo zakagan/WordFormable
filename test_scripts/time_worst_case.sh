@@ -33,6 +33,7 @@ else
 		WC_STR_LEN+=($i)
 		results_path="${results_path}E_"
 		results_prefix="${results_prefix}E_"
+		executables=("WordFormablePartials" "WordFormableTable")
 	done
 fi
 
