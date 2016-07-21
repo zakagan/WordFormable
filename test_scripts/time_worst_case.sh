@@ -32,7 +32,7 @@ else
 	results_path="${results_path}E_"
 	results_prefix="${results_prefix}E_"
 	executables=("WordFormablePartials" "WordFormableTable")
-	for ((i=25;i<=60;i+=5)); do 
+	for ((i=27;i<=63;i+=3)); do 
 		WC_STR_LEN+=($i)
 	done
 fi
@@ -68,7 +68,7 @@ for len in ${WC_STR_LEN[@]}; do
 		echo "" 1>> $results_file
 		echo "FILE: $input_file" 1>> $results_file
 		echo "LENGTH: $len" 1>> $results_file
-		echo "$executable_path$executable $current_str $input_file 1" 1>> $results_file
+		echo "time $executable_path$executable $current_str $input_file 1" 1>> $results_file
 		(time $executable_path$executable $current_str $input_file 1) >> $results_file 2>&1
 		for ((j=1;j<=4;j++)); do
 			(time $executable_path$executable $current_str $input_file 1) 2>> $results_file 1> /dev/null

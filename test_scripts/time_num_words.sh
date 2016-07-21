@@ -60,7 +60,7 @@ for iter_val in ${ITERATIONS[@]}; do
 		echo "" 1>> $results_file
 		echo "FILE: $results_file" 1>> $results_file
 		echo "XWORDS: $iter_val" 1>> $results_file
-		echo "$executable_path$executable ${!string_var} $input_file 1" 1>> $results_file
+		echo "time $executable_path$executable ${!string_var} $input_file 1" 1>> $results_file
 		(time $executable_path$executable ${!string_var} $input_file 1) >> $results_file 2>&1
 		for ((j=1;j<=4;j++)); do
 			string_var=base_strings[$j]

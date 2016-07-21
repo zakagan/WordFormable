@@ -1,9 +1,9 @@
 //
-//  WordPercentSort.h
+//  WordFormablePartials.h
 //
 
-#ifndef WORDPERCENTSORT_H
-#define WORDPERCENTSORT_H
+#ifndef WORDFORMABLEPARTIALS_H
+#define WORDFORMABLEPARTIALS_H
 
 #include <stdio.h>
 #include <string.h>

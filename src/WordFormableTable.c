@@ -1,4 +1,4 @@
-#include "WordPercentTable.h"
+#include "WordFormableTable.h"
 
 /* The char being examined is decremented from the comparison table. If the table has run out of that
  character then the function will report that the word is not formable*/

@@ -66,7 +66,7 @@ for len in ${BASE_STR_LEN[@]}; do
 		fi
 		echo "" 1>> $results_file
 		echo "LENGTH: $len" 1>> $results_file
-		echo "$executable_path$executable ${array_var[0]:0:$index} $input_file 1" 1>> $results_file
+		echo "time $executable_path$executable ${array_var[0]:0:$index} $input_file 1" 1>> $results_file
 		(time $executable_path$executable ${array_var[0]:0:$index} $input_file 1) >> $results_file 2>&1
 		for ((j=1;j<=4;j++)); do
 			(time $executable_path$executable ${array_var[$j]:0:$index} $input_file 1) 2>> $results_file 1> /dev/null

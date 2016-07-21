@@ -24,7 +24,7 @@ if [ "${1:0:1}" != "e" ] && [ "${1:0:1}" != "E" ]; then
 		WC_STR_LEN+=($i)
 	done
 else
-	for ((i=25;i<=60;i+=5)); do 
+	for ((i=27;i<=63;i+=3)); do 
 		WC_STR_LEN+=($i)
 	done
 fi

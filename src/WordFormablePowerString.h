@@ -1,9 +1,9 @@
 //
-//  WordPercentPowerString.h
+//  WordFormablePowerString.h
 //
 
-#ifndef WORDPERCENTPOWERSTRING_H
-#define WORDPERCENTPOWERSTRING_H
+#ifndef WORDFORMABLEPOWERSTRING_H
+#define WORDFORMABLEPOWERSTRING_H
 
 #include "CharTable.h"
 #include "SinglyLinkedString.h"

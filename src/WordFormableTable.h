@@ -1,19 +1,17 @@
 //
-//  WordPercentPowerInts.h
+//  WordFormableTable.h
 //
 
-#ifndef WORDPERCENTPOWERINTS_H
-#define WORDPERCENTPOWERINTS_H
+#ifndef WORDFORMABLETABLE_H
+#define WORDFORMABLETABLE_H
 
 #include "CharTable.h"
-#include "SinglyLinkedString.h"
-#include "HashMapInts.h"
-#include "CheckWordByPartials.h"
-#include "WordSort.h"
 #include "Parsing.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+
+#define TABLE_SIZE 128   // Chosen based on the size of the standard ASCII character set
 
 void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, const int max_length, const int silence, const int buckets);
 

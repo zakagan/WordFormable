@@ -1,5 +1,5 @@
 
-#include "WordPercentPowerString.h"
+#include "WordFormablePowerString.h"
 
 // Generates the power set from the base string, and loads the result into the hash map
 void calculatePowerSet(const char *str, const int str_length, HashMap* power_set_map) {

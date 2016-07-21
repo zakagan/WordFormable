@@ -2,14 +2,14 @@
 #include <string.h>
 #include <stdlib.h>
 
-#ifdef USE_SORT
-	#include "WordPercentSort.h"
+#ifdef USE_PARTIALS
+	#include "WordFormablePartials.h"
 #elif USE_TABLE
-	#include "WordPercentTable.h"
+	#include "WordFormableTable.h"
 #elif USE_POWERSTRING
-	#include "WordPercentPowerString.h"
+	#include "WordFormablePowerString.h"
 #elif USE_POWERINTS
-	#include "WordPercentPowerInts.h"
+	#include "WordFormablePowerInts.h"
 #else
 	#error "Solution flag must be specified during linking, check the Makefile.\n"
 #endif

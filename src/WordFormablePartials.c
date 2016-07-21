@@ -1,4 +1,4 @@
-#include "WordPercentSort.h"
+#include "WordFormablePartials.h"
 
 /* parses the provided txtfile, determines indvigual word tokens, and then calls a included function (checkWord) to see
 if they are formable from the base string. Finally it sends the cllected data to the reportResults function*/

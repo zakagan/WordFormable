@@ -53,7 +53,7 @@ for ((buckets=2;buckets<=$bucket_max;buckets=$buckets<<1)); do
 		echo "" 1>> $results_file
 		echo "FILE: $input_file" 1>> $results_file
 		echo "BINS: $true_buckets" 1>> $results_file
-		echo "$executable_path$executable ${base_strings[0]} $input_file 1 $true_buckets" 1>> $results_file
+		echo "time $executable_path$executable ${base_strings[0]} $input_file 1 $true_buckets" 1>> $results_file
 		(time $executable_path$executable ${base_strings[0]} $input_file 1 $true_buckets) >> $results_file 2>&1
 		for ((j=1;j<=4;j++)); do
 			(time $executable_path$executable ${base_strings[$j]} $input_file 1 $true_buckets) 2>> $results_file 1> /dev/null
