@@ -47,6 +47,7 @@ done
 #Tests
 for ((buckets=2;buckets<=$bucket_max;buckets=$buckets<<1)); do
 	true_buckets=$((buckets-1))
+	echo "Testing with $true_buckets buckets"
 	for executable in ${executables[@]}; do
 		results_file=$results_path$results_prefix$executable$results_suffix
 		echo "" 1>> $results_file

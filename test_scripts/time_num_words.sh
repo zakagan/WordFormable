@@ -25,8 +25,6 @@ for ((i=1;i<=5;i++)); do
 	base_strings+="$(env LC_CTYPE=C tr -dc "a-z" < /dev/urandom | head -c 10)"
 done
 
-("nflgpclzzv" "zhibxmytxh" "ndxourzhin" "btxqsvwxfz" "kkwwkdaofg")
-
 declare -a ITERATIONS
 for num in {0..9}; do 
 	ITERATIONS[$num]=$((2**$num))
@@ -54,17 +52,19 @@ done
 
 #Tests
 for iter_val in ${ITERATIONS[@]}; do
+	input_file=$input_prefix$iter_val$extension
+	echo "Testing on ${input_file}"
 	for executable in ${executables[@]}; do
 		results_file=$results_path$results_prefix$executable$results_suffix
 		string_var=base_strings[0]
 		echo "" 1>> $results_file
 		echo "FILE: $results_file" 1>> $results_file
 		echo "XWORDS: $iter_val" 1>> $results_file
-		echo "$executable_path$executable ${!string_var} $input_prefix$iter_val$extension 1" 1>> $results_file
-		(time $executable_path$executable ${!string_var} $input_prefix$iter_val$extension 1) >> $results_file 2>&1
+		echo "$executable_path$executable ${!string_var} $input_file 1" 1>> $results_file
+		(time $executable_path$executable ${!string_var} $input_file 1) >> $results_file 2>&1
 		for ((j=1;j<=4;j++)); do
 			string_var=base_strings[$j]
-			(time $executable_path$executable ${!string_var} $input_prefix$iter_val$extension 1) 2>> $results_file 1> /dev/null
+			(time $executable_path$executable ${!string_var} $input_file 1) 2>> $results_file 1> /dev/null
 		done
 	done
 done

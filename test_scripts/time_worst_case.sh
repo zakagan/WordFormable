@@ -25,7 +25,7 @@ test_str="zyxwvutsrqponmlkjihgfedcba9876543210-ZYXWVUTSRQPONMLKJIHGFEDCBA"
 
 WC_STR_LEN=()
 if [ "${1:0:1}" != "e" ] && [ "${1:0:1}" != "E" ]; then
-	for ((i=0;i<=24;i+=2)); do 
+	for ((i=0;i<=24;i+=1)); do 
 		WC_STR_LEN+=($i)
 	done
 else
@@ -56,6 +56,7 @@ done
 
 #Tests
 for len in ${WC_STR_LEN[@]}; do
+	echo "Testing WC file with length $len"
 	for executable in ${executables[@]}; do
 		results_file=$results_path$results_prefix$executable$results_suffix
 		input_file=$input_prefix$len$extension

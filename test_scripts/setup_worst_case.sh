@@ -20,7 +20,7 @@ temp_file=$path$temp_name$extension
 
 WC_STR_LEN=()
 if [ "${1:0:1}" != "e" ] && [ "${1:0:1}" != "E" ]; then
-	for ((i=0;i<=24;i+=2)); do 
+	for ((i=0;i<=24;i+=1)); do 
 		WC_STR_LEN+=($i)
 	done
 else
