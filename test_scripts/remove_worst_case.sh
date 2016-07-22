@@ -1,6 +1,6 @@
 #!/bin/bash
 
-return_dir=pwd
+return_dir=`pwd`
 cd "${0%/*}"
 
 path="../test_files/worst_case/"
@@ -18,9 +18,10 @@ if [ "${1:0:1}" != "e" ] && [ "${1:0:1}" != "E" ]; then
 		WC_STR_LEN+=($i)
 	done
 else
-	for ((i=27;i<=63;i+=3)); do 
+	for ((i=25;i<=63;i+=5)); do 
 		WC_STR_LEN+=($i)
 	done
+	WC_STR_LEN+=63
 fi
 
 for len in ${WC_STR_LEN[@]}; do
