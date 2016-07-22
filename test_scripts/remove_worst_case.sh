@@ -21,7 +21,7 @@ else
 	for ((i=25;i<=63;i+=5)); do 
 		WC_STR_LEN+=($i)
 	done
-	WC_STR_LEN+=63
+	WC_STR_LEN+=(63)
 fi
 
 for len in ${WC_STR_LEN[@]}; do
