@@ -32,7 +32,7 @@ else
 	results_path="${results_path}E_"
 	results_prefix="${results_prefix}E_"
 	executables=("WordFormablePartials" "WordFormableTable")
-	for ((i=29;i<=63;i+=5)); do 
+	for ((i=30;i<=63;i+=6)); do 
 		WC_STR_LEN+=($i)
 	done
 	WC_STR_LEN+=(63)
