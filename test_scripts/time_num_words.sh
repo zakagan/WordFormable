@@ -22,7 +22,7 @@ executables=("WordFormablePartials" "WordFormableTable" "WordFormablePowerPC" "W
 
 base_strings=()
 for ((i=1;i<=5;i++)); do
-	base_strings+="$(env LC_CTYPE=C tr -dc "a-z" < /dev/urandom | head -c 10)"
+	base_strings+=("$(env LC_CTYPE=C tr -dc "a-z" < /dev/urandom | head -c 10)")
 done
 
 declare -a ITERATIONS
@@ -56,15 +56,13 @@ for iter_val in ${ITERATIONS[@]}; do
 	echo "Testing on ${input_file}"
 	for executable in ${executables[@]}; do
 		results_file=$results_path$results_prefix$executable$results_suffix
-		string_var=base_strings[0]
 		echo "" 1>> $results_file
 		echo "FILE: $results_file" 1>> $results_file
 		echo "XWORDS: $iter_val" 1>> $results_file
-		echo "time $executable_path$executable ${!string_var} $input_file 1" 1>> $results_file
-		(time $executable_path$executable ${!string_var} $input_file 1) >> $results_file 2>&1
+		echo "time $executable_path$executable ${base_strings[0]} $input_file 1" 1>> $results_file
+		(time $executable_path$executable ${base_strings[0]} $input_file 1) >> $results_file 2>&1
 		for ((j=1;j<=4;j++)); do
-			string_var=base_strings[$j]
-			(time $executable_path$executable ${!string_var} $input_file 1) 2>> $results_file 1> /dev/null
+			(time $executable_path$executable ${base_strings[$j]} $input_file 1) 2>> $results_file 1> /dev/null
 		done
 	done
 done

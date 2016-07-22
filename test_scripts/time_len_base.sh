@@ -23,7 +23,7 @@ executables=("WordFormablePartials" "WordFormableTable" "WordFormablePowerPC" "W
 base_null=("\"\"" "\"\"" "\"\"" "\"\"" "\"\"")
 base_strings=()
 for ((i=1;i<=5;i++)); do
-	base_strings+="$(env LC_CTYPE=C tr -dc "a-z" < /dev/urandom | head -c 26)"
+	base_strings+=("$(env LC_CTYPE=C tr -dc "a-z" < /dev/urandom | head -c 26)")
 done
 
 BASE_STR_LEN=()
@@ -58,10 +58,10 @@ for len in ${BASE_STR_LEN[@]}; do
 	for executable in ${executables[@]}; do
 		results_file=$results_path$results_prefix$executable$results_suffix
 		if [ $len = 0 ]; then
-			array_var=base_null
+			array_var=("${base_null[@]}")
 			index=2
 		else
-			array_var=base_strings
+			array_var=("${base_strings[@]}")
 			index=$len
 		fi
 		echo "" 1>> $results_file

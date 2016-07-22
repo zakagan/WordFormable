@@ -20,8 +20,8 @@ results_suffix="_${time_stamp}${extension}"
 executable_path="../"
 executables=("WordFormablePowerPC" "WordFormablePowerHP")
 
-base_string_length=10
 base_strings=("ougzvhsrwf" "ruyajlwigx" "wmofpxunrg" "bznpflexir" "hqajyznmxr") #random strings purged of repeating chars
+base_string_length=10
 bucket_max=$(( 1<<(base_string_length+4) ))
 
 n=0
