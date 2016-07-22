@@ -58,14 +58,14 @@ done
 #Tests
 for len in ${WC_STR_LEN[@]}; do
 	echo "Testing WC file with length $len"
+	input_file=$input_prefix$len$extension
+	if [ $len = 0 ]; then
+		current_str=$test_quotes
+	else
+		current_str=${test_str:0:$len}
+	fi
 	for executable in ${executables[@]}; do
 		results_file=$results_path$results_prefix$executable$results_suffix
-		input_file=$input_prefix$len$extension
-		if [ $len = 0 ]; then
-			current_str=$test_quotes
-		else
-			current_str=${test_str:0:$len}
-		fi
 		echo "" 1>> $results_file
 		echo "FILE: $input_file" 1>> $results_file
 		echo "LENGTH: $len" 1>> $results_file

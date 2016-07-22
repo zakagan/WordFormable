@@ -55,15 +55,15 @@ done
 #Tests
 for len in ${BASE_STR_LEN[@]}; do
 	echo "Testing with base string length $len"
+	if [ $len = 0 ]; then
+		array_var=("${base_null[@]}")
+		index=2
+	else
+		array_var=("${base_strings[@]}")
+		index=$len
+	fi
 	for executable in ${executables[@]}; do
 		results_file=$results_path$results_prefix$executable$results_suffix
-		if [ $len = 0 ]; then
-			array_var=("${base_null[@]}")
-			index=2
-		else
-			array_var=("${base_strings[@]}")
-			index=$len
-		fi
 		echo "" 1>> $results_file
 		echo "LENGTH: $len" 1>> $results_file
 		echo "time $executable_path$executable ${array_var[0]:0:$index} $input_file 1" 1>> $results_file
