@@ -1,0 +1,9 @@
+Testing N: file length by word count w/ ten char base strings
+SOLUTION: WordFormablePowerPC
+
+Base strings:
+huhrwtozqpbauukdxmkoweetijfcffhtswyurppesaojxshchg
+
+FILE: ../test_results/num_words_2/results_NW_WordFormablePowerPC_2016-07-22__03_04_15.txt
+XWORDS: 1
+time ../WordFormablePowerPC huhrwtozqpbauukdxmkoweetijfcffhtswyurppesaojxshchg ../test_files/words/words1.txt 1

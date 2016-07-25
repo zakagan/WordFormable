@@ -1,0 +1,230 @@
+Testing K: base string length
+SOLUTION: WordFormablePartials
+FILE: ../test_files/words/words512.txt
+
+Base strings:
+wiyiulksrjletfguwpqtvxcxda
+
+LENGTH: 0
+time ../WordFormablePartials "" ../test_files/words/words512.txt 1
+Base string length: 2
+Number of chars read from file: 416210944
+Number of tokenized words read from file: 64310272
+Number of words formable from the base string: 0
+Average word length: 6.47
+Percent of formable words: 0.00%
+
+real	0m8.985s
+user	0m8.961s
+sys	0m0.024s
+
+real	0m8.992s
+user	0m8.967s
+sys	0m0.028s
+
+real	0m8.992s
+user	0m8.959s
+sys	0m0.036s
+
+real	0m8.990s
+user	0m8.944s
+sys	0m0.048s
+
+real	0m8.991s
+user	0m8.937s
+sys	0m0.056s
+
+LENGTH: 2
+time ../WordFormablePartials wi ../test_files/words/words512.txt 1
+Base string length: 2
+Number of chars read from file: 416210944
+Number of tokenized words read from file: 64310272
+Number of words formable from the base string: 1536
+Average word length: 6.47
+Percent of formable words: 0.00%
+
+real	0m8.991s
+user	0m8.951s
+sys	0m0.040s
+
+real	0m9.146s
+user	0m9.089s
+sys	0m0.060s
+
+real	0m8.998s
+user	0m8.944s
+sys	0m0.056s
+
+real	0m8.999s
+user	0m8.974s
+sys	0m0.028s
+
+real	0m8.989s
+user	0m8.944s
+sys	0m0.048s
+
+LENGTH: 4
+time ../WordFormablePartials wiyi ../test_files/words/words512.txt 1
+Base string length: 4
+Number of chars read from file: 416210944
+Number of tokenized words read from file: 64310272
+Number of words formable from the base string: 2560
+Average word length: 6.47
+Percent of formable words: 0.00%
+
+real	0m9.323s
+user	0m9.267s
+sys	0m0.056s
+
+real	0m9.317s
+user	0m9.280s
+sys	0m0.040s
+
+real	0m9.321s
+user	0m9.288s
+sys	0m0.036s
+
+real	0m9.324s
+user	0m9.278s
+sys	0m0.048s
+
+real	0m9.315s
+user	0m9.282s
+sys	0m0.036s
+
+LENGTH: 6
+time ../WordFormablePartials wiyiul ../test_files/words/words512.txt 1
+Base string length: 6
+Number of chars read from file: 416210944
+Number of tokenized words read from file: 64310272
+Number of words formable from the base string: 5632
+Average word length: 6.47
+Percent of formable words: 0.01%
+
+real	0m10.753s
+user	0m10.726s
+sys	0m0.028s
+
+real	0m10.760s
+user	0m10.716s
+sys	0m0.048s
+
+real	0m10.742s
+user	0m10.713s
+sys	0m0.032s
+
+real	0m10.862s
+user	0m10.829s
+sys	0m0.036s
+
+real	0m10.746s
+user	0m10.729s
+sys	0m0.020s
+
+LENGTH: 8
+time ../WordFormablePartials wiyiulks ../test_files/words/words512.txt 1
+Base string length: 8
+Number of chars read from file: 416210944
+Number of tokenized words read from file: 64310272
+Number of words formable from the base string: 13419008
+Average word length: 6.47
+Percent of formable words: 20.87%
+
+real	0m13.888s
+user	0m13.842s
+sys	0m0.048s
+
+real	0m13.996s
+user	0m13.984s
+sys	0m0.016s
+
+real	0m13.931s
+user	0m13.899s
+sys	0m0.036s
+
+real	0m14.122s
+user	0m14.066s
+sys	0m0.060s
+
+real	0m13.865s
+user	0m13.846s
+sys	0m0.024s
+
+LENGTH: 10
+time ../WordFormablePartials wiyiulksrj ../test_files/words/words512.txt 1
+Base string length: 10
+Number of chars read from file: 416210944
+Number of tokenized words read from file: 64310272
+Number of words formable from the base string: 13435392
+Average word length: 6.47
+Percent of formable words: 20.89%
+
+real	0m16.859s
+user	0m16.829s
+sys	0m0.032s
+
+real	0m17.042s
+user	0m17.003s
+sys	0m0.044s
+
+real	0m16.955s
+user	0m16.921s
+sys	0m0.040s
+
+real	0m17.231s
+user	0m17.213s
+sys	0m0.024s
+
+real	0m16.864s
+user	0m16.821s
+sys	0m0.048s
+
+LENGTH: 12
+time ../WordFormablePartials wiyiulksrjle ../test_files/words/words512.txt 1
+Base string length: 12
+Number of chars read from file: 416210944
+Number of tokenized words read from file: 64310272
+Number of words formable from the base string: 13553664
+Average word length: 6.47
+Percent of formable words: 21.08%
+
+real	0m18.822s
+user	0m18.781s
+sys	0m0.044s
+
+real	0m18.961s
+user	0m18.940s
+sys	0m0.028s
+
+real	0m18.881s
+user	0m18.851s
+sys	0m0.036s
+
+real	0m19.652s
+user	0m19.615s
+sys	0m0.044s
+
+real	0m18.696s
+user	0m18.646s
+sys	0m0.056s
+
+LENGTH: 14
+time ../WordFormablePartials wiyiulksrjletf ../test_files/words/words512.txt 1
+Base string length: 14
+Number of chars read from file: 416210944
+Number of tokenized words read from file: 64310272
+Number of words formable from the base string: 13785088
+Average word length: 6.47
+Percent of formable words: 21.44%
+
+real	0m19.567s
+user	0m19.521s
+sys	0m0.048s
+
+real	0m19.628s
+user	0m19.589s
+sys	0m0.044s
+
+real	0m19.483s
+user	0m19.457s
+sys	0m0.032s

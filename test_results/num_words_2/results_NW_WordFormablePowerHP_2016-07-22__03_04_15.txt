@@ -1,0 +1,5 @@
+Testing N: file length by word count w/ ten char base strings
+SOLUTION: WordFormablePowerHP
+
+Base strings:
+huhrwtozqpbauukdxmkoweetijfcffhtswyurppesaojxshchg

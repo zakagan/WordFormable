@@ -1,0 +1,35 @@
+Testing N: file length by word count w/ ten char base strings
+SOLUTION: WordFormablePartials
+
+Base strings:
+huhrwtozqpbauukdxmkoweetijfcffhtswyurppesaojxshchg
+
+FILE: ../test_results/num_words_2/results_NW_WordFormablePartials_2016-07-22__03_04_15.txt
+XWORDS: 1
+time ../WordFormablePartials huhrwtozqpbauukdxmkoweetijfcffhtswyurppesaojxshchg ../test_files/words/words1.txt 1
+Base string length: 50
+Number of chars read from file: 812912
+Number of tokenized words read from file: 125606
+Number of words formable from the base string: 47088
+Average word length: 6.47
+Percent of formable words: 37.49%
+
+real	0m0.045s
+user	0m0.039s
+sys	0m0.004s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s

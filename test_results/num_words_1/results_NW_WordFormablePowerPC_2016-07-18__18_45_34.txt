@@ -1,0 +1,308 @@
+Testing N: file length by word count w/ ten char base strings
+SOLUTION: WordFormablePowerPC
+
+nflgpclzzv
+zhibxmytxh
+ndxourzhin
+btxqsvwxfz
+kkwwkdaofg
+
+FILE: ../test_results/num_words_1/results_NW_WordFormablePowerPC_2016-07-18__18_45_34.txt
+XWORDS: 1
+../WordFormablePowerPC nflgpclzzv ../test_files/words/words1.txt 1
+Base string length: 10
+Number of chars read from file: 812912
+Number of tokenized words read from file: 125606
+Number of words formable from the base string: 44
+Average word length: 6.47
+Percent of formable words: 0.04%
+
+real	0m0.025s
+user	0m0.019s
+sys	0m0.000s
+
+real	0m0.019s
+user	0m0.018s
+sys	0m0.000s
+
+real	0m0.021s
+user	0m0.020s
+sys	0m0.000s
+
+real	0m0.019s
+user	0m0.019s
+sys	0m0.000s
+
+real	0m0.018s
+user	0m0.014s
+sys	0m0.004s
+
+FILE: ../test_results/num_words_1/results_NW_WordFormablePowerPC_2016-07-18__18_45_34.txt
+XWORDS: 2
+../WordFormablePowerPC nflgpclzzv ../test_files/words/words2.txt 1
+Base string length: 10
+Number of chars read from file: 1625824
+Number of tokenized words read from file: 251212
+Number of words formable from the base string: 88
+Average word length: 6.47
+Percent of formable words: 0.04%
+
+real	0m0.040s
+user	0m0.038s
+sys	0m0.000s
+
+real	0m0.037s
+user	0m0.036s
+sys	0m0.000s
+
+real	0m0.041s
+user	0m0.040s
+sys	0m0.000s
+
+real	0m0.037s
+user	0m0.037s
+sys	0m0.000s
+
+real	0m0.036s
+user	0m0.035s
+sys	0m0.000s
+
+FILE: ../test_results/num_words_1/results_NW_WordFormablePowerPC_2016-07-18__18_45_34.txt
+XWORDS: 4
+../WordFormablePowerPC nflgpclzzv ../test_files/words/words4.txt 1
+Base string length: 10
+Number of chars read from file: 3251648
+Number of tokenized words read from file: 502424
+Number of words formable from the base string: 176
+Average word length: 6.47
+Percent of formable words: 0.04%
+
+real	0m0.075s
+user	0m0.074s
+sys	0m0.000s
+
+real	0m0.071s
+user	0m0.070s
+sys	0m0.000s
+
+real	0m0.076s
+user	0m0.076s
+sys	0m0.000s
+
+real	0m0.073s
+user	0m0.072s
+sys	0m0.000s
+
+real	0m0.068s
+user	0m0.068s
+sys	0m0.000s
+
+FILE: ../test_results/num_words_1/results_NW_WordFormablePowerPC_2016-07-18__18_45_34.txt
+XWORDS: 8
+../WordFormablePowerPC nflgpclzzv ../test_files/words/words8.txt 1
+Base string length: 10
+Number of chars read from file: 6503296
+Number of tokenized words read from file: 1004848
+Number of words formable from the base string: 352
+Average word length: 6.47
+Percent of formable words: 0.04%
+
+real	0m0.148s
+user	0m0.146s
+sys	0m0.000s
+
+real	0m0.143s
+user	0m0.142s
+sys	0m0.000s
+
+real	0m0.152s
+user	0m0.147s
+sys	0m0.004s
+
+real	0m0.144s
+user	0m0.143s
+sys	0m0.000s
+
+real	0m0.136s
+user	0m0.135s
+sys	0m0.000s
+
+FILE: ../test_results/num_words_1/results_NW_WordFormablePowerPC_2016-07-18__18_45_34.txt
+XWORDS: 16
+../WordFormablePowerPC nflgpclzzv ../test_files/words/words16.txt 1
+Base string length: 10
+Number of chars read from file: 13006592
+Number of tokenized words read from file: 2009696
+Number of words formable from the base string: 704
+Average word length: 6.47
+Percent of formable words: 0.04%
+
+real	0m0.294s
+user	0m0.288s
+sys	0m0.004s
+
+real	0m0.280s
+user	0m0.275s
+sys	0m0.004s
+
+real	0m0.303s
+user	0m0.303s
+sys	0m0.000s
+
+real	0m0.286s
+user	0m0.286s
+sys	0m0.000s
+
+real	0m0.270s
+user	0m0.270s
+sys	0m0.000s
+
+FILE: ../test_results/num_words_1/results_NW_WordFormablePowerPC_2016-07-18__18_45_34.txt
+XWORDS: 32
+../WordFormablePowerPC nflgpclzzv ../test_files/words/words32.txt 1
+Base string length: 10
+Number of chars read from file: 26013184
+Number of tokenized words read from file: 4019392
+Number of words formable from the base string: 1408
+Average word length: 6.47
+Percent of formable words: 0.04%
+
+real	0m0.586s
+user	0m0.583s
+sys	0m0.000s
+
+real	0m0.561s
+user	0m0.556s
+sys	0m0.004s
+
+real	0m0.603s
+user	0m0.599s
+sys	0m0.004s
+
+real	0m0.575s
+user	0m0.570s
+sys	0m0.004s
+
+real	0m0.563s
+user	0m0.558s
+sys	0m0.004s
+
+FILE: ../test_results/num_words_1/results_NW_WordFormablePowerPC_2016-07-18__18_45_34.txt
+XWORDS: 64
+../WordFormablePowerPC nflgpclzzv ../test_files/words/words64.txt 1
+Base string length: 10
+Number of chars read from file: 52026368
+Number of tokenized words read from file: 8038784
+Number of words formable from the base string: 2816
+Average word length: 6.47
+Percent of formable words: 0.04%
+
+real	0m1.174s
+user	0m1.159s
+sys	0m0.012s
+
+real	0m1.124s
+user	0m1.115s
+sys	0m0.008s
+
+real	0m1.281s
+user	0m1.276s
+sys	0m0.004s
+
+real	0m1.147s
+user	0m1.138s
+sys	0m0.008s
+
+real	0m1.088s
+user	0m1.088s
+sys	0m0.000s
+
+FILE: ../test_results/num_words_1/results_NW_WordFormablePowerPC_2016-07-18__18_45_34.txt
+XWORDS: 128
+../WordFormablePowerPC nflgpclzzv ../test_files/words/words128.txt 1
+Base string length: 10
+Number of chars read from file: 104052736
+Number of tokenized words read from file: 16077568
+Number of words formable from the base string: 5632
+Average word length: 6.47
+Percent of formable words: 0.04%
+
+real	0m2.336s
+user	0m2.329s
+sys	0m0.004s
+
+real	0m2.227s
+user	0m2.223s
+sys	0m0.004s
+
+real	0m2.404s
+user	0m2.388s
+sys	0m0.016s
+
+real	0m2.284s
+user	0m2.276s
+sys	0m0.008s
+
+real	0m2.155s
+user	0m2.147s
+sys	0m0.008s
+
+FILE: ../test_results/num_words_1/results_NW_WordFormablePowerPC_2016-07-18__18_45_34.txt
+XWORDS: 256
+../WordFormablePowerPC nflgpclzzv ../test_files/words/words256.txt 1
+Base string length: 10
+Number of chars read from file: 208105472
+Number of tokenized words read from file: 32155136
+Number of words formable from the base string: 11264
+Average word length: 6.47
+Percent of formable words: 0.04%
+
+real	0m4.663s
+user	0m4.630s
+sys	0m0.032s
+
+real	0m4.455s
+user	0m4.440s
+sys	0m0.016s
+
+real	0m4.813s
+user	0m4.794s
+sys	0m0.020s
+
+real	0m4.565s
+user	0m4.530s
+sys	0m0.036s
+
+real	0m4.313s
+user	0m4.285s
+sys	0m0.028s
+
+FILE: ../test_results/num_words_1/results_NW_WordFormablePowerPC_2016-07-18__18_45_34.txt
+XWORDS: 512
+../WordFormablePowerPC nflgpclzzv ../test_files/words/words512.txt 1
+Base string length: 10
+Number of chars read from file: 416210944
+Number of tokenized words read from file: 64310272
+Number of words formable from the base string: 22528
+Average word length: 6.47
+Percent of formable words: 0.04%
+
+real	0m9.334s
+user	0m9.303s
+sys	0m0.032s
+
+real	0m8.915s
+user	0m8.862s
+sys	0m0.056s
+
+real	0m9.605s
+user	0m9.576s
+sys	0m0.032s
+
+real	0m9.152s
+user	0m9.114s
+sys	0m0.040s
+
+real	0m8.631s
+user	0m8.588s
+sys	0m0.044s

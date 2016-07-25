@@ -1,0 +1,13 @@
+Testing load factor
+SOLUTION: WordFormablePowerPC
+Max buckets = 16384
+
+ougzvhsrwf
+ruyajlwigx
+wmofpxunrg
+bznpflexir
+hqajyznmxr
+
+FILE: ../test_files/words/words512.txt
+BINS: 1
+../WordFormablePowerPC ougzvhsrwf ../test_files/words/words512.txt 1 1
