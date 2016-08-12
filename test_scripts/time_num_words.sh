@@ -43,6 +43,7 @@ for executable in ${executables[@]}; do
 	results_file=$results_path$results_prefix$executable$results_suffix
 	echo "Testing N: file length by word count w/ ten char base strings"  1> $results_file
 	echo "SOLUTION: $executable" 1>> $results_file
+	echo "FILE: $results_file" 1>> $results_file
 	echo "" 1>> $results_file
 	echo "Base strings:" 1>> $results_file
 	for string in ${base_strings[@]}; do
@@ -57,7 +58,6 @@ for iter_val in ${ITERATIONS[@]}; do
 	for executable in ${executables[@]}; do
 		results_file=$results_path$results_prefix$executable$results_suffix
 		echo "" 1>> $results_file
-		echo "FILE: $results_file" 1>> $results_file
 		echo "XWORDS: $iter_val" 1>> $results_file
 		echo "time $executable_path$executable ${base_strings[0]} $input_file 1" 1>> $results_file
 		(time $executable_path$executable ${base_strings[0]} $input_file 1) >> $results_file 2>&1

@@ -4,7 +4,7 @@ clear
 return_dir=`pwd`
 cd "${0%/*}"
 
-echo "Starting testing sequence, this will take several minutes."
+echo "Starting testing sequence, this will take a few hours..."
 
 ####GENERATES GENERAL/AVERAGE CASE TESTING FILES####
 echo "Generating average case test files."

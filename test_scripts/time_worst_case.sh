@@ -31,7 +31,7 @@ if [ "${1:0:1}" != "e" ] && [ "${1:0:1}" != "E" ]; then
 else
 	results_path="${results_path}E_"
 	results_prefix="${results_prefix}E_"
-	executables=("WordFormablePartials" "WordFormableTable")
+	executables=("WordFormablePartials" "WordFormableTable" "WordFormablePowerHP")
 	for ((i=30;i<=63;i+=6)); do 
 		WC_STR_LEN+=($i)
 	done
@@ -51,6 +51,7 @@ for executable in ${executables[@]}; do
 	results_file=$results_path$results_prefix$executable$results_suffix
 	echo "Testing K & M: worst case string lengths"  1> $results_file
 	echo "SOLUTION: $executable" 1>> $results_file
+	echo "FILE: $input_file" 1>> $results_file
 	echo ""  1>> $results_file
 	echo "string used for testing: $test_str" 1>> $results_file
 done
@@ -67,7 +68,6 @@ for len in ${WC_STR_LEN[@]}; do
 	for executable in ${executables[@]}; do
 		results_file=$results_path$results_prefix$executable$results_suffix
 		echo "" 1>> $results_file
-		echo "FILE: $input_file" 1>> $results_file
 		echo "LENGTH: $len" 1>> $results_file
 		echo "time $executable_path$executable $current_str $input_file 1" 1>> $results_file
 		(time $executable_path$executable $current_str $input_file 1) >> $results_file 2>&1

@@ -37,6 +37,7 @@ for executable in ${executables[@]}; do
 	results_file=$results_path$results_prefix$executable$results_suffix
 	echo "Testing load factor"  1> $results_file
 	echo "SOLUTION: $executable" 1>> $results_file
+	echo "FILE: $results_file" 1>> $results_file
 	echo "Max buckets = $bucket_max" 1>> $results_file
 	echo "" 1>> $results_file
 	for string in ${base_strings[@]}; do
@@ -51,7 +52,6 @@ for ((buckets=2;buckets<=$bucket_max;buckets=$buckets<<1)); do
 	for executable in ${executables[@]}; do
 		results_file=$results_path$results_prefix$executable$results_suffix
 		echo "" 1>> $results_file
-		echo "FILE: $input_file" 1>> $results_file
 		echo "BINS: $true_buckets" 1>> $results_file
 		echo "time $executable_path$executable ${base_strings[0]} $input_file 1 $true_buckets" 1>> $results_file
 		(time $executable_path$executable ${base_strings[0]} $input_file 1 $true_buckets) >> $results_file 2>&1
