@@ -31,9 +31,11 @@ class record(object):
 class dataset(object):
 # object containing a collection of records that correspond to one solution, and more generally one particular tests sequence
 
-	def __init__(self, solution, record_list):
+	def __init__(self, solution, record_list, order, style):
 		self.solution=solution
 		self.data=record_list
+		self.order=order
+		self.style=style
 
 	def addRecords(self, new_record_list):
 		ridx=0     #running index of older records
@@ -113,6 +115,7 @@ class grapher(object):
 					break
 			else:
 				temp_dataset_list.append(current_dataset)
+		temp_dataset_list.sort(key=lambda x: x.order,reverse=False)
 		self.datasets=temp_dataset_list
 
 		os.chdir(os.path.dirname(result_dir))
@@ -120,10 +123,12 @@ class grapher(object):
 	def _readData(self, file_path):
 	#method that actually grabs x and y data from file and processes them into record objects
 			data_list=[]
-			solution=None
 			x=None
 			y=None
 			y_vals=[]
+			solution=None
+			style=None
+			attribute_dict={"WordFormablePartials":(0,"r^-"), "WordFormableTable":(1,"bs-"), "WordFormablePowerPC":(2,"go-"), "WordFormablePowerHP":(3,"md-")}
 			f = open(file_path,'r')
 			#Here the files are read and parsed
 			for line in f:
@@ -152,7 +157,14 @@ class grapher(object):
 					x=None
 					y_vals=[]
 			f.close()
-			d=dataset(solution,data_list)
+			try:
+				order=attribute_dict[solution][0]
+				style=attribute_dict[solution][1]
+			except KeyError:
+				order=-1
+				style="cp-"
+
+			d=dataset(solution,data_list,order,style)
 			return d
 
 	def combineData(self, dirname_regex):
@@ -174,16 +186,13 @@ class grapher(object):
 		os.chdir(os.path.dirname(result_dir))
 
 	def chart(self):
-	#actually prepares charts. Should not be called by non-sub classes as more definitions are needed
+	#method to prepares charts, this general method is overridded in each subclass
 		fig=plt.figure()
 		ax1=fig.add_subplot(111)
 		for idx,d in enumerate(self.datasets):
-			ax1.plot(d.getXValues(), d.getYValues(), self.point_style_list[idx], label=d.solution)
-		plt.xlim(self.x_lower_bound,self.x_upper_bound)
-		plt.ylim(self.y_lower_bound,self.y_upper_bound)
-		plt.xlabel(self.xlabel)
-		plt.ylabel(self.ylabel)
-		#plt.xscale('log')
+			d.postProcess(False)
+			ax1.plot(d.getXValues(), d.getYValues(), d.style, label=d.solution)
+
 		plt.legend(loc='upper left')
 		plt.show()
 
@@ -191,46 +200,81 @@ class grapherNW(grapher):
 
 	def __init__(self):
 		grapher.__init__(self, "num_words_\d+", "XWORDS:")
-		for d in self.datasets:
-			d.postProcess(lambda x: self.first_num_tokens * x)
 
-		self.point_style_list=['rs-', 'bs-', 'gs-', 'ms-']
-		self.xlabel="Number of words in text file"
-		self.ylabel="Computation Time (Sec)"
-		self.x_lower_bound=0
-		self.x_upper_bound=max([d.data[-1].x_val for d in self.datasets])
-		self.y_lower_bound=0
-		self.y_upper_bound=max([d.data[-1].average_y for d in self.datasets])
+	def chart(self):
+		fig=plt.figure()
+		ax1=fig.add_subplot(111)
+		for idx,d in enumerate(self.datasets):
+			d.postProcess(lambda x: self.first_num_tokens * x)
+			ax1.plot(d.getXValues(), d.getYValues(), d.style, label=d.solution)
+
+		x_lower_bound=0
+		x_upper_bound=max([d.data[-1].x_val for d in self.datasets])
+		y_lower_bound=0
+		y_upper_bound=max([d.data[-1].average_y for d in self.datasets])
+		xlabel="Number of words in text file"
+		ylabel="Computation Time (Sec)"
+
+		plt.xlim(x_lower_bound, x_upper_bound)
+		plt.ylim(y_lower_bound, y_upper_bound)
+		plt.xlabel(xlabel)
+		plt.ylabel(ylabel)
+		plt.legend(loc='upper left')
+		plt.show()
 
 class grapherLB(grapher):
 
 	def __init__(self):
 		grapher.__init__(self, "len_base_\d+", "LENGTH:")
-		for d in self.datasets:
-			d.postProcess(False)
 
-		self.point_style_list=['rs-', 'bs-', 'gs-', 'ms-']
-		self.xlabel="Length of Base String"
-		self.ylabel="Computation Time (Sec)"
-		self.x_lower_bound=0
-		self.x_upper_bound=max([d.data[-1].x_val for d in self.datasets])
-		self.y_lower_bound=0
-		self.y_upper_bound=sorted([d.data[-1].average_y for d in self.datasets])[-2] #second largest last y data point
+	def chart(self):
+		fig=plt.figure()
+		ax1=fig.add_subplot(111)
+		for idx,d in enumerate(self.datasets):
+			d.postProcess(False)
+			ax1.plot(d.getXValues(), d.getYValues(), d.style, label=d.solution)
+
+		x_lower_bound=0
+		x_upper_bound=max([d.data[-1].x_val for d in self.datasets])
+		y_lower_bound=0
+		y_upper_bound=sorted([d.data[-1].average_y for d in self.datasets])[-2] #second largest last y data point
+		xlabel="Length of Base String (Characters)"
+		ylabel="Computation Time (Sec)"
+
+		plt.xlim(x_lower_bound,x_upper_bound)
+		plt.ylim(y_lower_bound,y_upper_bound)
+		plt.xlabel(xlabel)
+		plt.ylabel(ylabel)
+		plt.legend(loc='upper left')
+		plt.show()
 
 class grapherLF(grapher):
 
 	def __init__(self):
 		grapher.__init__(self, "load_factor_\d+", "BINS:")
-		for d in self.datasets:
-			d.postProcess(lambda x: float(2**self.first_base_string_length)/x)
 
-		self.point_style_list=['gs-', 'ms-']
-		self.xlabel="Upper Limit of Load Factor"
-		self.ylabel="Computation Time (Sec)"
-		self.x_lower_bound=0
-		self.x_upper_bound=max([d.data[0].x_val for d in self.datasets])
-		self.y_lower_bound=0
-		self.y_upper_bound=max([d.data[0].average_y for d in self.datasets])
+	def chart(self):
+		fig=plt.figure()
+		ax1=fig.add_subplot(111)
+		for idx,d in enumerate(self.datasets):
+			d.postProcess(lambda x: float(2**self.first_base_string_length)/x)
+			ax1.plot(d.getXValues(), d.getYValues(), d.style, label=d.solution)
+
+		x_lower_bound=min([d.data[-1].x_val for d in self.datasets])
+		x_upper_bound=max([d.data[0].x_val for d in self.datasets])
+		y_lower_bound=0
+		y_upper_bound=max([d.data[0].average_y for d in self.datasets])
+		xlabel="Upper Limit of Load Factor"
+		ylabel="Computation Time (Sec)"
+
+		plt.xscale('log',basex=2)
+		plt.xlim(x_lower_bound,x_upper_bound)
+		plt.ylim(y_lower_bound,y_upper_bound)
+		plt.xlabel(xlabel)
+		plt.ylabel(ylabel)
+		plt.legend(loc='upper left')
+
+		plt.show()
 
 class grapherWC(grapher):
 
@@ -238,16 +282,45 @@ class grapherWC(grapher):
 		grapher.__init__(self, "worst_case_\d+", "LENGTH:")
 		self.combineData("worst_case_E_\d+")
 
-		for d in self.datasets:
+	def chart(self):
+		fig=plt.figure()
+		ax1=fig.add_subplot(121)
+		for idx,d in enumerate(self.datasets):
 			d.postProcess(False)
+			ax1.plot(d.getXValues(), d.getYValues(), d.style, label=d.solution)
 
-		self.point_style_list=['rs-', 'bs-', 'gs-', 'ms-']
-		self.xlabel="Length of Base String and Words in Text File"
-		self.ylabel="Computation Time (Sec)"
-		self.x_lower_bound=0
-		self.x_upper_bound=max([d.data[-1].x_val for d in self.datasets])
-		self.y_lower_bound=0
-		self.y_upper_bound=sorted([d.data[-1].average_y for d in self.datasets])[-2] #second largest last y data point
+		x_lower_bound=0
+		x_upper_bound=max([d.data[16].x_val for d in self.datasets])
+		y_lower_bound=0
+		y_upper_bound=sorted([d.data[16].average_y for d in self.datasets])[-2] #second largest last y data point
+		xlabel="Length of Base String and Words in Text File (Characters)"
+		ylabel="Computation Time (Sec)"
+
+		plt.xlim(x_lower_bound,x_upper_bound)
+		plt.ylim(y_lower_bound,y_upper_bound)
+		plt.xlabel(xlabel)
+		plt.ylabel(ylabel)
+		plt.legend(loc='upper left')
+
+		ax1=fig.add_subplot(122)
+		for idx,d in enumerate(self.datasets):
+			#post processing already done
+			ax1.plot(d.getXValues(), d.getYValues(), d.style, label=d.solution)
+
+		x_lower_bound=0
+		x_upper_bound=max([d.data[-1].x_val for d in self.datasets])
+		y_lower_bound=0
+		y_upper_bound=sorted([d.data[-1].average_y for d in self.datasets])[-2] #second largest last y data point
+		xlabel="Length of Base String and Words in Text File (Characters)"
+		ylabel="Computation Time (Sec)"
+
+		plt.xlim(x_lower_bound,x_upper_bound)
+		plt.ylim(y_lower_bound,y_upper_bound)
+		plt.xlabel(xlabel)
+		plt.ylabel(ylabel)
+		plt.legend(loc='upper left')
+
+		plt.show()
 
 def main():
 	grapher_path=os.path.dirname(os.path.realpath(__file__))
@@ -262,7 +335,7 @@ def main():
 	alice.chart()
 	chelsea.chart()
 	darren.chart()
-	
+
 	os.chdir(cwd_path)
 
 if __name__ == '__main__': main()

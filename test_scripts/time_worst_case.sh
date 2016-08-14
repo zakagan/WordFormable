@@ -75,6 +75,9 @@ for len in ${WC_STR_LEN[@]}; do
 			(time $executable_path$executable $current_str $input_file 1) 2>> $results_file 1> /dev/null
 		done
 	done
+	if [ $len >= 30 ] && [ ${#executables[@]} > 2]; then
+		executables=("${executables[@]:0:2}")  #Removes power set solutions if the length passes a threshold
+	fi
 done
 
 cd $return_dir
