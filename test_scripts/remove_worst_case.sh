@@ -24,6 +24,8 @@ elif [ "${1:0:1}" = "i" ] || [ "${1:0:1}" = "I" ]; then
 	for ((i=25;i<=29;i+=1)); do 
 		WC_STR_LEN+=($i)
 	done
+	WC_STR_LEN+=(32)
+	WC_STR_LEN+=(34)
 else
 	# range of string lengths for the intial worst case scenario
 	for ((i=0;i<=24;i+=1)); do 

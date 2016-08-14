@@ -41,7 +41,8 @@ elif [ "${1:0:1}" = "i" ] || [ "${1:0:1}" = "I" ]; then
 	for ((i=25;i<=29;i+=1)); do 
 		WC_STR_LEN+=($i)
 	done
-	WC_STR_LEN+=(63)
+	WC_STR_LEN+=(32)
+	WC_STR_LEN+=(34)
 else
 	# Non extended specifics, just a range of 0 to 24 length base strings / averag length in file
 	for ((i=0;i<=24;i+=1)); do 
