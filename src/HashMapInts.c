@@ -12,9 +12,9 @@ HashMap* hashMapCreate(const size_t size)
     }
 
     m->size = size;
-    m->map = calloc(size, sizeof(unsigned int));
+    m->map = calloc(size, sizeof(unsigned char));
     if (m->map==NULL){
-        printf("Memory allocation failed: unsigned int pointer m->map\n");
+        printf("Memory allocation failed: unsigned char pointer m->map\n");
         exit(0);
     }
 
@@ -29,13 +29,12 @@ void hashMapDestroy(HashMap* m)
 }
 
 /* Updates the validity integer at a hash map entry determined by the hash function.
- Collisions only result in an increased ineteger count for its respective hash entry,
- there is no chaining */
+ Collisions are not counted, there is no chaining */
 void hashMapUpdate(HashMap* m, const char* str)
 {
     size_t h;
     h = communicativeStringHash(str) % m->size;
-    m->map[h]++;                 //keeps tally of entries to this location on the hash map
+    m->map[h]=1;                                  
 }
 
 // returns 1 if the character table exists in hash table, returns 0 otherwise

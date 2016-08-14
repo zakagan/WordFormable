@@ -19,15 +19,22 @@ temp_name="temp"
 temp_file=$path$temp_name$extension
 
 WC_STR_LEN=()
-if [ "${1:0:1}" != "e" ] && [ "${1:0:1}" != "E" ]; then
-	for ((i=0;i<=24;i+=1)); do 
-		WC_STR_LEN+=($i)
-	done
-else
+if [ "${1:0:1}" = "e" ] || [ "${1:0:1}" = "E" ]; then
+	# Test string lengths for the extended worst case scenario
 	for ((i=30;i<=63;i+=6)); do 
 		WC_STR_LEN+=($i)
 	done
 	WC_STR_LEN+=(63)
+elif [ "${1:0:1}" = "i" ] || [ "${1:0:1}" = "I" ]; then
+	# Test string lengths for the intermediate worst case scenario (connecting non-extended and extended cases)
+	for ((i=25;i<=29;i+=1)); do 
+		WC_STR_LEN+=($i)
+	done
+else
+	for ((i=0;i<=24;i+=1)); do 
+	# Test string lengths for the intial 0 to 24 string length range 
+		WC_STR_LEN+=($i)
+	done
 fi
 
 for len in ${WC_STR_LEN[@]}; do

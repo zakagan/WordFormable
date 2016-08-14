@@ -24,18 +24,29 @@ test_quotes="\"\""
 test_str="zyxwvutsrqponmlkjihgfedcba9876543210-ZYXWVUTSRQPONMLKJIHGFEDCBA"
 
 WC_STR_LEN=()
-if [ "${1:0:1}" != "e" ] && [ "${1:0:1}" != "E" ]; then
-	for ((i=0;i<=24;i+=1)); do 
-		WC_STR_LEN+=($i)
-	done
-else
+if [ "${1:0:1}" = "e" ] || [ "${1:0:1}" = "E" ]; then
+	# Test specifics for the extended worst case scenario
 	results_path="${results_path}E_"
 	results_prefix="${results_prefix}E_"
-	executables=("WordFormablePartials" "WordFormableTable" "WordFormablePowerHP")
+	executables=("WordFormablePartials" "WordFormableTable")
 	for ((i=30;i<=63;i+=6)); do 
 		WC_STR_LEN+=($i)
 	done
 	WC_STR_LEN+=(63)
+elif [ "${1:0:1}" = "i" ] || [ "${1:0:1}" = "I" ]; then
+	# Test specifics for the intermediate (partially extended) worst case scenario
+	results_path="${results_path}I_"
+	results_prefix="${results_prefix}I_"
+	executables=("WordFormablePartials" "WordFormableTable" "WordFormablePowerHP")
+	for ((i=25;i<=29;i+=1)); do 
+		WC_STR_LEN+=($i)
+	done
+	WC_STR_LEN+=(63)
+else
+	# Non extended specifics, just a range of 0 to 24 length base strings / averag length in file
+	for ((i=0;i<=24;i+=1)); do 
+		WC_STR_LEN+=($i)
+	done
 fi
 
 n=0
@@ -58,6 +69,11 @@ done
 
 #Tests
 for len in ${WC_STR_LEN[@]}; do
+	#Removes power set solutions if the length passes a threshold
+	if [ $len -ge 30 ] && [ ${#executables[@]} -gt 2]; then
+		executables=("${executables[@]:0:2}")
+	fi
+	# excutes tests and saves them to their respective files
 	echo "Testing WC file with length $len"
 	input_file=$input_prefix$len$extension
 	if [ $len = 0 ]; then
@@ -75,9 +91,6 @@ for len in ${WC_STR_LEN[@]}; do
 			(time $executable_path$executable $current_str $input_file 1) 2>> $results_file 1> /dev/null
 		done
 	done
-	if [ $len >= 30 ] && [ ${#executables[@]} > 2]; then
-		executables=("${executables[@]:0:2}")  #Removes power set solutions if the length passes a threshold
-	fi
 done
 
 cd $return_dir

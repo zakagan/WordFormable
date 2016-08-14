@@ -19,7 +19,7 @@ int main (int argc, char **argv) {
 	const char *fname;
 	FILE *input_file;
 	char *base_str, *c_buff;
-	unsigned int max_length, bucket_exponent, silence=0;
+	unsigned int max_length, silence=0;
 	size_t buckets=0;
 
 	//Determines which help message to display, depending on the solution flag
@@ -63,16 +63,8 @@ int main (int argc, char **argv) {
 			buckets = atoi(argv[4]);   //if invalid numeric, buckets will be set to 0 and replace in next conditional
 		} 
 		if (buckets <= 0) {
-			bucket_exponent=max_length+2; //2 is added to make the loadfactor aproximately 0.25
-			// next step is done to prevent overflow from rightshifting with values from longer base strings
-			if (bucket_exponent < 32) {
-				buckets = (1 << bucket_exponent)-1;
-			}
-			else {
-				buckets= ~0;
-				// In cases where the base string is too long, the number of buckets is set to the unsigned max
-			}
-			
+			// below size_t conversion must be made to enable right shifts beyond 32 bits, essential for very long base strings
+			buckets = (((size_t) 1) << (max_length+2))-1;
 			if (argc>=5) {
 				printf("Invalid entry for num of hash buckets: must be a positive, non-zero integer.\n"
 					"Defaulting to %zu hash buckets.\n",buckets);

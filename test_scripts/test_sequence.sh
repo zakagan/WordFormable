@@ -32,6 +32,16 @@ echo "Timing solutions over length of base string in the initial worst case scen
 echo "Removing initial worst case files."
 ./remove_worst_case.sh
 
+####GENERATES INTERMEDIATE WORST CASE TESTING FILES####
+echo "Generating initial worst case test files."
+./setup_worst_case.sh i
+####TEST SCRIPTS FOR INTERMEDIATE WORST CASE SCENARIO####
+echo "Timing solutions over length of base string in the initial worst case scenario."
+./time_worst_case.sh i
+####DELETES INTERMEDIATE WORST CASE TESTING FILES####
+echo "Removing initial worst case files."
+./remove_worst_case.sh i
+
 ####GENERATES EXTENDED WORST CASE TESTING FILES####
 echo "Generating extended worst case test files."
 ./setup_worst_case.sh e
