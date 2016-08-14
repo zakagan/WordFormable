@@ -19,7 +19,8 @@ int main (int argc, char **argv) {
 	const char *fname;
 	FILE *input_file;
 	char *base_str, *c_buff;
-	int max_length, buckets=0, silence=0;
+	unsigned int max_length, bucket_exponent, silence=0;
+	size_t buckets=0;
 
 	//Determines which help message to display, depending on the solution flag
 	#if !defined(USE_POWERSTRING) && !defined(USE_POWERINTS)
@@ -58,14 +59,23 @@ int main (int argc, char **argv) {
 
 	//depending on if the solution relies on a hash map, this will provide a default bucket size
 	#if defined(USE_POWERSTRING) || defined(USE_POWERINTS)
-		if (argc==5) {
+		if (argc>=5) {
 			buckets = atoi(argv[4]);   //if invalid numeric, buckets will be set to 0 and replace in next conditional
 		} 
 		if (buckets <= 0) {
-			buckets = (1 << (max_length+2))-1;
-			if (argc==5) {
+			bucket_exponent=max_length+2; //2 is added to make the loadfactor aproximately 0.25
+			// next step is done to prevent overflow from rightshifting with values from longer base strings
+			if (bucket_exponent < 32) {
+				buckets = (1 << bucket_exponent)-1;
+			}
+			else {
+				buckets= ~0;
+				// In cases where the base string is too long, the number of buckets is set to the unsigned max
+			}
+			
+			if (argc>=5) {
 				printf("Invalid entry for num of hash buckets: must be a positive, non-zero integer.\n"
-					"Defaulting to %d hash buckets",buckets);
+					"Defaulting to %zu hash buckets.\n",buckets);
 			}
 		}
 	#endif

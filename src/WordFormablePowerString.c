@@ -26,7 +26,7 @@ void calculatePowerSet(const char *str, const int str_length, HashMap* power_set
  is considered, and then it is looked up within the hash map. If there is a hash hit then the chain at that hash entry is searched for
  a string matching the token. If a match is found then the token is determined to be formable. Finally the data gathered is send to
  the reportResults function */
-void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, const int max_length, const int silence, const int buckets) 
+void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, const unsigned int max_length, const unsigned int silence, const size_t buckets) 
  {  
 	Node* temp_stack;
 	int char_count=0, word_count=0, formable_count=0, buff_index=0;

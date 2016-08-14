@@ -25,7 +25,7 @@ void calculatePowerSet(const char *str, const int str_length, HashMap* power_set
 /* Parses the provided txtfile, determines indvigual word tokens, and then attempts to check their validity. First the token's length
  is considered, and then it is looked up within the hash map of integers. If a hash hit is found, the token is checked via the inclided 
  checkWord function. Finally the data gathered is send to the reportResults function */
-void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, const int max_length, const int silence, const int buckets) 
+void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, unsigned const int max_length, unsigned const int silence, const size_t buckets) 
  {  
 	int char_count=0, word_count=0, formable_count=0, buff_index=0;
 	int c;                                             //character returned from fgetc

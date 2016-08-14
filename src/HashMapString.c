@@ -1,7 +1,7 @@
 #include "HashMapString.h"
 
 // Creates memory space for a hash map of character & their frequency values within the base string
-HashMap* hashMapCreate(size_t size)
+HashMap* hashMapCreate(const size_t size)
 {
     HashMap* m;
 
