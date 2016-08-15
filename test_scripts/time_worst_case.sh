@@ -70,13 +70,15 @@ done
 
 #Tests
 for len in ${WC_STR_LEN[@]}; do
-	#Removes power set solutions if the length passes a threshold
-	if [ $len -ge 30 ] && [ ${#executables[@]} -gt 2]; then
-		executables=("${executables[@]:0:2}")
-	fi
-	# excutes tests and saves them to their respective files
 	echo "Testing WC file with length $len"
 	input_file=$input_prefix$len$extension
+
+	#Removes power set solutions if the length passes a threshold
+	if [ $len -ge 30 ] && [ ${#executables[@]} -gt 2 ]; then
+		executables=("${executables[@]:0:2}")
+	fi
+	
+	# excutes tests and saves them to their respective files
 	if [ $len = 0 ]; then
 		current_str=$test_quotes
 	else
