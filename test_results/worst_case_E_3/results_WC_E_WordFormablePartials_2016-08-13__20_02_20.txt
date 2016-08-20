@@ -1,0 +1,63 @@
+Testing K & M: worst case string lengths
+SOLUTION: WordFormablePartials
+FILE: 
+
+string used for testing: zyxwvutsrqponmlkjihgfedcba9876543210-ZYXWVUTSRQPONMLKJIHGFEDCBA
+
+LENGTH: 30
+time ../WordFormablePartials zyxwvutsrqponmlkjihgfedcba9876 ../test_files/worst_case/worst_case30.txt 1
+Base string length: 30
+Number of chars read from file: 1006632960
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 30.00
+Percent of formable words: 100.00%
+
+real	1m33.011s
+user	1m32.776s
+sys	0m0.144s
+
+real	1m32.933s
+user	1m32.848s
+sys	0m0.076s
+
+real	1m38.299s
+user	1m38.216s
+sys	0m0.076s
+
+real	1m32.715s
+user	1m32.652s
+sys	0m0.056s
+
+real	1m32.176s
+user	1m32.056s
+sys	0m0.112s
+
+LENGTH: 36
+time ../WordFormablePartials zyxwvutsrqponmlkjihgfedcba9876543210 ../test_files/worst_case/worst_case36.txt 1
+Base string length: 36
+Number of chars read from file: 1207959552
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 36.00
+Percent of formable words: 100.00%
+
+real	1m52.215s
+user	1m51.432s
+sys	0m0.264s
+
+real	1m50.424s
+user	1m50.324s
+sys	0m0.088s
+
+real	1m50.355s
+user	1m50.268s
+sys	0m0.080s
+
+real	1m50.236s
+user	1m50.156s
+sys	0m0.072s
+
+real	1m50.175s
+user	1m50.020s
+sys	0m0.144s

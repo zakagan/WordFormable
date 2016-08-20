@@ -1,0 +1,179 @@
+Testing K & M: worst case string lengths
+SOLUTION: WordFormableTable
+FILE: 
+
+string used for testing: zyxwvutsrqponmlkjihgfedcba9876543210-ZYXWVUTSRQPONMLKJIHGFEDCBA
+
+LENGTH: 25
+time ../WordFormableTable zyxwvutsrqponmlkjihgfedcb ../test_files/worst_case/worst_case25.txt 1
+Base string length: 25
+Number of chars read from file: 838860800
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 25.00
+Percent of formable words: 100.00%
+
+real	0m16.905s
+user	0m16.816s
+sys	0m0.080s
+
+real	0m16.896s
+user	0m16.824s
+sys	0m0.068s
+
+real	0m16.894s
+user	0m16.848s
+sys	0m0.044s
+
+real	0m16.894s
+user	0m16.800s
+sys	0m0.092s
+
+real	0m16.892s
+user	0m16.828s
+sys	0m0.060s
+
+LENGTH: 26
+time ../WordFormableTable zyxwvutsrqponmlkjihgfedcba ../test_files/worst_case/worst_case26.txt 1
+Base string length: 26
+Number of chars read from file: 872415232
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 26.00
+Percent of formable words: 100.00%
+
+real	0m17.796s
+user	0m17.704s
+sys	0m0.084s
+
+real	0m17.440s
+user	0m17.384s
+sys	0m0.052s
+
+real	0m17.457s
+user	0m17.392s
+sys	0m0.060s
+
+real	0m17.599s
+user	0m17.508s
+sys	0m0.088s
+
+real	0m17.480s
+user	0m17.400s
+sys	0m0.076s
+
+LENGTH: 27
+time ../WordFormableTable zyxwvutsrqponmlkjihgfedcba9 ../test_files/worst_case/worst_case27.txt 1
+Base string length: 27
+Number of chars read from file: 905969664
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 27.00
+Percent of formable words: 100.00%
+
+real	0m18.579s
+user	0m18.512s
+sys	0m0.060s
+
+real	0m17.945s
+user	0m17.852s
+sys	0m0.088s
+
+real	0m17.975s
+user	0m17.908s
+sys	0m0.064s
+
+real	0m17.958s
+user	0m17.888s
+sys	0m0.068s
+
+real	0m17.983s
+user	0m17.924s
+sys	0m0.056s
+
+LENGTH: 28
+time ../WordFormableTable zyxwvutsrqponmlkjihgfedcba98 ../test_files/worst_case/worst_case28.txt 1
+Base string length: 28
+Number of chars read from file: 939524096
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 28.00
+Percent of formable words: 100.00%
+
+real	0m18.623s
+user	0m18.528s
+sys	0m0.088s
+
+real	0m18.439s
+user	0m18.368s
+sys	0m0.068s
+
+real	0m18.438s
+user	0m18.352s
+sys	0m0.084s
+
+real	0m18.408s
+user	0m18.324s
+sys	0m0.080s
+
+real	0m18.615s
+user	0m18.516s
+sys	0m0.096s
+
+LENGTH: 29
+time ../WordFormableTable zyxwvutsrqponmlkjihgfedcba987 ../test_files/worst_case/worst_case29.txt 1
+Base string length: 29
+Number of chars read from file: 973078528
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 29.00
+Percent of formable words: 100.00%
+
+real	0m19.077s
+user	0m18.996s
+sys	0m0.072s
+
+real	0m19.075s
+user	0m19.004s
+sys	0m0.068s
+
+real	0m19.011s
+user	0m18.952s
+sys	0m0.056s
+
+real	0m19.183s
+user	0m19.116s
+sys	0m0.064s
+
+real	0m19.072s
+user	0m19.012s
+sys	0m0.056s
+
+LENGTH: 32
+time ../WordFormableTable zyxwvutsrqponmlkjihgfedcba987654 ../test_files/worst_case/worst_case32.txt 1
+Base string length: 32
+Number of chars read from file: 1073741824
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 32.00
+Percent of formable words: 100.00%
+
+real	0m22.879s
+user	0m22.748s
+sys	0m0.124s
+
+real	0m20.832s
+user	0m20.732s
+sys	0m0.096s
+
+real	0m21.661s
+user	0m21.568s
+sys	0m0.088s
+
+real	0m20.809s
+user	0m20.536s
+sys	0m0.268s
+
+real	0m22.151s
+user	0m21.936s
+sys	0m0.212s

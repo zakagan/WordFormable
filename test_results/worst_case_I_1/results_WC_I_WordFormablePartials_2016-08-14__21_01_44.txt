@@ -1,0 +1,208 @@
+Testing K & M: worst case string lengths
+SOLUTION: WordFormablePartials
+FILE: 
+
+string used for testing: zyxwvutsrqponmlkjihgfedcba9876543210-ZYXWVUTSRQPONMLKJIHGFEDCBA
+
+LENGTH: 25
+time ../WordFormablePartials zyxwvutsrqponmlkjihgfedcb ../test_files/worst_case/worst_case25.txt 1
+Base string length: 25
+Number of chars read from file: 838860800
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 25.00
+Percent of formable words: 100.00%
+
+real	1m17.010s
+user	1m16.916s
+sys	0m0.084s
+
+real	1m17.812s
+user	1m17.752s
+sys	0m0.052s
+
+real	1m16.955s
+user	1m16.868s
+sys	0m0.080s
+
+real	1m17.382s
+user	1m17.296s
+sys	0m0.080s
+
+real	1m16.971s
+user	1m16.916s
+sys	0m0.048s
+
+LENGTH: 26
+time ../WordFormablePartials zyxwvutsrqponmlkjihgfedcba ../test_files/worst_case/worst_case26.txt 1
+Base string length: 26
+Number of chars read from file: 872415232
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 26.00
+Percent of formable words: 100.00%
+
+real	1m19.813s
+user	1m19.724s
+sys	0m0.076s
+
+real	1m19.821s
+user	1m19.752s
+sys	0m0.060s
+
+real	1m19.848s
+user	1m19.784s
+sys	0m0.056s
+
+real	1m19.801s
+user	1m19.724s
+sys	0m0.068s
+
+real	1m20.320s
+user	1m20.236s
+sys	0m0.076s
+
+LENGTH: 27
+time ../WordFormablePartials zyxwvutsrqponmlkjihgfedcba9 ../test_files/worst_case/worst_case27.txt 1
+Base string length: 27
+Number of chars read from file: 905969664
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 27.00
+Percent of formable words: 100.00%
+
+real	1m22.685s
+user	1m22.584s
+sys	0m0.088s
+
+real	1m22.641s
+user	1m22.536s
+sys	0m0.096s
+
+real	1m23.588s
+user	1m23.492s
+sys	0m0.088s
+
+real	1m22.634s
+user	1m22.516s
+sys	0m0.108s
+
+real	1m22.837s
+user	1m22.748s
+sys	0m0.080s
+
+LENGTH: 28
+time ../WordFormablePartials zyxwvutsrqponmlkjihgfedcba98 ../test_files/worst_case/worst_case28.txt 1
+Base string length: 28
+Number of chars read from file: 939524096
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 28.00
+Percent of formable words: 100.00%
+
+real	1m25.230s
+user	1m25.144s
+sys	0m0.072s
+
+real	1m25.212s
+user	1m25.148s
+sys	0m0.056s
+
+real	1m25.237s
+user	1m25.156s
+sys	0m0.072s
+
+real	1m25.220s
+user	1m25.116s
+sys	0m0.096s
+
+real	1m28.259s
+user	1m28.152s
+sys	0m0.100s
+
+LENGTH: 29
+time ../WordFormablePartials zyxwvutsrqponmlkjihgfedcba987 ../test_files/worst_case/worst_case29.txt 1
+Base string length: 29
+Number of chars read from file: 973078528
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 29.00
+Percent of formable words: 100.00%
+
+real	1m28.887s
+user	1m28.808s
+sys	0m0.068s
+
+real	1m34.986s
+user	1m34.872s
+sys	0m0.108s
+
+real	1m31.216s
+user	1m31.116s
+sys	0m0.092s
+
+real	1m32.480s
+user	1m32.384s
+sys	0m0.088s
+
+real	1m28.887s
+user	1m28.820s
+sys	0m0.060s
+
+LENGTH: 32
+time ../WordFormablePartials zyxwvutsrqponmlkjihgfedcba987654 ../test_files/worst_case/worst_case32.txt 1
+Base string length: 32
+Number of chars read from file: 1073741824
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 32.00
+Percent of formable words: 100.00%
+
+real	1m36.880s
+user	1m36.800s
+sys	0m0.068s
+
+real	1m36.899s
+user	1m36.784s
+sys	0m0.108s
+
+real	1m37.051s
+user	1m36.964s
+sys	0m0.080s
+
+real	1m36.919s
+user	1m36.792s
+sys	0m0.120s
+
+real	1m37.784s
+user	1m37.716s
+sys	0m0.060s
+
+LENGTH: 34
+time ../WordFormablePartials zyxwvutsrqponmlkjihgfedcba98765432 ../test_files/worst_case/worst_case34.txt 1
+Base string length: 34
+Number of chars read from file: 1140850688
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 34.00
+Percent of formable words: 100.00%
+
+real	1m44.111s
+user	1m43.960s
+sys	0m0.140s
+
+real	1m43.842s
+user	1m43.712s
+sys	0m0.124s
+
+real	1m44.223s
+user	1m44.088s
+sys	0m0.128s
+
+real	1m43.765s
+user	1m43.656s
+sys	0m0.100s
+
+real	1m43.802s
+user	1m43.692s
+sys	0m0.100s
