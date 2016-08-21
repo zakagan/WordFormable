@@ -34,7 +34,7 @@ void hashMapUpdate(HashMap* m, const char* str)
 {
     size_t h;
     h = communicativeStringHash(str) % m->size;
-    m->map[h]=1;                                  
+    m->map[h]='\1';     //Sets 1 byte size validity element equal to an unsigned char literal (or close enough) '\1'
 }
 
 // returns 1 if the character table exists in hash table, returns 0 otherwise
