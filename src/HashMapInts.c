@@ -12,9 +12,9 @@ HashMap* hashMapCreate(const size_t size)
     }
 
     m->size = size;
-    m->map = calloc(size, sizeof(unsigned short));
+    m->map = calloc(size, sizeof(int));
     if (m->map==NULL){
-        printf("Memory allocation failed: unsigned short pointer m->map\n");
+        printf("Memory allocation failed: int pointer m->map\n");
         exit(0);
     }
 
@@ -35,7 +35,7 @@ void hashMapUpdate(HashMap* m, const char* str)
     size_t h;
     h = communicativeStringHash(str) % m->size;
     if (!m->map[h]) {
-        m->map[h]=(unsigned short) 1;     //Sets 1 byte size validity element equal to an casted unsigned short 1
+        m->map[h]= 1;     //Sets 1 byte size validity element equal to int 1
     }
 }
 
@@ -44,7 +44,7 @@ int checkValidityHashMap(const HashMap* m, const char* str) {
     size_t h;
     h = communicativeStringHash(str) % m->size;
     if(m->map[h]) {
-            return 1;
+        return 1;
     } else {
         return 0;
     }
