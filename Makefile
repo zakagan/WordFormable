@@ -38,8 +38,8 @@ MAIN_OBJ:= $(addprefix $(OBJECT_DIR)/,$(MAIN_OBJ))
 
 METHOD_1_OBJ = $(MAIN_1) Parsing.o WordFormablePartials.o WordSort.o CheckWordByPartials.o
 METHOD_2_OBJ = $(MAIN_2) Parsing.o WordFormableTable.o CharTable.o
-METHOD_3_OBJ = $(MAIN_3) Parsing.o WordFormablePowerString.o HashMapString.o CommunicativeHashFunction.o SinglyLinkedString.o WordSort.o
-METHOD_4_OBJ = $(MAIN_4) Parsing.o WordFormablePowerInts.o CheckWordByPartials.o HashMapInts.o CommunicativeHashFunction.o SinglyLinkedString.o WordSort.o
+METHOD_3_OBJ = $(MAIN_3) Parsing.o WordFormablePowerString.o HashMapString.o CommunicativeHashFunction.o SinglyLinkedList.o WordSort.o
+METHOD_4_OBJ = $(MAIN_4) Parsing.o WordFormablePowerInts.o CheckWordByPartials.o HashMapInts.o CommunicativeHashFunction.o SinglyLinkedList.o WordSort.o
 
 METHOD_1_FILE = $(addprefix $(OBJECT_DIR)/, $(METHOD_1_OBJ))
 METHOD_2_FILE = $(addprefix $(OBJECT_DIR)/, $(METHOD_2_OBJ))

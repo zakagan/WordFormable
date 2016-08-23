@@ -51,7 +51,7 @@ int hashMapInsert(HashMap* m, Node* n)
 				//printf("\t%s\n", " Duplicate detected!");
 				return 0;   // Duplicate are not added again to the chain
 			}
-			chained_entry = chained_entry->next;
+			chained_entry = chained_entry->prev;
 		}
 		//printf("\t%s\n", " Collision detected!");
 		push(&m->map[h], n->S, n->length,0);

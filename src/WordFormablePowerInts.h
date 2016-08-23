@@ -6,7 +6,7 @@
 #define WORDFORMABLEPOWERINTS_H
 
 #include "CharTable.h"
-#include "SinglyLinkedString.h"
+#include "SinglyLinkedList.h"
 #include "HashMapInts.h"
 #include "CheckWordByPartials.h"
 #include "WordSort.h"

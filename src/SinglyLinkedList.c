@@ -1,4 +1,4 @@
-#include "SinglyLinkedString.h"
+#include "SinglyLinkedList.h"
 
 // creates a node for a singularly linked list and appends itself to the top of the stack 
 void push(Node **head_node, const char* cstring, const int cstring_length, const int last_index) {
@@ -16,17 +16,17 @@ void push(Node **head_node, const char* cstring, const int cstring_length, const
 	strncpy(temp_node->S,cstring,cstring_length);
 
 	temp_node->length = cstring_length;
-	temp_node->last_index = last_index;
-	temp_node->next = *head_node;               // Next is really the previously pushed node
+	temp_node->last_index = last_index;   // Used to benchmark the start of when chars should be appended when calculating power set
+	temp_node->prev = *head_node;         // the previously pushed node
 	*head_node =temp_node;
 } 
 
 /* removes the top of the stack and returns it */
 Node* pop(Node **head_node) {
-		Node *temp_node = *head_node; // grab the current head
-		*head_node = temp_node->next; // remove head from stack
-		temp_node->next = 0;	
-		return temp_node;	
+	Node *temp_node = *head_node; // grab the current head
+	*head_node = temp_node->prev; // remove head from stack
+	temp_node->prev = NULL;	
+	return temp_node;	
 }
 
 // frees a single node
@@ -46,7 +46,7 @@ void destroyStack(Node *stack) {
 int checkStackForString(const Node* n, const char* sorted_string, const int str_length) {
     while(n) {
         if (strncmp(sorted_string, n->S, str_length)!=0) {
-            n = n->next;
+            n = n->prev;
         } else {
             return 1;
         }

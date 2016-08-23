@@ -7,7 +7,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "SinglyLinkedString.h"
+#include "SinglyLinkedList.h"
 #include "CommunicativeHashFunction.h"
 
 //A list of Nodes, indexed by hash values
