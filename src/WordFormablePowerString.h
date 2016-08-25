@@ -6,7 +6,7 @@
 #define WORDFORMABLEPOWERSTRING_H
 
 #include "CharTable.h"
-#include "SinglyLinkedString.h"
+#include "SinglyLinkedList.h"
 #include "HashMapString.h"
 #include "WordSort.h"
 #include "Parsing.h"

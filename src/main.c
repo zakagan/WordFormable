@@ -10,6 +10,8 @@
 	#include "WordFormablePowerString.h"
 #elif USE_POWERINTS
 	#include "WordFormablePowerInts.h"
+#elif USE_QUEUE
+	#include "WordFormableQueue.h"
 #else
 	#error "Solution flag must be specified during linking, check the Makefile.\n"
 #endif
