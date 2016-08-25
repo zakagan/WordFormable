@@ -21,7 +21,7 @@ executable_path="../"
 executables=("WordFormablePartials" "WordFormableTable" "WordFormablePowerPC" "WordFormablePowerHP" "WordFormableQueue")
 
 single_executable=$1
-if [ -n $single_executable ] && [ $single_executable -ge "0" -a $single_executable -le "4"]; then
+if [ -n $single_executable ] && [ $single_executable -ge "0" -a $single_executable -le "4" ]; then
 	executables=("${executables[@]:$single_executable:1}")
 fi
 

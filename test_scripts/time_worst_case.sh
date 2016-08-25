@@ -21,7 +21,7 @@ executable_path="../"
 executables=("WordFormablePartials" "WordFormableTable" "WordFormablePowerPC" "WordFormablePowerHP" "WordFormableQueue")
 
 single_executable=$2
-if [ -n $single_executable ] && [ $single_executable -ge "0" -a $single_executable -le "4"]; then
+if [ -n $single_executable ] && [ $single_executable -ge "0" -a $single_executable -le "4" ]; then
 	executables=("${executables[@]:$single_executable:1}")
 fi
 
@@ -33,7 +33,7 @@ if [ "${1:0:1}" = "e" ] || [ "${1:0:1}" = "E" ]; then
 	# Test specifics for the extended worst case scenario
 	results_path="${results_path}E_"
 	results_prefix="${results_prefix}E_"
-	executables=executables=("${executables[@]:0:2}" "${executables[@]:4:1}")
+	executables=("${executables[@]:0:2}" "${executables[@]:4:1}")
 	for ((i=30;i<=63;i+=6)); do 
 		WC_STR_LEN+=($i)
 	done
