@@ -18,7 +18,12 @@ results_prefix="results_WC_"
 results_suffix="_${time_stamp}${extension}"
 
 executable_path="../"
-executables=("WordFormablePartials" "WordFormableTable" "WordFormablePowerPC" "WordFormablePowerHP")
+executables=("WordFormablePartials" "WordFormableTable" "WordFormablePowerPC" "WordFormablePowerHP" "WordFormableQueue")
+
+single_executable=$2
+if [ -n $single_executable ] && [ $single_executable -ge "0" -a $single_executable -le "4"]; then
+	executables=("${executables[@]:$single_executable:1}")
+fi
 
 test_quotes="\"\""
 test_str="zyxwvutsrqponmlkjihgfedcba9876543210-ZYXWVUTSRQPONMLKJIHGFEDCBA"
@@ -28,7 +33,7 @@ if [ "${1:0:1}" = "e" ] || [ "${1:0:1}" = "E" ]; then
 	# Test specifics for the extended worst case scenario
 	results_path="${results_path}E_"
 	results_prefix="${results_prefix}E_"
-	executables=("WordFormablePartials" "WordFormableTable")
+	executables=executables=("${executables[@]:0:2}" "${executables[@]:4:1}")
 	for ((i=30;i<=63;i+=6)); do 
 		WC_STR_LEN+=($i)
 	done
@@ -37,7 +42,7 @@ elif [ "${1:0:1}" = "i" ] || [ "${1:0:1}" = "I" ]; then
 	# Test specifics for the intermediate (partially extended) worst case scenario
 	results_path="${results_path}I_"
 	results_prefix="${results_prefix}I_"
-	executables=("WordFormablePartials" "WordFormableTable" "WordFormablePowerHP")
+	executables=("${executables[@]:0:2}" "${executables[@]:3:2}")
 	for ((i=25;i<=29;i+=1)); do 
 		WC_STR_LEN+=($i)
 	done
@@ -74,8 +79,12 @@ for len in ${WC_STR_LEN[@]}; do
 	input_file=$input_prefix$len$extension
 
 	#Removes power set solutions if the length passes a threshold
-	if [ $len -ge 30 ] && [ ${#executables[@]} -gt 2 ]; then
-		executables=("${executables[@]:0:2}")
+	if [ $len -ge 30 ] && [ -z $single_executable ]; then
+		if  [ ${#executables[@]} -gt 4 ]; then
+			executables=("${executables[@]:0:2}" "${executables[@]:4:1}")
+		elif [ ${#executables[@]} -gt 3 ]; then
+			executables=("${executables[@]:0:2}" "${executables[@]:3:1}")
+		fi
 	fi
 	
 	# excutes tests and saves them to their respective files

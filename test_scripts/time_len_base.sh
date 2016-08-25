@@ -18,7 +18,12 @@ results_prefix="results_LB_"
 results_suffix="_${time_stamp}${extension}"
 
 executable_path="../"
-executables=("WordFormablePartials" "WordFormableTable" "WordFormablePowerPC" "WordFormablePowerHP")
+executables=("WordFormablePartials" "WordFormableTable" "WordFormablePowerPC" "WordFormablePowerHP" "WordFormableQueue")
+
+single_executable=$1
+if [ -n $single_executable ] && [ $single_executable -ge "0" -a $single_executable -le "4"]; then
+	executables=("${executables[@]:$single_executable:1}")
+fi
 
 base_null=("\"\"" "\"\"" "\"\"" "\"\"" "\"\"")
 base_strings=()
@@ -75,8 +80,3 @@ for len in ${BASE_STR_LEN[@]}; do
 done
 
 cd $return_dir 
-
-### What a slow computation
-### real	40m31.513s
-### user	40m31.949s
-### sys	0m0.336s

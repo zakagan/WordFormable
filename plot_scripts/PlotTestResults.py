@@ -75,7 +75,13 @@ class Grapher(object):
 			y_vals=[]
 			solution=None
 			style=None
-			attribute_dict={"WordFormablePartials":(4,"r^-"), "WordFormableTable":(3,"bs-"), "WordFormablePowerPC":(2,"go-"), "WordFormablePowerHP":(1,"md-")}
+			attribute_dict={
+				"WordFormableQueue":(5,"co-"), 
+				"WordFormablePartials":(4,"ro-"), 
+				"WordFormableTable":(3,"bo-"), 
+				"WordFormablePowerPC":(2,"gs-"), 
+				"WordFormablePowerHP":(1,"ms-")
+				}
 			try:
 				f = open(file_path,'r')
 			except OSError as err:
@@ -110,7 +116,7 @@ class Grapher(object):
 					x=None
 					y_vals=[]
 			f.close()
-			order,style=attribute_dict.get(solution, (-1,"cp-"))
+			order,style=attribute_dict.get(solution, (-1,"kx-"))
 
 			d=Dataset(solution,data_list,order,style)
 			return d
