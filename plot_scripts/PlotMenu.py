@@ -4,7 +4,7 @@ from PlotTestResults import filterDirsByRegex, GrapherNW, GrapherLB, GrapherLF, 
 def indexedDictFromList(provided_list):
 	output_dict={}
 	for idx,item in enumerate(provided_list):
-		output_dict[idx]=item
+		output_dict[idx+1]=item
 	return output_dict
 
 def menuFromDict(menu_dict,message_str=None):
@@ -12,8 +12,7 @@ def menuFromDict(menu_dict,message_str=None):
 		print(message_str)
 	keys_list=sorted(list(menu_dict.keys()),reverse=False)
 	for key in keys_list:
-		print(key, menu_dict[key])
-	print("")
+		print("{0}{1}".format(str(key).ljust(5), menu_dict[key]))
 
 def menuSelect():
 	selection=input("Please Select: ")
@@ -37,7 +36,7 @@ def grapherMenu(grapher_subclass, dirname_regex, graph_name=""):
 		if display_menu_bool:
 			menuFromDict(test_dict)
 		selection=menuSelect()
-		if selection in range(0,num_options-1) and selection<num_options-2:
+		if selection in range(1,num_options) and selection<num_options-1:
 			dir_path=test_dict.pop(selection, None)
 			display_menu_bool=True
 			if not intialized_bool:
@@ -45,10 +44,10 @@ def grapherMenu(grapher_subclass, dirname_regex, graph_name=""):
 				intialized_bool=True
 			else:
 				current_grapher.combineData(os.path.realpath(dir_path))
-		elif intialized_bool and selection==num_options-2:
+		elif intialized_bool and selection==num_options-1:
 			current_grapher.chart()
 			break
-		elif selection==num_options-1:
+		elif selection==num_options:
 			break
 		elif selection=="q":
 			os.chdir(cwd_path)
@@ -60,30 +59,30 @@ def grapherMenu(grapher_subclass, dirname_regex, graph_name=""):
 def main():
 
 	main_menu_dict={
-		0: "...the number of words in text file [NW]",
-		1: "...the length of the base string [LB]",
-		2: "...the load factor of hash function solutions [LF]",
-		3: "...the worst case length of average word in file & length of base string [WC]",
-		4: "Quit",
+		1: "...the number of words in text file [NW]",
+		2: "...the length of the base string [LB]",
+		3: "...the load factor of hash function solutions [LF]",
+		4: "...the worst case length of average word in file & length of base string [WC]",
+		5: "Quit",
 	}
 	display_menu_bool=True
 	while True:
 		if display_menu_bool:
 			menuFromDict(main_menu_dict,"\nPlot time effciency over...")
 		selection=menuSelect()
-		if selection==0:
+		if selection==1:
 			grapherMenu(GrapherNW, "num_words_\d+", "Number of Words")
 			display_menu_bool=True
-		elif selection==1:
+		elif selection==2:
 			grapherMenu(GrapherLB, "len_base_\d+", "Length of Base")
 			display_menu_bool=True
-		elif selection==2:
+		elif selection==3:
 			grapherMenu(GrapherLF, "load_factor_\d+", "Load Factor")
 			display_menu_bool=True
-		elif selection==3:
+		elif selection==4:
 			grapherMenu(GrapherWC, "worst_case_\w+", "Worst Case")
 			display_menu_bool=True
-		elif selection==4 or selection=="q":
+		elif selection==5 or selection=="q":
 			print("Quitting")
 			break
 		else:
