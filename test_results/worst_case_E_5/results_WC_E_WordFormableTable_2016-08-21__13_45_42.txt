@@ -1,0 +1,208 @@
+Testing K & M: worst case string lengths
+SOLUTION: WordFormableTable
+FILE: 
+
+string used for testing: zyxwvutsrqponmlkjihgfedcba9876543210-ZYXWVUTSRQPONMLKJIHGFEDCBA
+
+LENGTH: 30
+time ../WordFormableTable zyxwvutsrqponmlkjihgfedcba9876 ../test_files/worst_case/worst_case30.txt 1
+Base string length: 30
+Number of chars read from file: 1006632960
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 30.00
+Percent of formable words: 100.00%
+
+real	0m19.445s
+user	0m19.348s
+sys	0m0.092s
+
+real	0m19.436s
+user	0m19.336s
+sys	0m0.096s
+
+real	0m19.424s
+user	0m19.312s
+sys	0m0.108s
+
+real	0m19.437s
+user	0m19.308s
+sys	0m0.124s
+
+real	0m19.429s
+user	0m19.332s
+sys	0m0.092s
+
+LENGTH: 36
+time ../WordFormableTable zyxwvutsrqponmlkjihgfedcba9876543210 ../test_files/worst_case/worst_case36.txt 1
+Base string length: 36
+Number of chars read from file: 1207959552
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 36.00
+Percent of formable words: 100.00%
+
+real	0m23.339s
+user	0m23.224s
+sys	0m0.108s
+
+real	0m23.033s
+user	0m22.904s
+sys	0m0.124s
+
+real	0m23.024s
+user	0m22.900s
+sys	0m0.120s
+
+real	0m23.033s
+user	0m22.896s
+sys	0m0.132s
+
+real	0m23.023s
+user	0m22.916s
+sys	0m0.104s
+
+LENGTH: 42
+time ../WordFormableTable zyxwvutsrqponmlkjihgfedcba9876543210-ZYXWV ../test_files/worst_case/worst_case42.txt 1
+Base string length: 42
+Number of chars read from file: 1409286144
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 42.00
+Percent of formable words: 100.00%
+
+real	0m26.895s
+user	0m26.784s
+sys	0m0.104s
+
+real	0m26.943s
+user	0m26.844s
+sys	0m0.096s
+
+real	0m26.886s
+user	0m26.796s
+sys	0m0.088s
+
+real	0m26.887s
+user	0m26.764s
+sys	0m0.120s
+
+real	0m26.885s
+user	0m26.744s
+sys	0m0.136s
+
+LENGTH: 48
+time ../WordFormableTable zyxwvutsrqponmlkjihgfedcba9876543210-ZYXWVUTSRQP ../test_files/worst_case/worst_case48.txt 1
+Base string length: 48
+Number of chars read from file: 1610612736
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 48.00
+Percent of formable words: 100.00%
+
+real	0m30.293s
+user	0m30.180s
+sys	0m0.104s
+
+real	0m30.296s
+user	0m30.168s
+sys	0m0.124s
+
+real	0m30.282s
+user	0m30.168s
+sys	0m0.108s
+
+real	0m30.514s
+user	0m30.368s
+sys	0m0.144s
+
+real	0m31.881s
+user	0m31.696s
+sys	0m0.180s
+
+LENGTH: 54
+time ../WordFormableTable zyxwvutsrqponmlkjihgfedcba9876543210-ZYXWVUTSRQPONMLKJ ../test_files/worst_case/worst_case54.txt 1
+Base string length: 54
+Number of chars read from file: 1811939328
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 54.00
+Percent of formable words: 100.00%
+
+real	0m33.751s
+user	0m33.596s
+sys	0m0.148s
+
+real	0m33.773s
+user	0m33.628s
+sys	0m0.140s
+
+real	0m33.974s
+user	0m33.792s
+sys	0m0.176s
+
+real	0m33.772s
+user	0m33.648s
+sys	0m0.120s
+
+real	0m33.774s
+user	0m33.604s
+sys	0m0.164s
+
+LENGTH: 60
+time ../WordFormableTable zyxwvutsrqponmlkjihgfedcba9876543210-ZYXWVUTSRQPONMLKJIHGFED ../test_files/worst_case/worst_case60.txt 1
+Base string length: 60
+Number of chars read from file: 2013265920
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 60.00
+Percent of formable words: 100.00%
+
+real	0m37.498s
+user	0m37.268s
+sys	0m0.224s
+
+real	0m37.339s
+user	0m37.156s
+sys	0m0.180s
+
+real	0m37.407s
+user	0m37.228s
+sys	0m0.176s
+
+real	0m37.403s
+user	0m37.212s
+sys	0m0.188s
+
+real	0m37.412s
+user	0m37.252s
+sys	0m0.156s
+
+LENGTH: 63
+time ../WordFormableTable zyxwvutsrqponmlkjihgfedcba9876543210-ZYXWVUTSRQPONMLKJIHGFEDCBA ../test_files/worst_case/worst_case63.txt 1
+Base string length: 63
+Number of chars read from file: 2113929216
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 63.00
+Percent of formable words: 100.00%
+
+real	0m43.369s
+user	0m43.180s
+sys	0m0.180s
+
+real	0m39.699s
+user	0m39.512s
+sys	0m0.184s
+
+real	0m39.285s
+user	0m39.048s
+sys	0m0.232s
+
+real	0m39.269s
+user	0m39.040s
+sys	0m0.224s
+
+real	0m39.283s
+user	0m39.036s
+sys	0m0.240s

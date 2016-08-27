@@ -1,0 +1,342 @@
+Testing K: base string length
+SOLUTION: WordFormablePowerHP
+FILE: ../test_files/words/words512.txt
+
+Base strings:
+cfrbnagsdfyvqrbobgfnyqfjnp
+
+LENGTH: 0
+time ../WordFormablePowerHP "" ../test_files/words/words512.txt 1
+Improper file name: ../test_files/words/words512.txt
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+LENGTH: 2
+time ../WordFormablePowerHP cf ../test_files/words/words512.txt 1
+Improper file name: ../test_files/words/words512.txt
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+LENGTH: 4
+time ../WordFormablePowerHP cfrb ../test_files/words/words512.txt 1
+Improper file name: ../test_files/words/words512.txt
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+LENGTH: 6
+time ../WordFormablePowerHP cfrbna ../test_files/words/words512.txt 1
+Improper file name: ../test_files/words/words512.txt
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+LENGTH: 8
+time ../WordFormablePowerHP cfrbnags ../test_files/words/words512.txt 1
+Improper file name: ../test_files/words/words512.txt
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+LENGTH: 10
+time ../WordFormablePowerHP cfrbnagsdf ../test_files/words/words512.txt 1
+Improper file name: ../test_files/words/words512.txt
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+LENGTH: 12
+time ../WordFormablePowerHP cfrbnagsdfyv ../test_files/words/words512.txt 1
+Improper file name: ../test_files/words/words512.txt
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+LENGTH: 14
+time ../WordFormablePowerHP cfrbnagsdfyvqr ../test_files/words/words512.txt 1
+Improper file name: ../test_files/words/words512.txt
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+LENGTH: 16
+time ../WordFormablePowerHP cfrbnagsdfyvqrbo ../test_files/words/words512.txt 1
+Improper file name: ../test_files/words/words512.txt
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+LENGTH: 18
+time ../WordFormablePowerHP cfrbnagsdfyvqrbobg ../test_files/words/words512.txt 1
+Improper file name: ../test_files/words/words512.txt
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+LENGTH: 20
+time ../WordFormablePowerHP cfrbnagsdfyvqrbobgfn ../test_files/words/words512.txt 1
+Improper file name: ../test_files/words/words512.txt
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+LENGTH: 22
+time ../WordFormablePowerHP cfrbnagsdfyvqrbobgfnyq ../test_files/words/words512.txt 1
+Improper file name: ../test_files/words/words512.txt
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+LENGTH: 24
+time ../WordFormablePowerHP cfrbnagsdfyvqrbobgfnyqfj ../test_files/words/words512.txt 1
+Improper file name: ../test_files/words/words512.txt
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+LENGTH: 26
+time ../WordFormablePowerHP cfrbnagsdfyvqrbobgfnyqfjnp ../test_files/words/words512.txt 1
+Improper file name: ../test_files/words/words512.txt
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s

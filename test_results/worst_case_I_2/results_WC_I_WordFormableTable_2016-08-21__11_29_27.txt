@@ -1,0 +1,208 @@
+Testing K & M: worst case string lengths
+SOLUTION: WordFormableTable
+FILE: 
+
+string used for testing: zyxwvutsrqponmlkjihgfedcba9876543210-ZYXWVUTSRQPONMLKJIHGFEDCBA
+
+LENGTH: 25
+time ../WordFormableTable zyxwvutsrqponmlkjihgfedcb ../test_files/worst_case/worst_case25.txt 1
+Base string length: 25
+Number of chars read from file: 838860800
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 25.00
+Percent of formable words: 100.00%
+
+real	0m16.893s
+user	0m16.820s
+sys	0m0.068s
+
+real	0m16.893s
+user	0m16.824s
+sys	0m0.064s
+
+real	0m16.895s
+user	0m16.824s
+sys	0m0.068s
+
+real	0m16.895s
+user	0m16.792s
+sys	0m0.100s
+
+real	0m16.894s
+user	0m16.824s
+sys	0m0.064s
+
+LENGTH: 26
+time ../WordFormableTable zyxwvutsrqponmlkjihgfedcba ../test_files/worst_case/worst_case26.txt 1
+Base string length: 26
+Number of chars read from file: 872415232
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 26.00
+Percent of formable words: 100.00%
+
+real	0m17.487s
+user	0m17.416s
+sys	0m0.064s
+
+real	0m17.482s
+user	0m17.408s
+sys	0m0.072s
+
+real	0m17.596s
+user	0m17.536s
+sys	0m0.056s
+
+real	0m17.574s
+user	0m17.488s
+sys	0m0.080s
+
+real	0m17.442s
+user	0m17.368s
+sys	0m0.068s
+
+LENGTH: 27
+time ../WordFormableTable zyxwvutsrqponmlkjihgfedcba9 ../test_files/worst_case/worst_case27.txt 1
+Base string length: 27
+Number of chars read from file: 905969664
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 27.00
+Percent of formable words: 100.00%
+
+real	0m17.975s
+user	0m17.900s
+sys	0m0.068s
+
+real	0m17.960s
+user	0m17.888s
+sys	0m0.068s
+
+real	0m17.960s
+user	0m17.884s
+sys	0m0.072s
+
+real	0m17.962s
+user	0m17.896s
+sys	0m0.064s
+
+real	0m19.505s
+user	0m19.428s
+sys	0m0.072s
+
+LENGTH: 28
+time ../WordFormableTable zyxwvutsrqponmlkjihgfedcba98 ../test_files/worst_case/worst_case28.txt 1
+Base string length: 28
+Number of chars read from file: 939524096
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 28.00
+Percent of formable words: 100.00%
+
+real	0m18.463s
+user	0m18.356s
+sys	0m0.100s
+
+real	0m18.446s
+user	0m18.364s
+sys	0m0.080s
+
+real	0m18.460s
+user	0m18.360s
+sys	0m0.096s
+
+real	0m18.450s
+user	0m18.376s
+sys	0m0.072s
+
+real	0m18.453s
+user	0m18.356s
+sys	0m0.092s
+
+LENGTH: 29
+time ../WordFormableTable zyxwvutsrqponmlkjihgfedcba987 ../test_files/worst_case/worst_case29.txt 1
+Base string length: 29
+Number of chars read from file: 973078528
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 29.00
+Percent of formable words: 100.00%
+
+real	0m19.053s
+user	0m18.940s
+sys	0m0.104s
+
+real	0m19.088s
+user	0m18.984s
+sys	0m0.100s
+
+real	0m19.209s
+user	0m19.084s
+sys	0m0.120s
+
+real	0m18.989s
+user	0m18.884s
+sys	0m0.100s
+
+real	0m19.093s
+user	0m19.000s
+sys	0m0.088s
+
+LENGTH: 32
+time ../WordFormableTable zyxwvutsrqponmlkjihgfedcba987654 ../test_files/worst_case/worst_case32.txt 1
+Base string length: 32
+Number of chars read from file: 1073741824
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 32.00
+Percent of formable words: 100.00%
+
+real	0m21.155s
+user	0m21.044s
+sys	0m0.104s
+
+real	0m20.818s
+user	0m20.712s
+sys	0m0.104s
+
+real	0m20.822s
+user	0m20.720s
+sys	0m0.100s
+
+real	0m20.881s
+user	0m20.764s
+sys	0m0.112s
+
+real	0m24.468s
+user	0m24.360s
+sys	0m0.104s
+
+LENGTH: 34
+time ../WordFormableTable zyxwvutsrqponmlkjihgfedcba98765432 ../test_files/worst_case/worst_case34.txt 1
+Base string length: 34
+Number of chars read from file: 1140850688
+Number of tokenized words read from file: 33554432
+Number of words formable from the base string: 33554432
+Average word length: 34.00
+Percent of formable words: 100.00%
+
+real	0m21.830s
+user	0m21.720s
+sys	0m0.104s
+
+real	0m21.814s
+user	0m21.676s
+sys	0m0.136s
+
+real	0m21.823s
+user	0m21.720s
+sys	0m0.100s
+
+real	0m21.822s
+user	0m21.720s
+sys	0m0.096s
+
+real	0m21.842s
+user	0m21.732s
+sys	0m0.108s

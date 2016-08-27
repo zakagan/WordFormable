@@ -1,0 +1,300 @@
+Testing N: file length by word count w/ ten char base strings
+SOLUTION: WordFormableQueue
+FILE: ../test_results/num_words_5/results_NW_WordFormableQueue_2016-08-25__06_13_55.txt
+
+Base strings:
+wcysgyygav
+emefunhyit
+rrgmyuliae
+jalyqherln
+lkoiwqfdtg
+
+XWORDS: 1
+time ../WordFormableQueue wcysgyygav ../test_files/words/words1.txt 1
+Base string length: 10
+Number of chars read from file: 812912
+Number of tokenized words read from file: 125606
+Number of words formable from the base string: 26225
+Average word length: 6.47
+Percent of formable words: 20.88%
+
+real	0m0.028s
+user	0m0.024s
+sys	0m0.000s
+
+real	0m0.027s
+user	0m0.024s
+sys	0m0.000s
+
+real	0m0.028s
+user	0m0.024s
+sys	0m0.000s
+
+real	0m0.028s
+user	0m0.024s
+sys	0m0.000s
+
+real	0m0.028s
+user	0m0.020s
+sys	0m0.004s
+
+XWORDS: 2
+time ../WordFormableQueue wcysgyygav ../test_files/words/words2.txt 1
+Base string length: 10
+Number of chars read from file: 1625824
+Number of tokenized words read from file: 251212
+Number of words formable from the base string: 52450
+Average word length: 6.47
+Percent of formable words: 20.88%
+
+real	0m0.055s
+user	0m0.052s
+sys	0m0.000s
+
+real	0m0.053s
+user	0m0.052s
+sys	0m0.000s
+
+real	0m0.055s
+user	0m0.052s
+sys	0m0.000s
+
+real	0m0.061s
+user	0m0.060s
+sys	0m0.000s
+
+real	0m0.054s
+user	0m0.052s
+sys	0m0.000s
+
+XWORDS: 4
+time ../WordFormableQueue wcysgyygav ../test_files/words/words4.txt 1
+Base string length: 10
+Number of chars read from file: 3251648
+Number of tokenized words read from file: 502424
+Number of words formable from the base string: 104900
+Average word length: 6.47
+Percent of formable words: 20.88%
+
+real	0m0.104s
+user	0m0.100s
+sys	0m0.000s
+
+real	0m0.105s
+user	0m0.100s
+sys	0m0.000s
+
+real	0m0.108s
+user	0m0.096s
+sys	0m0.008s
+
+real	0m0.107s
+user	0m0.104s
+sys	0m0.000s
+
+real	0m0.107s
+user	0m0.104s
+sys	0m0.000s
+
+XWORDS: 8
+time ../WordFormableQueue wcysgyygav ../test_files/words/words8.txt 1
+Base string length: 10
+Number of chars read from file: 6503296
+Number of tokenized words read from file: 1004848
+Number of words formable from the base string: 209800
+Average word length: 6.47
+Percent of formable words: 20.88%
+
+real	0m0.206s
+user	0m0.200s
+sys	0m0.000s
+
+real	0m0.208s
+user	0m0.204s
+sys	0m0.000s
+
+real	0m0.213s
+user	0m0.208s
+sys	0m0.004s
+
+real	0m0.213s
+user	0m0.212s
+sys	0m0.000s
+
+real	0m0.212s
+user	0m0.208s
+sys	0m0.000s
+
+XWORDS: 16
+time ../WordFormableQueue wcysgyygav ../test_files/words/words16.txt 1
+Base string length: 10
+Number of chars read from file: 13006592
+Number of tokenized words read from file: 2009696
+Number of words formable from the base string: 419600
+Average word length: 6.47
+Percent of formable words: 20.88%
+
+real	0m0.407s
+user	0m0.400s
+sys	0m0.004s
+
+real	0m0.415s
+user	0m0.412s
+sys	0m0.000s
+
+real	0m0.428s
+user	0m0.424s
+sys	0m0.000s
+
+real	0m0.423s
+user	0m0.420s
+sys	0m0.000s
+
+real	0m0.421s
+user	0m0.412s
+sys	0m0.008s
+
+XWORDS: 32
+time ../WordFormableQueue wcysgyygav ../test_files/words/words32.txt 1
+Base string length: 10
+Number of chars read from file: 26013184
+Number of tokenized words read from file: 4019392
+Number of words formable from the base string: 839200
+Average word length: 6.47
+Percent of formable words: 20.88%
+
+real	0m0.810s
+user	0m0.796s
+sys	0m0.008s
+
+real	0m0.828s
+user	0m0.824s
+sys	0m0.000s
+
+real	0m0.850s
+user	0m0.848s
+sys	0m0.000s
+
+real	0m0.845s
+user	0m0.840s
+sys	0m0.000s
+
+real	0m0.840s
+user	0m0.832s
+sys	0m0.004s
+
+XWORDS: 64
+time ../WordFormableQueue wcysgyygav ../test_files/words/words64.txt 1
+Base string length: 10
+Number of chars read from file: 52026368
+Number of tokenized words read from file: 8038784
+Number of words formable from the base string: 1678400
+Average word length: 6.47
+Percent of formable words: 20.88%
+
+real	0m1.617s
+user	0m1.608s
+sys	0m0.004s
+
+real	0m1.652s
+user	0m1.640s
+sys	0m0.008s
+
+real	0m1.695s
+user	0m1.692s
+sys	0m0.000s
+
+real	0m1.691s
+user	0m1.680s
+sys	0m0.008s
+
+real	0m2.131s
+user	0m2.128s
+sys	0m0.000s
+
+XWORDS: 128
+time ../WordFormableQueue wcysgyygav ../test_files/words/words128.txt 1
+Base string length: 10
+Number of chars read from file: 104052736
+Number of tokenized words read from file: 16077568
+Number of words formable from the base string: 3356800
+Average word length: 6.47
+Percent of formable words: 20.88%
+
+real	0m3.232s
+user	0m3.220s
+sys	0m0.004s
+
+real	0m3.300s
+user	0m3.292s
+sys	0m0.004s
+
+real	0m3.392s
+user	0m3.384s
+sys	0m0.004s
+
+real	0m3.367s
+user	0m3.352s
+sys	0m0.012s
+
+real	0m3.350s
+user	0m3.336s
+sys	0m0.012s
+
+XWORDS: 256
+time ../WordFormableQueue wcysgyygav ../test_files/words/words256.txt 1
+Base string length: 10
+Number of chars read from file: 208105472
+Number of tokenized words read from file: 32155136
+Number of words formable from the base string: 6713600
+Average word length: 6.47
+Percent of formable words: 20.88%
+
+real	0m6.517s
+user	0m6.488s
+sys	0m0.024s
+
+real	0m6.622s
+user	0m6.584s
+sys	0m0.036s
+
+real	0m6.787s
+user	0m6.752s
+sys	0m0.032s
+
+real	0m6.750s
+user	0m6.716s
+sys	0m0.032s
+
+real	0m6.787s
+user	0m6.764s
+sys	0m0.020s
+
+XWORDS: 512
+time ../WordFormableQueue wcysgyygav ../test_files/words/words512.txt 1
+Base string length: 10
+Number of chars read from file: 416210944
+Number of tokenized words read from file: 64310272
+Number of words formable from the base string: 13427200
+Average word length: 6.47
+Percent of formable words: 20.88%
+
+real	0m12.922s
+user	0m12.848s
+sys	0m0.068s
+
+real	0m13.218s
+user	0m13.148s
+sys	0m0.068s
+
+real	0m13.563s
+user	0m13.500s
+sys	0m0.060s
+
+real	0m13.484s
+user	0m13.416s
+sys	0m0.064s
+
+real	0m13.414s
+user	0m13.368s
+sys	0m0.044s

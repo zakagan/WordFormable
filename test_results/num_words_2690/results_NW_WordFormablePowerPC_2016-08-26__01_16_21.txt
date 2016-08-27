@@ -1,0 +1,250 @@
+Testing N: file length by word count w/ ten char base strings
+SOLUTION: WordFormablePowerPC
+FILE: ../test_results/num_words_2690/results_NW_WordFormablePowerPC_2016-08-26__01_16_21.txt
+
+Base strings:
+alxkfmqewg
+kdsyvejgsf
+fnjyqelsdf
+glnepdblxj
+yqkfedhizp
+
+XWORDS: 1
+time ../WordFormablePowerPC alxkfmqewg ../test_files/words/words1.txt 1
+Improper file name: ../test_files/words/words1.txt
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+XWORDS: 2
+time ../WordFormablePowerPC alxkfmqewg ../test_files/words/words2.txt 1
+Improper file name: ../test_files/words/words2.txt
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+XWORDS: 4
+time ../WordFormablePowerPC alxkfmqewg ../test_files/words/words4.txt 1
+Improper file name: ../test_files/words/words4.txt
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+XWORDS: 8
+time ../WordFormablePowerPC alxkfmqewg ../test_files/words/words8.txt 1
+Improper file name: ../test_files/words/words8.txt
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+XWORDS: 16
+time ../WordFormablePowerPC alxkfmqewg ../test_files/words/words16.txt 1
+Improper file name: ../test_files/words/words16.txt
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+XWORDS: 32
+time ../WordFormablePowerPC alxkfmqewg ../test_files/words/words32.txt 1
+Improper file name: ../test_files/words/words32.txt
+
+real	0m0.004s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+XWORDS: 64
+time ../WordFormablePowerPC alxkfmqewg ../test_files/words/words64.txt 1
+Improper file name: ../test_files/words/words64.txt
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+XWORDS: 128
+time ../WordFormablePowerPC alxkfmqewg ../test_files/words/words128.txt 1
+Improper file name: ../test_files/words/words128.txt
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+XWORDS: 256
+time ../WordFormablePowerPC alxkfmqewg ../test_files/words/words256.txt 1
+Improper file name: ../test_files/words/words256.txt
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+XWORDS: 512
+time ../WordFormablePowerPC alxkfmqewg ../test_files/words/words512.txt 1
+Improper file name: ../test_files/words/words512.txt
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s

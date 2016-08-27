@@ -1,0 +1,412 @@
+Testing K: base string length
+SOLUTION: WordFormablePowerHP
+FILE: ../test_files/words/words512.txt
+
+Base strings:
+nqmvjcfzzaajaoqajorctgirhb
+
+LENGTH: 0
+time ../WordFormablePowerHP "" ../test_files/words/words512.txt 1
+Base string length: 2
+Number of chars read from file: 416210944
+Number of tokenized words read from file: 64310272
+Number of words formable from the base string: 0
+Average word length: 6.47
+Percent of formable words: 0.00%
+
+real	0m9.724s
+user	0m9.672s
+sys	0m0.048s
+
+real	0m9.457s
+user	0m9.392s
+sys	0m0.060s
+
+real	0m9.453s
+user	0m9.372s
+sys	0m0.076s
+
+real	0m9.510s
+user	0m9.460s
+sys	0m0.048s
+
+real	0m9.444s
+user	0m9.412s
+sys	0m0.028s
+
+LENGTH: 2
+time ../WordFormablePowerHP nq ../test_files/words/words512.txt 1
+Base string length: 2
+Number of chars read from file: 416210944
+Number of tokenized words read from file: 64310272
+Number of words formable from the base string: 5120
+Average word length: 6.47
+Percent of formable words: 0.01%
+
+real	0m9.450s
+user	0m9.412s
+sys	0m0.032s
+
+real	0m9.772s
+user	0m9.708s
+sys	0m0.060s
+
+real	0m9.477s
+user	0m9.432s
+sys	0m0.040s
+
+real	0m9.438s
+user	0m9.372s
+sys	0m0.064s
+
+real	0m9.460s
+user	0m9.412s
+sys	0m0.044s
+
+LENGTH: 4
+time ../WordFormablePowerHP nqmv ../test_files/words/words512.txt 1
+Base string length: 4
+Number of chars read from file: 416210944
+Number of tokenized words read from file: 64310272
+Number of words formable from the base string: 10752
+Average word length: 6.47
+Percent of formable words: 0.02%
+
+real	0m9.678s
+user	0m9.624s
+sys	0m0.048s
+
+real	0m10.108s
+user	0m10.048s
+sys	0m0.056s
+
+real	0m9.945s
+user	0m9.896s
+sys	0m0.044s
+
+real	0m9.670s
+user	0m9.632s
+sys	0m0.036s
+
+real	0m9.678s
+user	0m9.608s
+sys	0m0.068s
+
+LENGTH: 6
+time ../WordFormablePowerHP nqmvjc ../test_files/words/words512.txt 1
+Base string length: 6
+Number of chars read from file: 416210944
+Number of tokenized words read from file: 64310272
+Number of words formable from the base string: 14848
+Average word length: 6.47
+Percent of formable words: 0.02%
+
+real	0m10.897s
+user	0m10.820s
+sys	0m0.072s
+
+real	0m11.163s
+user	0m11.108s
+sys	0m0.052s
+
+real	0m10.905s
+user	0m10.856s
+sys	0m0.044s
+
+real	0m10.711s
+user	0m10.680s
+sys	0m0.028s
+
+real	0m10.907s
+user	0m10.864s
+sys	0m0.040s
+
+LENGTH: 8
+time ../WordFormablePowerHP nqmvjcfz ../test_files/words/words512.txt 1
+Base string length: 8
+Number of chars read from file: 416210944
+Number of tokenized words read from file: 64310272
+Number of words formable from the base string: 17408
+Average word length: 6.47
+Percent of formable words: 0.03%
+
+real	0m12.105s
+user	0m12.072s
+sys	0m0.028s
+
+real	0m11.817s
+user	0m11.768s
+sys	0m0.044s
+
+real	0m11.738s
+user	0m11.680s
+sys	0m0.056s
+
+real	0m11.239s
+user	0m11.180s
+sys	0m0.056s
+
+real	0m11.596s
+user	0m11.524s
+sys	0m0.068s
+
+LENGTH: 10
+time ../WordFormablePowerHP nqmvjcfzza ../test_files/words/words512.txt 1
+Base string length: 10
+Number of chars read from file: 416210944
+Number of tokenized words read from file: 64310272
+Number of words formable from the base string: 35328
+Average word length: 6.47
+Percent of formable words: 0.05%
+
+real	0m12.058s
+user	0m12.012s
+sys	0m0.040s
+
+real	0m13.041s
+user	0m12.980s
+sys	0m0.056s
+
+real	0m12.595s
+user	0m12.548s
+sys	0m0.044s
+
+real	0m12.043s
+user	0m12.008s
+sys	0m0.032s
+
+real	0m13.197s
+user	0m13.160s
+sys	0m0.032s
+
+LENGTH: 12
+time ../WordFormablePowerHP nqmvjcfzzaaj ../test_files/words/words512.txt 1
+Base string length: 12
+Number of chars read from file: 416210944
+Number of tokenized words read from file: 64310272
+Number of words formable from the base string: 35328
+Average word length: 6.47
+Percent of formable words: 0.05%
+
+real	0m12.071s
+user	0m12.020s
+sys	0m0.044s
+
+real	0m14.894s
+user	0m14.852s
+sys	0m0.040s
+
+real	0m14.852s
+user	0m14.796s
+sys	0m0.052s
+
+real	0m12.921s
+user	0m12.872s
+sys	0m0.044s
+
+real	0m13.990s
+user	0m13.952s
+sys	0m0.036s
+
+LENGTH: 14
+time ../WordFormablePowerHP nqmvjcfzzaajao ../test_files/words/words512.txt 1
+Base string length: 14
+Number of chars read from file: 416210944
+Number of tokenized words read from file: 64310272
+Number of words formable from the base string: 52736
+Average word length: 6.47
+Percent of formable words: 0.08%
+
+real	0m12.631s
+user	0m12.560s
+sys	0m0.064s
+
+real	0m15.279s
+user	0m15.232s
+sys	0m0.044s
+
+real	0m18.609s
+user	0m18.540s
+sys	0m0.064s
+
+real	0m14.593s
+user	0m14.548s
+sys	0m0.040s
+
+real	0m20.186s
+user	0m20.136s
+sys	0m0.048s
+
+LENGTH: 16
+time ../WordFormablePowerHP nqmvjcfzzaajaoqa ../test_files/words/words512.txt 1
+Base string length: 16
+Number of chars read from file: 416210944
+Number of tokenized words read from file: 64310272
+Number of words formable from the base string: 52736
+Average word length: 6.47
+Percent of formable words: 0.08%
+
+real	0m13.017s
+user	0m12.980s
+sys	0m0.032s
+
+real	0m15.760s
+user	0m15.732s
+sys	0m0.024s
+
+real	0m24.207s
+user	0m24.164s
+sys	0m0.040s
+
+real	0m17.835s
+user	0m17.816s
+sys	0m0.016s
+
+real	0m24.082s
+user	0m24.036s
+sys	0m0.044s
+
+LENGTH: 18
+time ../WordFormablePowerHP nqmvjcfzzaajaoqajo ../test_files/words/words512.txt 1
+Base string length: 18
+Number of chars read from file: 416210944
+Number of tokenized words read from file: 64310272
+Number of words formable from the base string: 59904
+Average word length: 6.47
+Percent of formable words: 0.09%
+
+real	0m12.716s
+user	0m12.672s
+sys	0m0.040s
+
+real	0m19.338s
+user	0m19.284s
+sys	0m0.052s
+
+real	0m24.342s
+user	0m24.324s
+sys	0m0.016s
+
+real	0m17.878s
+user	0m17.832s
+sys	0m0.044s
+
+real	0m24.553s
+user	0m24.508s
+sys	0m0.040s
+
+LENGTH: 20
+time ../WordFormablePowerHP nqmvjcfzzaajaoqajorc ../test_files/words/words512.txt 1
+Base string length: 20
+Number of chars read from file: 416210944
+Number of tokenized words read from file: 64310272
+Number of words formable from the base string: 113664
+Average word length: 6.47
+Percent of formable words: 0.18%
+
+real	0m13.675s
+user	0m13.616s
+sys	0m0.052s
+
+real	0m26.058s
+user	0m26.008s
+sys	0m0.044s
+
+real	0m24.453s
+user	0m24.408s
+sys	0m0.040s
+
+real	0m25.316s
+user	0m25.276s
+sys	0m0.036s
+
+real	0m24.634s
+user	0m24.576s
+sys	0m0.052s
+
+LENGTH: 22
+time ../WordFormablePowerHP nqmvjcfzzaajaoqajorctg ../test_files/words/words512.txt 1
+Base string length: 22
+Number of chars read from file: 416210944
+Number of tokenized words read from file: 64310272
+Number of words formable from the base string: 247296
+Average word length: 6.47
+Percent of formable words: 0.38%
+
+real	0m15.734s
+user	0m15.700s
+sys	0m0.028s
+
+real	0m26.407s
+user	0m26.360s
+sys	0m0.044s
+
+real	0m24.891s
+user	0m24.872s
+sys	0m0.016s
+
+real	0m25.619s
+user	0m25.576s
+sys	0m0.040s
+
+real	0m25.019s
+user	0m24.964s
+sys	0m0.052s
+
+LENGTH: 24
+time ../WordFormablePowerHP nqmvjcfzzaajaoqajorctgir ../test_files/words/words512.txt 1
+Base string length: 24
+Number of chars read from file: 416210944
+Number of tokenized words read from file: 64310272
+Number of words formable from the base string: 473600
+Average word length: 6.47
+Percent of formable words: 0.74%
+
+real	0m20.525s
+user	0m20.472s
+sys	0m0.044s
+
+real	0m27.858s
+user	0m27.824s
+sys	0m0.032s
+
+real	0m26.646s
+user	0m26.588s
+sys	0m0.056s
+
+real	0m27.447s
+user	0m27.392s
+sys	0m0.052s
+
+real	0m27.998s
+user	0m27.948s
+sys	0m0.048s
+
+LENGTH: 26
+time ../WordFormablePowerHP nqmvjcfzzaajaoqajorctgirhb ../test_files/words/words512.txt 1
+Base string length: 26
+Number of chars read from file: 416210944
+Number of tokenized words read from file: 64310272
+Number of words formable from the base string: 762368
+Average word length: 6.47
+Percent of formable words: 1.19%
+
+real	0m26.326s
+user	0m26.272s
+sys	0m0.048s
+
+real	0m34.511s
+user	0m34.444s
+sys	0m0.048s
+
+real	0m32.470s
+user	0m32.440s
+sys	0m0.024s
+
+real	0m33.025s
+user	0m32.988s
+sys	0m0.032s
+
+real	0m33.215s
+user	0m33.160s
+sys	0m0.048s
