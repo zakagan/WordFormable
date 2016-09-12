@@ -15,7 +15,8 @@ results_path="../test_results/"
 mkdir -p $results_path
 results_path="${results_path}len_base_"
 results_prefix="results_LB_"
-results_suffix="_${time_stamp}${extension}"
+# results_suffix="_${time_stamp}${extension}"
+results_suffix="_${extension}"
 
 executable_path="../"
 executables=("WordFormablePartials" "WordFormableTable" "WordFormablePowerPC" "WordFormablePowerHP" "WordFormableQueue")
@@ -36,17 +37,23 @@ for ((i=0;i<=26;i+=2)); do
 	BASE_STR_LEN+=($i)
 done
 
-n=0
-results_path_attempt="${results_path}${n}/"
-while ! mkdir "$results_path_attempt" 2> /dev/null; do
-	n=$((n+1))
-	results_path_attempt="${results_path}${n}/"
-done
-results_path=$results_path_attempt
+# n=0
+# results_path_attempt="${results_path}${n}/"
+# while ! mkdir "$results_path_attempt" 2> /dev/null; do
+# 	n=$((n+1))
+# 	results_path_attempt="${results_path}${n}/"
+# done
+# results_path=$results_path_attempt
+results_path="${results_path}${time_stamp}/"
+mkdir "$results_path"
 
 #Header
 for executable in ${executables[@]}; do
 	results_file=$results_path$results_prefix$executable$results_suffix
+	n=0
+	while [ -e "$results_file" ]; then
+		n=$((n+1))
+		results_file=$results_path$results_prefix$executable$n$results_suffix
 	echo "Testing K: base string length"  1> $results_file
 	echo "SOLUTION: $executable" 1>> $results_file
 	echo "FILE: $input_file" 1>> $results_file

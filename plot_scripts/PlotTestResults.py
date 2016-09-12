@@ -70,6 +70,7 @@ class Grapher(object):
 	def _readData(self, file_path):
 	#method that actually grabs x and y data from file and processes them into record objects
 			data_list=[]
+			num_records=0
 			x=None
 			y=None
 			y_vals=[]
@@ -98,6 +99,7 @@ class Grapher(object):
 					if x is not None and y_vals and None not in y_vals:
 						r=Record(x,y_vals)
 						data_list.append(r)
+						num_records+=1
 						x=None
 						y_vals=[]
 					x=int(text_list[text_list.index(self.x_var_pattern)+1])
@@ -113,12 +115,13 @@ class Grapher(object):
 				if x is not None and y_vals and None not in y_vals:
 					r=Record(x,y_vals)
 					data_list.append(r)
+					num_records+=1
 					x=None
 					y_vals=[]
 			f.close()
 			order,style=attribute_dict.get(solution, (-1,"kx-"))
 
-			d=Dataset(solution,data_list,order,style)
+			d=Dataset(solution,data_list,num_records,order,style)
 			return d
 
 	def combineData(self, associate_dir):
@@ -139,7 +142,11 @@ class Grapher(object):
 		fig=plt.figure()
 		ax1=fig.add_subplot(111)
 		for d in sorted(list(self.datasets.values()),key=lambda d: d.order, reverse=True):
-			ax1.plot(d.getXValues(), d.getYValues(), d.style, label=d.solution)
+			if d.num_records >= 1:
+				ax1.plot(d.getXValues(), d.getYValues(), d.style, label=d.solution)
+			else:
+				del self.datasets[d.solution]
+				print("Not enough data present in the {} dataset.".format(d.solution))
 
 		plt.legend(loc='upper left')
 		plt.show()
@@ -153,8 +160,12 @@ class GrapherNW(Grapher):
 		fig=plt.figure()
 		ax1=fig.add_subplot(111)
 		for d in sorted(list(self.datasets.values()),key=lambda d: d.order, reverse=True):
-			d.transformXVals(lambda x: self.first_num_tokens * x)
-			ax1.plot(d.getXValues(), d.getYValues(), d.style, label=d.solution)
+			if d.num_records >= 1:
+				d.transformXVals(lambda x: self.first_num_tokens * x)
+				ax1.plot(d.getXValues(), d.getYValues(), d.style, label=d.solution)
+			else:
+				del self.datasets[d.solution]
+				print("Not enough data present in the {} dataset.".format(d.solution))
 
 		x_lower_bound=0
 		x_upper_bound=max([d.data[-1].x_val for d in self.datasets.values()])
@@ -180,14 +191,23 @@ class GrapherLB(Grapher):
 		fig=plt.figure()
 		ax1=fig.add_subplot(111)
 		for d in sorted(list(self.datasets.values()),key=lambda d: d.order, reverse=True):
-			ax1.plot(d.getXValues(), d.getYValues(), d.style, label=d.solution)
+			if d.num_records >= 2:
+				ax1.plot(d.getXValues(), d.getYValues(), d.style, label=d.solution)
+			else:
+				del self.datasets[d.solution]
+				print("Not enough data present in the {} dataset.".format(d.solution))
 
+		xlabel="Length of Base String (Characters)"
+		ylabel="Computation Time (Sec)"
 		x_lower_bound=0
 		x_upper_bound=max([d.data[-1].x_val for d in self.datasets.values()]) #max x-value
 		y_lower_bound=0
-		y_upper_bound=sorted([d.data[-1].average_y for d in self.datasets.values()])[-2] #second largest last y data point
-		xlabel="Length of Base String (Characters)"
-		ylabel="Computation Time (Sec)"
+
+		if len(self.datasets) > 1:
+			y_upper_bound=sorted([d.data[-1].average_y for d in self.datasets.values()])[-2] #second largest last y data point
+			#note that this may not result in capping y by its partials solution max datum value
+		else:
+			y_upper_bound=[d.data[-1].average_y for d in self.datasets.values()][0]
 
 		plt.xlim(x_lower_bound,x_upper_bound)
 		plt.ylim(y_lower_bound,y_upper_bound)
@@ -205,9 +225,12 @@ class GrapherLF(Grapher):
 		fig=plt.figure()
 		ax1=fig.add_subplot(111)
 		for d in sorted(list(self.datasets.values()),key=lambda d: d.order, reverse=True):
-			d.transformXVals(lambda x: float(2**self.first_base_string_length)/x)
-			ax1.plot(d.getXValues(), d.getYValues(), d.style, label=d.solution)
-
+			if d.num_records >= 1:
+				d.transformXVals(lambda x: float(2**self.first_base_string_length)/x)
+				ax1.plot(d.getXValues(), d.getYValues(), d.style, label=d.solution)
+			else:
+				del self.datasets[d.solution]
+				print("Not enough data present in the {} dataset.".format(d.solution))
 		x_lower_bound=min([d.data[-1].x_val for d in self.datasets.values()])
 		x_upper_bound=max([d.data[0].x_val for d in self.datasets.values()])
 		y_lower_bound=0
@@ -235,18 +258,21 @@ class GrapherWC(Grapher):
 
 	def chart(self):
 		fig=plt.figure()
-		if self.extended:
+		if self.extended and all([(d.num_records > 16) for d in self.datasets.values()]):
 			#sets up left hand chart if there is extended data
 			ax1=fig.add_subplot(121)
 			for d in sorted(list(self.datasets.values()),key=lambda d: d.order, reverse=True):
 				ax1.plot(d.getXValues(), d.getYValues(), d.style, label=d.solution)
 
+			xlabel="Length of Base String and Words in Text File (Characters)"
+			ylabel="Computation Time (Sec)"				
 			x_lower_bound=0
 			x_upper_bound=max([d.data[15].x_val for d in self.datasets.values()])
 			y_lower_bound=0
-			y_upper_bound=sorted([d.data[15].average_y for d in self.datasets.values()])[-2] #second largest last y data point
-			xlabel="Length of Base String and Words in Text File (Characters)"
-			ylabel="Computation Time (Sec)"
+			if len(self.datasets) > 1:
+				y_upper_bound=sorted([d.data[-1].average_y for d in self.datasets.values()])[-2] #second largest last y data point
+			else:
+				y_upper_bound=[d.data[-1].average_y for d in self.datasets.values()][0]
 
 			plt.xlim(x_lower_bound,x_upper_bound)
 			plt.ylim(y_lower_bound,y_upper_bound)
@@ -261,16 +287,23 @@ class GrapherWC(Grapher):
 			ax1=fig.add_subplot(111)
 
 		for d in sorted(list(self.datasets.values()),key=lambda d: d.order, reverse=True):
-			ax1.plot(d.getXValues(), d.getYValues(), d.style, label=d.solution)
+			if d.num_records >= 2:
+				ax1.plot(d.getXValues(), d.getYValues(), d.style, label=d.solution)
+			else:
+				del self.datasets[d.solution]
+				print("Not enough data present in the {} dataset.".format(d.solution))
 
+		xlabel="Length of Base String and Words in Text File (Characters)"
+		ylabel="Computation Time (Sec)"
 		x_lower_bound=0
 		x_upper_bound=max([d.data[-1].x_val for d in self.datasets.values()])
 		y_lower_bound=0
-		y_upper_bound=sorted([d.data[-1].average_y for d in self.datasets.values()])[-2] #second largest last y data point
-		#note that this may not result in capping y by its partials solution max datum value
-		xlabel="Length of Base String and Words in Text File (Characters)"
-		ylabel="Computation Time (Sec)"
 
+		if len(self.datasets) > 1:
+			y_upper_bound=sorted([d.data[-1].average_y for d in self.datasets.values()])[-2] #second largest last y data point
+		else:
+			y_upper_bound=[d.data[-1].average_y for d in self.datasets.values()][0]
+		
 		plt.xlim(x_lower_bound,x_upper_bound)
 		plt.ylim(y_lower_bound,y_upper_bound)
 		plt.xlabel(xlabel)

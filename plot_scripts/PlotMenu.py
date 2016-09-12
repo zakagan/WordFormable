@@ -36,7 +36,7 @@ def grapherMenu(grapher_subclass, dirname_regex, graph_name=""):
 		if display_menu_bool:
 			menuFromDict(test_dict)
 		selection=menuSelect()
-		if selection in range(1,num_options) and selection<num_options-1:
+		if selection in test_dict.keys() and selection<num_options-1:
 			dir_path=test_dict.pop(selection, None)
 			display_menu_bool=True
 			if not intialized_bool:

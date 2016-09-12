@@ -24,17 +24,18 @@ class Record(object):
 class Dataset(object):
 # object containing a collection of records that correspond to one solution, and more generally one particular tests sequence
 
-	def __init__(self, solution, record_list=[], order=0, style="ko-"):
+	def __init__(self, solution, record_list=[], num_records=0, order=0, style="ko-"):
 		self.solution=solution
 		self.data=record_list
+		self.num_records=num_records
 		self.order=order
 		self.style=style
 
 	def addRecords(self, new_record_list):
 		ridx=0     #running index of older records
 		for new_record in new_record_list:
-			while ridx <= len(self.data)-1:
-				if new_record.x_val > self.data[ridx].x_val and ridx!=len(self.data)-1:
+			while ridx <= self.num_records-1:
+				if new_record.x_val > self.data[ridx].x_val and ridx!=self.num_records-1:
 					ridx+=1
 					continue
 				elif new_record.x_val == self.data[ridx].x_val:
@@ -45,11 +46,13 @@ class Dataset(object):
 				elif new_record.x_val < self.data[ridx].x_val:
 					self.data.insert(ridx,new_record)
 					ridx+=1
+					self.num_records+=1
 					break
 				else:
 					# must be at end of list
 					self.data.insert(ridx+1,new_record)
 					ridx+=1
+					self.num_records+=1
 					break
 
 	def transformXVals(self, func):

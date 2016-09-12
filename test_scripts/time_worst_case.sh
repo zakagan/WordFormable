@@ -15,7 +15,8 @@ results_path="../test_results/"
 mkdir -p $results_path
 results_path="${results_path}worst_case_"
 results_prefix="results_WC_"
-results_suffix="_${time_stamp}${extension}"
+# results_suffix="_${time_stamp}${extension}"
+results_suffix="_${extension}"
 
 executable_path="../"
 executables=("WordFormablePartials" "WordFormableTable" "WordFormablePowerPC" "WordFormablePowerHP" "WordFormableQueue")
@@ -55,13 +56,15 @@ else
 	done
 fi
 
-n=0
-results_path_attempt="${results_path}${n}/"
-while ! mkdir "$results_path_attempt" 2> /dev/null; do
-	n=$((n+1))
-	results_path_attempt="${results_path}${n}/"
-done
-results_path=$results_path_attempt
+# n=0
+# results_path_attempt="${results_path}${n}/"
+# while ! mkdir "$results_path_attempt" 2> /dev/null; do
+# 	n=$((n+1))
+# 	results_path_attempt="${results_path}${n}/"
+# done
+# results_path=$results_path_attempt
+results_path="${results_path}${time_stamp}/"
+mkdir "$results_path"
 
 #Header
 for executable in ${executables[@]}; do
@@ -95,6 +98,10 @@ for len in ${WC_STR_LEN[@]}; do
 	fi
 	for executable in ${executables[@]}; do
 		results_file=$results_path$results_prefix$executable$results_suffix
+		n=0
+		while [ -e "$results_file" ]; then
+			n=$((n+1))
+			results_file=$results_path$results_prefix$executable$n$results_suffix
 		echo "" 1>> $results_file
 		echo "LENGTH: $len" 1>> $results_file
 		echo "time $executable_path$executable $current_str $input_file 1" 1>> $results_file
