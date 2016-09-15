@@ -1,29 +1,40 @@
 WordFormable
 =============
 
-One of the great things about computer science problems is that there is never just one way to solve them. While every solution may not be equal, they each have their own strengths and weaknesses, which can be explored in detail.
+Computing gives us several tools for comparing and analyzing different solutions to the same problem. In this repo I explore one fairly straight-forward computer science problem, as well as five seperate solutions to it.
 
-This particular problem is based on a fairly basic programming interview question. However, its different solutions require understanding and clever application of different types of data structures.
+While all solutions are not equal, each one presented has its own strengths and weaknesses. Through them I explore different types of fundametal datastructures and their uses.
 
-The Challenge
+The actual programming for this project comes in three parts:
+
+1. The actual executables that solve the problem (detailed below), written in C
+
+2. The testing scripts used to generate data to compare the different solutions, written in Bash
+
+3. The plotting scripts used the graph the results of testing data, written in Python.
+
+The Problem
 -------
 
-Given a text file, determine the total percentage of words contained within that are formable from a user-inputted base string. Strings are case sensitive. A word is not formable unless all necessary characters are present within the base string.
+Given a text file, determine all the words contained within that are formable from a user-inputted base string. Strings are case sensitive. A word is not formable unless all necessary characters are present within the base string.
 
 This includes the frequency of a given character. For example, "Mississippi" is not formable if there is only one "s" character in the base string. At least four separate "s" chars must be present, along with all of the rest of the required letters, in order to form that word.
 
-The real challenge of this problem lies with efficiently determining the formability of a word token. Four different solutions are included:
+I sometimes describe this as the "scrabble problem". Imagine you are playing a version of scrabble in which the dictionary of valid words could change every game. How could you determine what valid words you could play, given your tiles and the specific dictionary being used?
 
-1. **Sorting**: The base string and tokenized words from the text file are alphabetized via quick sort and then compared.
+The real challenge of this problem lies with efficiently determining the formability of a word token. This project explores five different methods:
+
+1. **Searching For Partials**: The base string and tokenized words from the text file are alphabetized via quick sort. Then subsections of the token are searched for within the sorted base string.
 
 2. **Character Tables**: The base string is loaded into a table using a based on it's ASCII table value, and then each tokenized word from the text file is compared with this table.
 
-3. **Precomputing + Sorting**: Every possible formable string is pre-generated from the base string and loaded into a hash map, then tokens from the text file are compared with the map's entries, and sorted if need be.
+3. **Hash Map and Comparing**: Every possible formable string is pre-generated from the base string and loaded into a hash map, then tokens from the text file are compared with the map's entries.
 
-4. **Precomputing + Character Tables**: Every possible formable character table is pregenerated from the base string and loaded into a hash map, then tokens from the text file are converted to tables themselves and compared with tables from the hash map.
+4. **Hash Map and Searching For Partials**: Every possible formable character table is pregenerated from the base string and then used to generate a hasm map of validity values. Each token is looked up within the hash map, and if there's a hit the token is sorted and its subsections are searched for, just as in solution 1.
 
+5. **Bi-Directional Queue**: A doubly-linked list is generated from the sorted base string. Every character within a particular token is searched for along the bi-directional queue. When a match is found, that char's node is removed from the queue. This proceeds until a token's char cannot be found or the all the characters in the token have been checked.
 
-How to execute
+How To Execute
 -------
 
 First compile the executables using the provided Makefile.
@@ -33,12 +44,13 @@ The program operates on the command line. A typical way to execute it would be t
 
 Where S and F are the base string and the path to the given text-file, respectively. Replace the underline characters with ending of one of the four produced executables (each representing one solution method):
 
-1. WordPercentSort
+1. WordPercentPartials
 2. WordPercentTable
-3. WordPercentPrecomputeSort
-4. WordPercentPrecomputeTable
+3. WordPercentPowerPC
+4. WordPercentPowerHP
+5. WordPercentQueue
 
-Then, printed to the command line, will be the percentage of formable words in F.
+Then, printed to the command line, will be the formable word tokens along with some additional data.
 
 For example, use the example text file provided and enter:
 
@@ -47,6 +59,10 @@ For example, use the example text file provided and enter:
 The result should be:
 
 ```
+Formable words within the provided textfile:
+world
+hello
+hello
 Base string length: 10
 Number of chars read from file: 305
 Number of tokenized words read from file: 7
@@ -55,7 +71,19 @@ Average word length: 43.57
 Percent of formable words: 42.86%
 ```
 
-The two precomputing solutions can optionally take a third input: the number of buckets for the hash map. If no third input is provided, the program defaults to a load factor of approximately 25%.
+There are a couple of optional inputs. The third input will silence the printing of each formable word token if set to 1 (and won't silence anything if set to 0). The two power-set/hash-map solutions can optionally take a fourth input: the number of buckets for the hash map. If no fourth input is provided, the program defaults to a load factor of approximately 25%.
+
+Using these optional inputs looks like this:
+
+```
+./WordPercentPowerHP helloworld /Users/.../example.txt 0 100
+Base string length: 10
+Number of chars read from file: 305
+Number of tokenized words read from file: 7
+Number of words formable from the base string: 3
+Average word length: 43.57
+Percent of formable words: 42.86%
+```
 
 Assumptions
 -------

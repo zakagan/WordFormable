@@ -25,7 +25,7 @@ void calculatePowerSet(const char *str, const int str_length, HashMap* power_set
 /* Parses the provided txtfile, determines indvigual word tokens, and then attempts to check their validity. First the token's length
  is considered, and then it is looked up within the hash map of integers. If a hash hit is found, the token is checked via the inclided 
  checkWord function. Finally the data gathered is send to the reportResults function */
-void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, unsigned const int max_length, unsigned const int silence, const size_t buckets) 
+void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, char* copy_buff, unsigned const int max_length, unsigned const int silence, const size_t buckets) 
  {  
 	int char_count=0, word_count=0, formable_count=0, buff_index=0;
 	int c;                                             //character returned from fgetc
@@ -47,11 +47,12 @@ void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, unsig
 			if(buff_index>0){	                     //non-negative index + reaching a tokenizer means c_buff contains a token
 				++word_count;
 				char_count += buff_index;
-				if(buff_index<=max_length && checkValidityHashMap(power_set_map, c_buff)) {        			
+				if(buff_index<=max_length && checkValidityHashMap(power_set_map, c_buff)) {
+					if(!silence) {strncpy(copy_buff, c_buff, max_length);}        			
 					sortStr(c_buff,buff_index);      //if entry is nonempty, the string is sorted to prepare for comparing with entry strings
 					if (checkWord(c_buff,base_str,partial_buff,buff_index)) {
 						formable_count++;
-						if (!silence) {printf("%s\n",c_buff);}
+						if (!silence) {printf("\t%s\n",copy_buff);}
 					}
 				}		
 			}

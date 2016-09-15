@@ -2,7 +2,7 @@
 
 /* parses the provided txtfile, determines indvigual word tokens, and then calls a included function (checkWord) to see
 if they are formable from the base string. Finally it sends the cllected data to the reportResults function*/
-void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, const unsigned int max_length, const unsigned int silence, const int buckets)
+void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, char* copy_buff, const unsigned int max_length, const unsigned int silence, const int buckets)
 {                             
 	char *partial_buff;                                         
 	int char_count=0, word_count=0, formable_count=0, buff_index=0;
@@ -23,10 +23,11 @@ void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, const
 				++word_count;
 				char_count += buff_index;
 				if(buff_index<=max_length) {	         //token cannot formed by the base if it is larger than the base
+					if(!silence) {strncpy(copy_buff, c_buff, max_length);}
 					sortStr(c_buff,buff_index);                   //alphabetizes the token before it is compared with the sorted base string				
 					if (checkWord(c_buff,base_str,partial_buff,buff_index)) {
 						formable_count++;
-						if (!silence) {printf("%s\n",c_buff);}
+						if (!silence) {printf("\t%s\n",copy_buff);}
 					}
 				}		
 			}

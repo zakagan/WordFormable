@@ -20,7 +20,7 @@ void dequeue(Node *selected_node);
 
 void destroyDownQueue(Node *queue);
 
-Node** buildQueueFromString(Node* head_node, const char* base_str, const unsigned int max_length);
+Node** buildListFromString(Node* head_node, const char* base_str, const unsigned int max_length);
 
 void resetLinksFromArray(Node** node_array, const unsigned int max_length);
 

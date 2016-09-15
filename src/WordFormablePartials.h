@@ -12,6 +12,6 @@
 #include "CheckWordByPartials.h"
 #include "Parsing.h"
 
-void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, const unsigned int max_length, const unsigned int silence, const int buckets);
+void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, char* copy_buff, const unsigned int max_length, const unsigned int silence, const int buckets);
 
 #endif

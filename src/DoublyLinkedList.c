@@ -44,8 +44,8 @@ void destroyDownQueue(Node *queue) {
 	}
 }
 
-// Creates a doubly linkd list, with each node containing a pointer to a char from the string
-Node** buildQueueFromString(Node* head_node, const char* base_str, const unsigned int max_length) {
+// Creates a doubly linked list, with each node containing a pointer to a char from the string
+Node** buildListFromString(Node* head_node, const char* base_str, const unsigned int max_length) {
 	Node* tail_node=head_node;
 	Node** node_array = malloc(max_length * sizeof(Node*));  //This is what is returned, used to reset the queue's connections
 	for (unsigned int i = 0; i < max_length; ++i)

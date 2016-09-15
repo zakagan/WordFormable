@@ -26,7 +26,7 @@ void calculatePowerSet(const char *str, const int str_length, HashMap* power_set
  is considered, and then it is looked up within the hash map. If there is a hash hit then the chain at that hash entry is searched for
  a string matching the token. If a match is found then the token is determined to be formable. Finally the data gathered is send to
  the reportResults function */
-void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, const unsigned int max_length, const unsigned int silence, const size_t buckets) 
+void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, char* copy_buff, const unsigned int max_length, const unsigned int silence, const size_t buckets) 
  {  
 	Node* temp_stack;
 	int char_count=0, word_count=0, formable_count=0, buff_index=0;
@@ -45,10 +45,11 @@ void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, const
 				if(buff_index<=max_length) {	         //token cannot formed by the base if it is larger than the base            			
 					temp_stack = collectHashMapEntry(power_set_map, c_buff, buff_index);
 					if (temp_stack) {
+						if(!silence) {strncpy(copy_buff, c_buff, max_length);}
 						sortStr(c_buff,buff_index);      //if entry is nonempty, the string is sorted to prepare for comparing with entry strings
 						if (checkStackForString(temp_stack, c_buff, buff_index)) {
 							formable_count++;
-							if (!silence) {printf("%s\n",c_buff);}
+							if (!silence) {printf("\t%s\n",copy_buff);}
 						}
 					}
 				}		

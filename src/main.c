@@ -20,7 +20,7 @@
 int main (int argc, char **argv) {
 	const char *fname;
 	FILE *input_file;
-	char *base_str, *c_buff;
+	char *base_str, *c_buff, *copy_buff=NULL;
 	unsigned int max_length, silence=0;
 	size_t buckets=0;
 
@@ -48,12 +48,6 @@ int main (int argc, char **argv) {
 	fname=argv[2];									// the provided text file name
 	max_length = strlen(base_str);
 
-	c_buff= calloc(max_length, sizeof(char));	    //used to build word tokens as read from the provided file
-	if (c_buff==NULL){
-		printf("Memory allocation failed: char pointer c_buff\n");
-		exit(0);
-	}	
-
 	// This flag determines whether the found formable words are silenced or not
 	if (argc >= 4) {
 		silence=atoi(argv[3]);
@@ -74,6 +68,22 @@ int main (int argc, char **argv) {
 		}
 	#endif
 
+	c_buff= calloc(max_length, sizeof(char));		//used to build word tokens as read from the provided file
+	if (c_buff==NULL){
+		printf("Memory allocation failed: char pointer c_buff\n");
+		exit(0);
+	}
+
+	if(!silence) {
+		#if defined(USE_PARTIALS) || defined(USE_POWERINTS) || defined(USE_POWERSTRING)
+			copy_buff=calloc(max_length, sizeof(char));		// used to hold unsorted word tokens for reporting on unsilenced calls
+			if (copy_buff==NULL) {
+				printf("Memory allocation failed: char pointer copy_buff\n");
+			}
+		#endif
+		printf("Formable words within the provided textfile:\n");
+	}
+
 	input_file= fopen(fname, "r");                 
 	if(input_file==NULL) {                          //Prevents seg fault crash if there is a problem with the provided file
 		printf("Improper file name: %s\n",fname);
@@ -81,10 +91,16 @@ int main (int argc, char **argv) {
 	}
 
 	// Process by which each solution gathers data and then sends it to be reported
-	processTokensFromFile(base_str, input_file, c_buff, max_length, silence, buckets);
+	processTokensFromFile(base_str, input_file, c_buff, copy_buff, max_length, silence, buckets);
+
+	fclose(input_file);
 
 	free(c_buff);
-	fclose(input_file);
+	#if defined(USE_PARTIALS) || defined(USE_POWERINTS) || defined(USE_POWERSTRING)
+		if(!silence) {
+			free(copy_buff);
+		}
+	#endif
 
 	return 0;
 }
