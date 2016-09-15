@@ -12,15 +12,6 @@ if [ ! -d "$path" ]; then
   mkdir -p "$path"
 fi
 
-declare -a ITERATIONS
-for num in {0..9}; do 
-	ITERATIONS[$num]=$((2**$num))
-done
-
-for ((i=0;i<${#ITERATIONS[@]};i++)); do
-	rm $prefix${ITERATIONS[i]}$extension
-done
-
-rm -r $path
+rm -rf $path
 
 cd $return_dir

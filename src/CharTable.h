@@ -10,11 +10,11 @@
 #include <string.h>
 
 typedef struct {
-    int size;            // size of the pointer table
-    int *array;
+    unsigned int size;            // size of the pointer table
+    unsigned int *array;
 } Table;
 
-Table* tableCreate(int size);
+Table* tableCreate(const unsigned int size);
 void tableDestroy(Table* t);
 
 void tableInsert(Table* t, const char key);
@@ -24,11 +24,11 @@ void fillTable(Table* t, const char *s);
 //void removeWordTable(Table* t, const char *s);
 void clearTable(Table* t);
 
-unsigned char* generateIndex(const Table* source);
-void indexDestroy(unsigned char* index);
+unsigned int* generateIndex(const Table* source);
+void indexDestroy(unsigned int* index);
 
 Table* copyTable(Table* destination, const Table* source);
-Table* copyTableFromIndex(Table* destination, const Table* source, const unsigned char* index);
+Table* copyTableFromIndex(Table* destination, const Table* source, const unsigned int* index);
 
 //int compareTable(const Table* a, const Table* b);
 int isFormableTable(const Table* a, const Table* b);

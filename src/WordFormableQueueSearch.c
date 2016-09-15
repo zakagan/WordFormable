@@ -1,4 +1,4 @@
-#include "WordFormableQueue.h"
+#include "WordFormableQueueSearch.h"
 
 /* Starting from the middle of a two directional queue, with ach node containing a pointer to a char from the sorted
  base string, search either forwards or backwards to see if the token's char has a match. Then dequeue that matching
@@ -62,7 +62,7 @@ void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, char*
 	int c;                                             //character returned from fgetc
 
 	sortStr(base_str, max_length);
-	node_array=buildQueueFromString(current_node, base_str, max_length);
+	node_array=buildListFromString(current_node, base_str, max_length);
 	current_node=node_array[mid_index];
 
     do{

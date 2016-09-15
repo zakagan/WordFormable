@@ -8,10 +8,12 @@
 	#include "WordFormableTable.h"
 #elif USE_POWERSTRING
 	#include "WordFormablePowerString.h"
-#elif USE_POWERINTS
-	#include "WordFormablePowerInts.h"
-#elif USE_QUEUE
-	#include "WordFormableQueue.h"
+#elif USE_POWERVINTS
+	#include "WordFormablePowerVInts.h"
+#elif USE_QUEUESEARCH
+	#include "WordFormableQueueSearch.h"
+#elif USE_BINARYSEARCH
+	#include "WordFormableBinarySearch.h"
 #else
 	#error "Solution flag must be specified during linking, check the Makefile.\n"
 #endif
@@ -25,7 +27,7 @@ int main (int argc, char **argv) {
 	size_t buckets=0;
 
 	//Determines which help message to display, depending on the solution flag
-	#if !defined(USE_POWERSTRING) && !defined(USE_POWERINTS)
+	#if !defined(USE_POWERSTRING) && !defined(USE_POWERVINTS)
 		if(argc < 3 || argc > 4) {
 			printf("Two inputs are required: 1st the base string, and 2nd the path to your text file.\n"
 				"Optionally, you may silence formable word printing by adding the integer '1' as a 3rd input.\n"
@@ -54,7 +56,7 @@ int main (int argc, char **argv) {
 	} 
 
 	//depending on if the solution relies on a hash map, this will provide a default bucket size
-	#if defined(USE_POWERSTRING) || defined(USE_POWERINTS)
+	#if defined(USE_POWERSTRING) || defined(USE_POWERVINTS)
 		if (argc>=5) {
 			buckets = atoi(argv[4]);   //if invalid numeric, buckets will be set to 0 and replace in next conditional
 		} 
@@ -75,7 +77,7 @@ int main (int argc, char **argv) {
 	}
 
 	if(!silence) {
-		#if defined(USE_PARTIALS) || defined(USE_POWERINTS) || defined(USE_POWERSTRING)
+		#if defined(USE_PARTIALS) || defined(USE_POWERVINTS) || defined(USE_POWERSTRING)  //These 3 solutions will sort found word tokens before reporting
 			copy_buff=calloc(max_length, sizeof(char));		// used to hold unsorted word tokens for reporting on unsilenced calls
 			if (copy_buff==NULL) {
 				printf("Memory allocation failed: char pointer copy_buff\n");
@@ -96,7 +98,7 @@ int main (int argc, char **argv) {
 	fclose(input_file);
 
 	free(c_buff);
-	#if defined(USE_PARTIALS) || defined(USE_POWERINTS) || defined(USE_POWERSTRING)
+	#if defined(USE_PARTIALS) || defined(USE_POWERVINTS) || defined(USE_POWERSTRING)
 		if(!silence) {
 			free(copy_buff);
 		}

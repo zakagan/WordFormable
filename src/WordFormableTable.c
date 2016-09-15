@@ -20,11 +20,11 @@ The function keeps track of whether or not the word is formable. Then when a tok
 word counter updates, and so does the formable word counter, depernding on its status */
 void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, char* copy_buff, const unsigned int max_length, const unsigned int silence, const int buckets)
  {
-    int char_count=0, word_count=0, formable_count=0;
-    int buff_index=0, is_formable=1;                   //assume token is formable until checkChar returns otherwise  
+    unsigned int char_count=0, word_count=0, formable_count=0;
+    unsigned int buff_index=0, is_formable=1;                   //assume token is formable until checkChar returns otherwise  
     int c;                                             //character returned from fgetc
     Table *base_table, *comparison_table;
-    unsigned char* index;
+    unsigned int* index;
 
     base_table=tableCreate(TABLE_SIZE);
     comparison_table=tableCreate(TABLE_SIZE);
@@ -36,7 +36,7 @@ void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, char*
     do{
         c = fgetc(input_file);                       //gets next character
         if(isTokenizer(c) || c==EOF) {          
-            if(buff_index>0){                        //non-negative index + reaching a tokenizer means c_buff contains a token
+            if(buff_index != 0){                        //non-negative index + reaching a tokenizer means c_buff contains a token
                 ++word_count;
                 char_count += buff_index;
                 if(is_formable) {            

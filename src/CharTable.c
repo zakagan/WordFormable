@@ -2,7 +2,7 @@
 #include "CharTable.h"
 
 // Creates memory space for a table of character & their frequency values within a string
-Table* tableCreate(int size)
+Table* tableCreate(const unsigned int size)
 {
     Table* t;
 
@@ -12,7 +12,7 @@ Table* tableCreate(int size)
         exit(0);
     }
     t->size = size;
-    t->array = calloc(t->size, sizeof(int));
+    t->array = calloc(t->size, sizeof(unsigned int));
     if (t->array==NULL){
         printf("Memory allocation failed: int pointer t->array\n");
         exit(0);
@@ -71,24 +71,24 @@ void removeWordTable(Table* t, const char *s)
 // fully clears the table, leaving all entries equal to 0
 void clearTable(Table* t)
 {
-    int i;            
+    unsigned int i;            
     for(i = 0; i < t->size; i++) {
         t->array[i]=0;
     }
 }
 
 //Creates index that can be used to refill a table based on my index
-unsigned char* generateIndex(const Table* source) {
-    int i,j=0;
-    unsigned char* index = calloc(source->size, sizeof(unsigned char));
+unsigned int* generateIndex(const Table* source) {
+    unsigned int i,j=0;
+    unsigned int* index = calloc(source->size, sizeof(unsigned int));
     if (index==NULL){
-        printf("Memory allocation failed: unsigned char pointer index\n");
+        printf("Memory allocation failed: unsigned int pointer index\n");
         exit(0);
     }
 
     for (i = 0; i < source->size; ++i)
     {
-        if (source->array[i]) {
+        if (source->array[i]) {                 // if that bin in the table is nonempty, add it to the array of indexes
             index[j]=i;
             j++;
         }
@@ -97,14 +97,14 @@ unsigned char* generateIndex(const Table* source) {
 }
 
 //releases memory used for an index
-void indexDestroy(unsigned char* index) {
+void indexDestroy(unsigned int* index) {
     free(index);
 }
 
 // copies the array of one table, to another, given that the later has already been initialized
 Table* copyTable(Table* destination, const Table* source)
 {
-    int i;
+    unsigned int i;
     if (destination->size != source->size) {
         return NULL;
     } else {
@@ -117,9 +117,9 @@ Table* copyTable(Table* destination, const Table* source)
 }
 
 // copies the array of one table, to another, based on a provided index, given that the later has already been initialized
-Table* copyTableFromIndex(Table* destination, const Table* source, const unsigned char* index)
+Table* copyTableFromIndex(Table* destination, const Table* source, const unsigned int* index)
 {
-    int i=0;
+    unsigned int i=0;
     if (destination->size != source->size) {
         return NULL;
     } else {
@@ -135,7 +135,7 @@ Table* copyTableFromIndex(Table* destination, const Table* source, const unsigne
 /*
 // returns 1 if the two tables are the same, 0 otherwise
 int compareTable(const Table* a, const Table* b) {
-    int i;
+    unsigned int i;
     if (a->size != b->size) {
         return 0;
     } else {
@@ -152,7 +152,7 @@ int compareTable(const Table* a, const Table* b) {
 
 // returns 1 if the 1st table can be formed from the 2nd, 0 otherwise. 
 int isFormableTable(const Table* a, const Table* b) {
-    int i=0;
+    unsigned int i=0;
     if (a->size != b->size) {
         return 0;
     } else {
@@ -169,7 +169,7 @@ int isFormableTable(const Table* a, const Table* b) {
 
 //  Prints the table to the commandline, used for lazy debugging
 void dispTable(const Table* t) {
-    int i, n;
+    unsigned int i, n;
     for(i=0; i<t->size; i++) {
         n = t->array[i];
         if(n) {

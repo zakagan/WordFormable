@@ -22,36 +22,46 @@ echo "Timing hash map solutions over various load factors."
 echo "Removing average case files."
 ./remove_words.sh
 
+
 ####GENERATES INITIAL WORST CASE TESTING FILES####
 echo "Generating initial worst case test files."
-./setup_worst_case.sh
+./setup_worst_case.sh 0
 ####TEST SCRIPTS FOR INITIAL WORST CASE SCENARIO####
 echo "Timing solutions over length of base string in the initial worst case scenario."
-./time_worst_case.sh
+./time_worst_case.sh 0
 ####DELETES INITIAL WORST CASE TESTING FILES####
 echo "Removing initial worst case files."
 ./remove_worst_case.sh
 
-####GENERATES INTERMEDIATE WORST CASE TESTING FILES####
+####GENERATES 2nd WORST CASE TESTING FILES####
 echo "Generating initial worst case test files."
-./setup_worst_case.sh i
-####TEST SCRIPTS FOR INTERMEDIATE WORST CASE SCENARIO####
+./setup_worst_case.sh 1
+####TEST SCRIPTS FOR 2nd WORST CASE SCENARIO####
 echo "Timing solutions over length of base string in the initial worst case scenario."
-./time_worst_case.sh i
-####DELETES INTERMEDIATE WORST CASE TESTING FILES####
+./time_worst_case.sh 1
+####DELETES 2nd WORST CASE TESTING FILES####
 echo "Removing initial worst case files."
-./remove_worst_case.sh i
+./remove_worst_case.sh
 
-####GENERATES EXTENDED WORST CASE TESTING FILES####
-echo "Generating extended worst case test files."
-./setup_worst_case.sh e
-####TEST SCRIPTS FOR EXTENDED WORST CASE SCENARIO####
-echo "Timing solutions over length of base string in the extended worst case scenario."
-./time_worst_case.sh e
-####DELETES EXTENDED WORST CASE TESTING FILES####
-echo "Removing extended worst case files."
-./remove_worst_case.sh e
+####GENERATES 3rd WORST CASE TESTING FILES####
+echo "Generating initial worst case test files."
+./setup_worst_case.sh 2
+####TEST SCRIPTS FOR 3rd WORST CASE SCENARIO####
+echo "Timing solutions over length of base string in the initial worst case scenario."
+./time_worst_case.sh 2
+####DELETES 2nd WORST CASE TESTING FILES####
+echo "Removing initial worst case files."
+./remove_worst_case.sh
 
+####GENERATES 4th WORST CASE TESTING FILES####
+echo "Generating initial worst case test files."
+./setup_worst_case.sh 3
+####TEST SCRIPTS FOR 3rd WORST CASE SCENARIO####
+echo "Timing solutions over length of base string in the initial worst case scenario."
+./time_worst_case.sh 3
+####DELETES 2nd WORST CASE TESTING FILES####
+echo "Removing initial worst case files."
+./remove_worst_case.sh
 
 echo "Testing sequence completed."
 

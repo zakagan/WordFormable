@@ -1,12 +1,14 @@
 //
-//  WordFormableQueue.h
+//  WordFormablePowerVInts.h
 //
 
-#ifndef WORDFORMABLEQUEUE_H
-#define WORDFORMABLEQUEUE_H
+#ifndef WORDFORMABLEPOWERVINTS_H
+#define WORDFORMABLEPOWERVINTS_H
 
 #include "CharTable.h"
-#include "DoublyLinkedList.h"
+#include "SinglyLinkedList.h"
+#include "HashMapVInts.h"
+#include "CheckWordByPartials.h"
 #include "WordSort.h"
 #include "Parsing.h"
 #include <stdlib.h>

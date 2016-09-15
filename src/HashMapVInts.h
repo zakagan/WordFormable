@@ -1,9 +1,9 @@
 //
-// HashMapInts.h
+// HashMapVInts.h
 //
 
-#ifndef HASHMAPINTS_H
-#define HASHMAPINTS_H
+#ifndef HASHMAPVINTS_H
+#define HASHMAPVINTS_H
 
 #include <stdlib.h>
 #include <stdio.h>

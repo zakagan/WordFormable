@@ -1,14 +1,11 @@
 //
-//  WordFormablePowerInts.h
+//  WordFormableBinarySearch.h
 //
 
-#ifndef WORDFORMABLEPOWERINTS_H
-#define WORDFORMABLEPOWERINTS_H
+#ifndef WORDFORMABLEQUEUE_H
+#define WORDFORMABLEQUEUE_H
 
-#include "CharTable.h"
-#include "SinglyLinkedList.h"
-#include "HashMapInts.h"
-#include "CheckWordByPartials.h"
+#include "IndexedList.h"
 #include "WordSort.h"
 #include "Parsing.h"
 #include <stdlib.h>

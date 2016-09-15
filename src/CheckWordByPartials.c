@@ -11,7 +11,7 @@ int checkWord(const char *token_str, const char *base_str, char *partial_buff, c
 {	
 	char cur_char, next_char;
 	const char *base_pointer=base_str;
-	int word_index=0, partial_index, return_val=1;	
+	unsigned int word_index=0, partial_index, return_val=1;	
 	do{	
 		partial_index=0;
 		do{	

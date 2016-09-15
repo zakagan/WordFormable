@@ -24,7 +24,7 @@ HashMap* hashMapCreate(const size_t size)
 // Frees memory used for a hash map
 void hashMapDestroy(HashMap* m)
 {
-    int i;
+    unsigned int i;
     for(i=0; i < m->size; i++) {
     	if(m->map[i]) {
     		destroyStack(m->map[i]);
