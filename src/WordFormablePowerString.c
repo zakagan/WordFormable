@@ -6,8 +6,10 @@ void calculatePowerSet(const char *str, const unsigned int str_length, HashMap* 
 	unsigned int i;
 	Node *item=NULL, *temp_stack = NULL;
 	// this stack will be populated and used to replace the need for recursive calls
-	for(i=0;i<str_length;i++) { 
-		push(&temp_stack, &str[i], 1, i);
+	for(i=0;i<str_length;i++) {
+		if (isTokenizer(str[i])) {
+			push(&temp_stack, &str[i], 1, i);
+		}
 	}
 	// The empty string is not added to the hash table because the routine will never have to look it up
 	while(temp_stack!=NULL) {

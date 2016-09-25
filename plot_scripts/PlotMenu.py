@@ -62,8 +62,9 @@ def main():
 		1: "...the number of words in text file [NW]",
 		2: "...the length of the base string [LB]",
 		3: "...the load factor of hash function solutions [LF]",
-		4: "...the worst case length of average word in file & length of base string [WC]",
-		5: "Quit",
+		4: "...the worst case length of average word in file & length of base string [WCz]",
+		5: "...same as above, but with all same char strings instead of all different [WCA]",
+		6: "Quit",
 	}
 	display_menu_bool=True
 	while True:
@@ -80,9 +81,12 @@ def main():
 			grapherMenu(GrapherLF, "load_factor_\d+", "Load Factor")
 			display_menu_bool=True
 		elif selection==4:
-			grapherMenu(GrapherWC, "worst_case_\w+", "Worst Case")
+			grapherMenu(GrapherWC, "worst_case_z.+", "Worst Case")
 			display_menu_bool=True
-		elif selection==5 or selection=="q":
+		elif selection==5:
+			grapherMenu(GrapherWC, "worst_case_A.+", "Worst Case")
+			display_menu_bool=True
+		elif selection==6 or selection=="q":
 			print("Quitting")
 			break
 		else:

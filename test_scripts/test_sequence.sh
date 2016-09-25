@@ -23,46 +23,85 @@ echo "Removing average case files."
 ./remove_words.sh
 
 
-####GENERATES INITIAL WORST CASE TESTING FILES####
+####GENERATES INITIAL WORST CASE TESTING FILES (ALL DIFFERENT CHARS)####
 echo "Generating initial worst case test files."
-./setup_worst_case.sh 0
-####TEST SCRIPTS FOR INITIAL WORST CASE SCENARIO####
+./setup_worst_case.sh z 0
+####TEST SCRIPTS FOR INITIAL WORST CASE SCENARIO(ALL DIFFERENT CHARS)####
 echo "Timing solutions over length of base string in the initial worst case scenario."
-./time_worst_case.sh 0
+./time_worst_case.sh z 0
 ####DELETES INITIAL WORST CASE TESTING FILES####
 echo "Removing initial worst case files."
 ./remove_worst_case.sh
 
-####GENERATES 2nd WORST CASE TESTING FILES####
+####GENERATES 2nd WORST CASE TESTING FILES (ALL DIFFERENT CHARS)####
 echo "Generating initial worst case test files."
-./setup_worst_case.sh 1
-####TEST SCRIPTS FOR 2nd WORST CASE SCENARIO####
+./setup_worst_case.sh z 1
+####TEST SCRIPTS FOR 2nd WORST CASE SCENARIO (ALL DIFFERENT CHARS)####
 echo "Timing solutions over length of base string in the initial worst case scenario."
-./time_worst_case.sh 1
+./time_worst_case.sh z 1
+####DELETES 2nd WORST CASE TESTING FILES ####
+echo "Removing initial worst case files."
+./remove_worst_case.sh
+
+####GENERATES 3rd WORST CASE TESTING FILES (ALL DIFFERENT CHARS)####
+echo "Generating initial worst case test files."
+./setup_worst_case.sh z 2
+####TEST SCRIPTS FOR 3rd WORST CASE SCENARIO (ALL DIFFERENT CHARS)####
+echo "Timing solutions over length of base string in the initial worst case scenario."
+./time_worst_case.sh z 2
+####DELETES 3rd WORST CASE TESTING FILES####
+echo "Removing initial worst case files."
+./remove_worst_case.sh
+
+####GENERATES 4th WORST CASE TESTING FILES (ALL DIFFERENT CHARS)####
+echo "Generating initial worst case test files."
+./setup_worst_case.sh z 3
+####TEST SCRIPTS FOR 4th WORST CASE SCENARIO (ALL DIFFERENT CHARS)####
+echo "Timing solutions over length of base string in the initial worst case scenario."
+./time_worst_case.sh z 3
+####DELETES 4th WORST CASE TESTING FILE ####
+echo "Removing initial worst case files."
+./remove_worst_case.sh
+
+####GENERATES INITIAL WORST CASE TESTING FILE (ALL SAME CHARS)####
+echo "Generating initial worst case test files."
+./setup_worst_case.sh A 0
+####TEST SCRIPTS FOR INITIAL WORST CASE SCENARIO (ALL SAME CHARS)####
+echo "Timing solutions over length of base string in the initial worst case scenario."
+./time_worst_case.sh A 0
+####DELETES INITIAL WORST CASE TESTING FILES####
+echo "Removing initial worst case files."
+./remove_worst_case.sh
+
+####GENERATES 2nd WORST CASE TESTING FILES (ALL SAME CHARS)####
+echo "Generating initial worst case test files."
+./setup_worst_case.sh A 1
+####TEST SCRIPTS FOR 2nd WORST CASE SCENARIO (ALL SAME CHARS)####
+echo "Timing solutions over length of base string in the initial worst case scenario."
+./time_worst_case.sh A 1
 ####DELETES 2nd WORST CASE TESTING FILES####
 echo "Removing initial worst case files."
 ./remove_worst_case.sh
 
-####GENERATES 3rd WORST CASE TESTING FILES####
+####GENERATES 3rd WORST CASE TESTING FILES (ALL SAME CHARS)####
 echo "Generating initial worst case test files."
-./setup_worst_case.sh 2
-####TEST SCRIPTS FOR 3rd WORST CASE SCENARIO####
+./setup_worst_case.sh A 2
+####TEST SCRIPTS FOR 3rd WORST CASE SCENARIO (ALL SAME CHARS)####
 echo "Timing solutions over length of base string in the initial worst case scenario."
-./time_worst_case.sh 2
-####DELETES 2nd WORST CASE TESTING FILES####
+./time_worst_case.sh A 2
+####DELETES 3rd WORST CASE TESTING FILES####
 echo "Removing initial worst case files."
 ./remove_worst_case.sh
 
-####GENERATES 4th WORST CASE TESTING FILES####
+####GENERATES 4th WORST CASE TESTING FILES (ALL SAME CHARS)####
 echo "Generating initial worst case test files."
-./setup_worst_case.sh 3
-####TEST SCRIPTS FOR 3rd WORST CASE SCENARIO####
+./setup_worst_case.sh A 3
+####TEST SCRIPTS FOR 4th WORST CASE SCENARIO (ALL SAME CHARS)####
 echo "Timing solutions over length of base string in the initial worst case scenario."
-./time_worst_case.sh 3
-####DELETES 2nd WORST CASE TESTING FILES####
+./time_worst_case.sh A 3
+####DELETES 4th WORST CASE TESTING FILE####
 echo "Removing initial worst case files."
 ./remove_worst_case.sh
-
 echo "Testing sequence completed."
 
 cd $return_dir 

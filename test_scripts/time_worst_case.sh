@@ -1,5 +1,12 @@
  #!/bin/bash
 
+ if [ -z $1 ] || [ -z $2 ]; then
+	echo "This script requires two inputs:"
+	echo "1) what type of worst case string to test on, 'z' for all different chars or 'A' for all the same"
+	echo "2) what range of string lengths to test on, select from 0, 1, 2, or 3"
+	exit
+fi
+
 return_dir=`pwd`
 cd "${0%/*}"
 
@@ -8,30 +15,44 @@ time_stamp=`date +%Y-%m-%d__%H_%M_%S`
 extension=".txt"
 
 input_path="../test_files/worst_case/"
-input_name="worst_case"
+input_name="worst_case_$1"
 input_prefix=$input_path$input_name
 
 results_path="../test_results/"
 mkdir -p $results_path
-results_path="${results_path}worst_case_"
-results_prefix="results_WC_"
+results_path="${results_path}worst_case_$1"
+results_prefix="results_WC$1_"
 # results_suffix="_${time_stamp}${extension}"
-results_suffix="_${extension}"
+results_suffix="${extension}"
 RF_ARRAY=()
 
 executable_path="../"
 EXEC_ARRAY=("WordFormablePartials" "WordFormableTable" "WordFormablePowerString" "WordFormablePowerVInts" "WordFormableQueueSearch" "WordFormableBinarySearch")
 
-single_executable=$2
+single_executable=$3
 if [ -n $single_executable ] && [ $single_executable -ge "0" -a $single_executable -le "5" ]; then
 	EXEC_ARRAY=("${EXEC_ARRAY[@]:$single_executable:1}")
 fi
 
-test_str="zyxwvutsrqponmlkjihgfedcba9876543210ZYXWVUTSRQPONMLKJIHGFEDCBA"  		#62 chars long
+test_str_z="zyxwvutsrqponmlkjihgfedcba9876543210ZYXWVUTSRQPONMLKJIHGFEDCBA"		#62 chars long
+test_str_A="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 padding_str=".............................................................."	#also 62 chars
 
 WC_LEN_ARRAY=()
+
 case $1 in
+	z)
+ 		selected_str=$test_str_z
+ 		;;
+ 	A)
+ 		selected_str=$test_str_A
+ 		;;
+ 	*)
+ 		echo "Use the char 'z' to specify all different character strings, and 'A' to specify all same character strings"
+ 		;;
+ esac
+
+case $2 in
 	0)
 		for ((i=0;i<=11;++i)); do 
 			WC_LEN_ARRAY+=($i)
@@ -125,10 +146,10 @@ for len in ${WC_LEN_ARRAY[@]}; do
 	fi
 	
 	# excutes tests and saves them to their respective files
-	if [ $((len%2)) -eq 0 ]; then
-		current_str=${padding_str:0:$pad_len}${test_str:0:$len}${padding_str:0:$pad_len}
+	if [ $len -eq 0 ]; then
+		current_str="\"\""
 	else 
-		current_str=${padding_str:0:$pad_len}${test_str:0:$len}${padding_str:0:$((pad_len+1))} 
+		current_str=${selected_str:0:$len} 
 	fi
 	for  ((i=0; i<${#EXEC_ARRAY[@]}; ++i)); do
 		echo "" 1>> ${RF_ARRAY[$i]}

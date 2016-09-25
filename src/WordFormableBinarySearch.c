@@ -3,7 +3,7 @@
 /* looks for un-used matching char nodes in those neighboriing the provided index, until it hits a non-mathcing node */
 unsigned char check4Unused(Node** node_array, const char token_char, unsigned int start, unsigned int end, unsigned int index) {
 	Node* current_node;
-	unsigned char check_down=1 && check_up=1,;
+	unsigned char check_down=1, check_up=1;
 	unsigned int index_up=index, index_down=index;
 	while(check_down || check_up) {
 		if(check_down) {
