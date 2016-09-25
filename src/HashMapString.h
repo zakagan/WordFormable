@@ -12,14 +12,14 @@
 
 //A list of Nodes, indexed by hash values
 typedef struct {
-    int size;            // size of the pointer list
+    size_t size;            // size of the pointer list
     Node **map;
 } HashMap;
 
 HashMap* hashMapCreate(size_t size);
 void hashMapDestroy(HashMap* m);
 
-int hashMapInsert(HashMap* m, Node* n);
+unsigned char hashMapInsert(HashMap* m, Node* n);
 
 Node* collectHashMapEntry(const HashMap* m, const char* cstring, const int str_length);
 

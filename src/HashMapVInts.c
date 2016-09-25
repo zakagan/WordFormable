@@ -12,9 +12,9 @@ HashMap* hashMapCreate(const size_t size)
     }
 
     m->size = size;
-    m->map = calloc(size, sizeof(int));
+    m->map = calloc(size, sizeof(unsigned short));
     if (m->map==NULL){
-        printf("Memory allocation failed: int pointer m->map\n");
+        printf("Memory allocation failed: unsigned int array pointer m->map\n");
         exit(0);
     }
 
@@ -28,19 +28,19 @@ void hashMapDestroy(HashMap* m)
     free(m);
 }
 
-/* Updates the validity integer at a hash map entry determined by the hash function.
+/* Updates the validity flag at a hash map entry determined by the hash function.
  Collisions are not counted, there is no chaining */
 void hashMapUpdate(HashMap* m, const char* str)
 {
     size_t h;
     h = communicativeStringHash(str) % m->size;
     if (!m->map[h]) {
-        m->map[h]= 1;     //Sets 1 byte size validity element equal to int 1
+        m->map[h]= 1;     //Sets 1 byte size validity element equal to unsigned short 1
     }
 }
 
 // returns 1 if the character table exists in hash table, returns 0 otherwise
-int checkValidityHashMap(const HashMap* m, const char* str) {
+unsigned char checkValidityHashMap(const HashMap* m, const char* str) {
     size_t h;
     h = communicativeStringHash(str) % m->size;
     if(m->map[h]) {

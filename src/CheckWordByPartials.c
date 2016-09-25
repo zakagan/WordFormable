@@ -7,11 +7,11 @@
  will be gathered together into partial_buff. Then, if that partial segment of the token
  exists within the base string, the function will proceed to the next unique char. If the
  partial does not exist then the token is not formable */
-int checkWord(const char *token_str, const char *base_str, char *partial_buff, const int str_length) 
+unsigned char checkWord(const char *token_str, const char *base_str, char *partial_buff, const unsigned int str_length) 
 {	
 	char cur_char, next_char;
 	const char *base_pointer=base_str;
-	unsigned int word_index=0, partial_index, return_val=1;	
+	unsigned int word_index=0, partial_index;	
 	do{	
 		partial_index=0;
 		do{	
@@ -25,9 +25,8 @@ int checkWord(const char *token_str, const char *base_str, char *partial_buff, c
 		memset(&partial_buff[0],0,str_length * sizeof(char));  //resets partial_buff so it can collect the instances of the next char
 		if(!base_pointer)                                      //checks if all instances of this char can be found within the base
 		{
-			return_val= 0;                                     //result if partial_buff could not be found in the base
-			break;
+			return 0;                                   //result if partial_buff could not be found in the base
 		}
 	} while(next_char!='\0');
-	return return_val;
+	return 1;
 }

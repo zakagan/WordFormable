@@ -51,15 +51,17 @@ int locateCharNode(Node** n, const char token_char) {
 	}
 	return 0;
 }
+
 /* Opens the provided txtfile, and compares each letter with a two directional queue generated from
  the base string. The function keeps track of whether or not the word is formable. Then when a tokenizer
  is found the word counter updates, and so does the formable word counter, depernding on its status */
-void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, char* copy_buff, const unsigned int max_length, const unsigned int silence, const size_t buckets)
+void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, char* copy_buff, const unsigned int max_length, const unsigned char silence, const unsigned char tare_setup,  const size_t buckets)
  {  
 	Node *current_node=NULL;
 	Node** node_array;
-	int char_count=0, word_count=0, formable_count=0, buff_index=0, is_formable=1, mid_index=max_length/2;
+	unsigned int char_count=0, word_count=0, formable_count=0, buff_index=0, mid_index=max_length/2;
 	int c;                                             //character returned from fgetc
+	unsigned char is_formable=1;
 
 	sortStr(base_str, max_length);
 	node_array=buildListFromString(current_node, base_str, max_length);

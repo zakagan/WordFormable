@@ -8,7 +8,7 @@ int comparFunc(const void *a, const void *b)
 }
 
 //alphabetizies a given string using quick sort, in to order to facilitate searching
-void sortStr(char *str, int str_length) 
+void sortStr(char *str, unsigned int str_length) 
 {
 	qsort(str, str_length, sizeof(char), comparFunc);
 }

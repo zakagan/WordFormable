@@ -2,7 +2,7 @@
 
 /* parses the provided txtfile, determines indvigual word tokens, and then calls a included function (checkWord) to see
 if they are formable from the base string. Finally it sends the cllected data to the reportResults function*/
-void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, char* copy_buff, const unsigned int max_length, const unsigned int silence, const int buckets)
+void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, char* copy_buff, const unsigned int max_length, const unsigned char silence, const unsigned char tare_setup,  const size_t buckets)
 {                             
 	char *partial_buff;                                         
 	int char_count=0, word_count=0, formable_count=0, buff_index=0;

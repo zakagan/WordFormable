@@ -30,8 +30,8 @@ void indexDestroy(unsigned int* index);
 Table* copyTable(Table* destination, const Table* source);
 Table* copyTableFromIndex(Table* destination, const Table* source, const unsigned int* index);
 
-//int compareTable(const Table* a, const Table* b);
-int isFormableTable(const Table* a, const Table* b);
+//unsigned char compareTable(const Table* a, const Table* b);
+unsigned char isFormableTable(const Table* a, const Table* b);
 void dispTable(const Table* t);
 
 #endif

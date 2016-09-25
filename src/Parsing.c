@@ -1,7 +1,7 @@
 #include "Parsing.h"
 
 // Checks if a single char is within a string of tokenizers 
-int isTokenizer(const char a) {     
+unsigned char isTokenizer(const char a) {     
 	if(strchr("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-",a)) {
 		return 0;
 	} else {

@@ -7,6 +7,6 @@
 
 #include <stdlib.h>
 
-void sortStr(char *str, int str_length);
+void sortStr(char *str, unsigned int str_length);
 
 #endif

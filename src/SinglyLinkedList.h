@@ -16,12 +16,12 @@ typedef struct node {
 	struct node* prev;
 } Node;
 
-void push(Node **head_node, const char* cstring, const int cstring_length, const int last_index);
+void push(Node **head_node, const char* cstring, const unsigned int cstring_length, const unsigned int last_index);
 Node* pop(Node **head_node);
 
 void destroyNode(Node *item);
 void destroyStack(Node *stack);
 
-int checkStackForString(const Node* n, const char* sorted_string, const int str_length);
+unsigned char checkStackForString(const Node* n, const char* sorted_string, const unsigned int str_length);
 
 #endif

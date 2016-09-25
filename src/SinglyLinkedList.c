@@ -1,7 +1,7 @@
 #include "SinglyLinkedList.h"
 
 // creates a node for a singularly linked list and appends itself to the top of the stack 
-void push(Node **head_node, const char* cstring, const int cstring_length, const int last_index) {
+void push(Node **head_node, const char* cstring, const unsigned int cstring_length, const unsigned int last_index) {
 	Node* temp_node = malloc(sizeof(Node));
 	if (temp_node==NULL){
 		printf("Memory allocation failed: Node pointer temp_node\n");
@@ -43,7 +43,7 @@ void destroyStack(Node *stack) {
 }
 
 // assuming a sorted string, searches for it within a stack of nodes. If found returns 1, 0 otheriwse.
-int checkStackForString(const Node* n, const char* sorted_string, const int str_length) {
+unsigned char checkStackForString(const Node* n, const char* sorted_string, const unsigned int str_length) {
     while(n) {
         if (strncmp(sorted_string, n->S, str_length)!=0) {
             n = n->prev;

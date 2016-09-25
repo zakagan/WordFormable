@@ -11,7 +11,7 @@
 // A doubly linked list used to implement a two directional queue
 typedef struct node {
 	const char* char_ptr;
-	int valid_flag;
+	unsigned char valid_flag;
 } Node;
 
 Node** buildListFromString(const char* base_str, const unsigned int max_length);

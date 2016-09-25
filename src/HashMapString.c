@@ -36,7 +36,7 @@ void hashMapDestroy(HashMap* m)
 
 /* inserts a new entry into the hash map structure, 
  returns 1 if there is a collision, 0 otherwise */
-int hashMapInsert(HashMap* m, Node* n)
+unsigned char hashMapInsert(HashMap* m, Node* n)
 {
     size_t h;
     Node* chained_entry;

@@ -134,7 +134,7 @@ Table* copyTableFromIndex(Table* destination, const Table* source, const unsigne
 
 /*
 // returns 1 if the two tables are the same, 0 otherwise
-int compareTable(const Table* a, const Table* b) {
+unsigned char compareTable(const Table* a, const Table* b) {
     unsigned int i;
     if (a->size != b->size) {
         return 0;
@@ -151,7 +151,7 @@ int compareTable(const Table* a, const Table* b) {
 */
 
 // returns 1 if the 1st table can be formed from the 2nd, 0 otherwise. 
-int isFormableTable(const Table* a, const Table* b) {
+unsigned char isFormableTable(const Table* a, const Table* b) {
     unsigned int i=0;
     if (a->size != b->size) {
         return 0;

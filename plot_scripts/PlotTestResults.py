@@ -77,11 +77,16 @@ class Grapher(object):
 			solution=None
 			style=None
 			attribute_dict={
-				"WordFormableQueue":(5,"co-"), 
-				"WordFormablePartials":(4,"ro-"), 
-				"WordFormableTable":(3,"bo-"), 
-				"WordFormablePowerPC":(2,"gs-"), 
-				"WordFormablePowerHP":(1,"ms-")
+				"WordFormablePartials":(6,"ro-"), 
+				"WordFormableTable":(5,"ko-"), 
+				"WordFormablePowerString":(4,"gs-"), 
+				"WordFormablePowerVInts":(3,"ms-"),
+				"WordFormableQueueSearch":(2,"co-"),
+				"WordFormableBinarySearch":(1,"bo-"),  
+				## Supporting outdated names of solutions ##
+				"WordFormablePowerPC":(4,"gs-"), 
+				"WordFormablePowerHP":(3,"ms-"),
+				"WordFormableQueue":(2,"co-")	
 				}
 			try:
 				f = open(file_path,'r')

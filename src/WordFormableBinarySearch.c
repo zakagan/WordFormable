@@ -1,31 +1,38 @@
 #include "WordFormableBinarySearch.h"
 
-int checkDownwards(Node** node_array, const char token_char, unsigned int end, unsigned int index) {
-	Node* current_node=node_array[++index];
-	while (index <= end && current_node->char_ptr[0]==token_char) {
-		if (current_node->valid_flag) {
-			current_node->valid_flag=0;
-			return 1;
+/* looks for un-used matching char nodes in those neighboriing the provided index, until it hits a non-mathcing node */
+unsigned char check4Unused(Node** node_array, const char token_char, unsigned int start, unsigned int end, unsigned int index) {
+	Node* current_node;
+	unsigned char check_down=1 && check_up=1,;
+	unsigned int index_up=index, index_down=index;
+	while(check_down || check_up) {
+		if(check_down) {
+			current_node=node_array[++index_down];
+			if(index_down<=end && current_node->char_ptr[0]==token_char) {
+				if (current_node->valid_flag) {
+					current_node->valid_flag=0;
+					return 1;
+				}
+			}
+			else {check_down=0;}
 		}
-		current_node=node_array[++index];
+		if (check_up) {
+			current_node=node_array[--index_up];
+			if(index_up>=start && current_node->char_ptr[0]==token_char) {
+				if (current_node->valid_flag) {
+					current_node->valid_flag=0;
+					return 1;
+				}
+			} 
+			else {check_up=0;}
+		}
 	}
 	return 0;
 }
 
-int checkUpwards(Node** node_array, const char token_char, unsigned int start, unsigned int index) {
-	Node* current_node=node_array[--index];
-	while (index >= start && current_node->char_ptr[0]==token_char) {
-		if (current_node->valid_flag) {
-			current_node->valid_flag=0;
-			return 1;
-		}
-		current_node=node_array[--index];
-	}
-	return 0;
-}
-
-/* */
-int BinarySearch(Node** node_array, const char token_char, unsigned int start, unsigned int end) {
+/* Searches across the array of nodes for the character in question, dividing area of search by 2 each time. Once a matching char node is
+  found, it either will be marked as used or if already used the above 2 functions will check for non-used, matching neighbor chars. */
+unsigned char BinarySearch(Node** node_array, const char token_char, unsigned int start, unsigned int end) {
 	unsigned int mid;
 	Node* current_node;
 	if (start > end) {return 0;}
@@ -37,11 +44,8 @@ int BinarySearch(Node** node_array, const char token_char, unsigned int start, u
 			return 1;
 		}
 		// Otherwise the surrounding nodes must be checked for additional matching chars
-		else if (checkUpwards(node_array, token_char, start, mid)) {
-			return 1;
-		}
 		else {
-			return checkDownwards(node_array, token_char, end, mid);
+			return check4Unused(node_array, token_char, start, end, mid);
 		}
 	}
 	else if (current_node->char_ptr[0] < token_char) {
@@ -56,11 +60,12 @@ int BinarySearch(Node** node_array, const char token_char, unsigned int start, u
 /* Opens the provided txtfile, and compares each letter with a two directional queue generated from
  the base string. The function keeps track of whether or not the word is formable. Then when a tokenizer
  is found the word counter updates, and so does the formable word counter, depernding on its status */
-void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, char* copy_buff, const unsigned int max_length, const unsigned int silence, const size_t buckets)
+void processTokensFromFile(char* base_str, FILE* input_file, char* c_buff, char* copy_buff, const unsigned int max_length, const unsigned char silence, const unsigned char tare_setup,  const size_t buckets)
  {  
 	Node** node_array;
-	int char_count=0, word_count=0, formable_count=0, buff_index=0, is_formable=1;
-	int c;                                             //character returned from fgetc
+	unsigned int char_count=0, word_count=0, formable_count=0, buff_index=0;
+	int c;                                   //character returned from fgetc
+	unsigned char is_formable=1;
 
 	sortStr(base_str, max_length);
 	node_array=buildListFromString(base_str, max_length);
