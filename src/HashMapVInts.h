@@ -11,7 +11,7 @@
 
 typedef struct {
     int size;            // size of the pointer list
-    unsigned short *map;   // array listing the number of hash insertions to each entry
+    unsigned char *map;   // array listing the number of hash insertions to each entry
 } HashMap;
 
 HashMap* hashMapCreate(const size_t size);

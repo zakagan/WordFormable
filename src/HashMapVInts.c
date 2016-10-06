@@ -7,14 +7,14 @@ HashMap* hashMapCreate(const size_t size)
 
     m = malloc(sizeof(HashMap));
     if (m==NULL){
-        printf("Memory allocation failed: HashMap pointer m\n");
+        printf("Memory allocation failed: HashMap m\n");
         exit(0);
     }
 
     m->size = size;
-    m->map = calloc(size, sizeof(unsigned short));
+    m->map = calloc(size, sizeof(unsigned char));
     if (m->map==NULL){
-        printf("Memory allocation failed: unsigned int array pointer m->map\n");
+        printf("Memory allocation failed: unsigned char array  m->map\n");
         exit(0);
     }
 
@@ -35,7 +35,7 @@ void hashMapUpdate(HashMap* m, const char* str)
     size_t h;
     h = communicativeStringHash(str) % m->size;
     if (!m->map[h]) {
-        m->map[h]= 1;     //Sets 1 byte size validity element equal to unsigned short 1
+        m->map[h]= 1;     //Sets 1 byte size validity element equal to unsigned char 1
     }
 }
 

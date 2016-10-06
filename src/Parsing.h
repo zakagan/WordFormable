@@ -10,6 +10,7 @@
 #include <string.h>
 
 unsigned char isTokenizer(const char a);
-void reportResults(int str_length, int total_chars, int total_words, int total_formable_words);
+void displayIntro(const unsigned int file_num, const char* file_name);
+void reportResults(const unsigned int str_length, const unsigned int total_chars, const unsigned int total_words, const unsigned int total_formable_words);
 
 #endif

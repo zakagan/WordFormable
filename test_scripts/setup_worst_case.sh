@@ -1,6 +1,7 @@
 #!/bin/bash
 
 if [ -z $1 ] || [ -z $2 ]; then
+	echo "USAGE: ./time_worst_case string_type length_range"
 	echo "This script requires two inputs:"
 	echo "1) what type of worst case string to test on, 'z' for all different chars or 'A' for all the same"
 	echo "2) what range of string lengths to generate, select from 0, 1, 2, or 3"
