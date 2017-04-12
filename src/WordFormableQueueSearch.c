@@ -1,6 +1,6 @@
 #include "WordFormableQueueSearch.h"
 
-/* Starting from the middle of a two directional queue, with ach node containing a pointer to a char from the sorted
+/* Starting from the middle of a two directional queue, with each node containing a pointer to a char from the sorted
  base string, search either forwards or backwards to see if the token's char has a match. Then dequeue that matching
   node and report that it has been found. If not report the word is unformable*/
 int locateCharNode(Node** n, const char token_char) {

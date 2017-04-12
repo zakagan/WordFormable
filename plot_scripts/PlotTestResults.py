@@ -1,5 +1,6 @@
 import sys, os, re
 import matplotlib.pyplot as plt
+import datetime
 from datasets import Record, Dataset
 
 def filterDirsByRegex(regex):
@@ -154,7 +155,11 @@ class Grapher(object):
 				print("Not enough data present in the {} dataset.".format(d.solution))
 
 		plt.legend(loc='upper left')
-		plt.show()
+
+		save_path = os.path.abspath(__file__)
+		save_path = save_path.replace('plot_scripts/PlotTestResults.py','images')
+		timestamp='{:%Y_%b_%d__%H_%M_%S}'.format(datetime.datetime.now())
+		fig.savefig(save_path + '/chart_' + timestamp + '.png',bbox_inches='tight')
 
 class GrapherNW(Grapher):
 
@@ -184,7 +189,11 @@ class GrapherNW(Grapher):
 		plt.xlabel(xlabel)
 		plt.ylabel(ylabel)
 		plt.legend(loc='upper left')
-		plt.show()
+
+		save_path = os.path.abspath(__file__)
+		save_path = save_path.replace('plot_scripts/PlotTestResults.py','images')
+		timestamp='{:%Y_%b_%d__%H_%M_%S}'.format(datetime.datetime.now())
+		fig.savefig(save_path + '/num_words_chart_' + timestamp + '.png',bbox_inches='tight')
 
 class GrapherLB(Grapher):
 
@@ -219,7 +228,11 @@ class GrapherLB(Grapher):
 		plt.xlabel(xlabel)
 		plt.ylabel(ylabel)
 		plt.legend(loc='upper left')
-		plt.show()
+		
+		save_path = os.path.abspath(__file__)
+		save_path = save_path.replace('plot_scripts/PlotTestResults.py','images')
+		timestamp='{:%Y_%b_%d__%H_%M_%S}'.format(datetime.datetime.now())
+		fig.savefig(save_path + '/len_base_chart_' + timestamp + '.png',bbox_inches='tight')
 
 class GrapherLF(Grapher):
 
@@ -250,7 +263,10 @@ class GrapherLF(Grapher):
 		plt.ylabel(ylabel)
 		plt.legend(loc='upper left')
 
-		plt.show()
+		save_path = os.path.abspath(__file__)
+		save_path = save_path.replace('plot_scripts/PlotTestResults.py','images')
+		timestamp='{:%Y_%b_%d__%H_%M_%S}'.format(datetime.datetime.now())
+		fig.savefig(save_path + '/load_factor_chart_' + timestamp + '.png',bbox_inches='tight')
 
 class GrapherWC(Grapher):
 
@@ -315,7 +331,10 @@ class GrapherWC(Grapher):
 		plt.ylabel(ylabel)
 		plt.legend(loc='upper left')
 
-		plt.show()
+		save_path = os.path.abspath(__file__)
+		save_path = save_path.replace('plot_scripts/PlotTestResults.py','images')
+		timestamp='{:%Y_%b_%d__%H_%M_%S}'.format(datetime.datetime.now())
+		fig.savefig(save_path + '/worst_case_chart_' + timestamp + '.png',bbox_inches='tight')
 
 def main():
 	grapher_path=os.path.dirname(os.path.realpath(__file__))

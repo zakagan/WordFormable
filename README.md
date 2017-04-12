@@ -1,9 +1,9 @@
 WordFormable
 =============
 
-Computing gives us several tools for comparing and analyzing different solutions to the same problem. In this repo I explore one fairly straight-forward computer science problem, as well as five seperate solutions to it.
+Computing gives us several tools for comparing and analyzing different solutions to the same problem. In this repo I explore one fairly straight-forward computer science problem, as well as five separate solutions to it.
 
-While all solutions are not equal, each one presented has its own strengths and weaknesses. Through them I explore different types of fundametal datastructures and their uses.
+While all solutions are not equal, each one presented has its own strengths and weaknesses. Through them I explore different types of basic data structures and their uses.
 
 The actual programming for this project comes in three parts:
 
@@ -30,7 +30,7 @@ The real challenge of this problem lies with efficiently determining the formabi
 
 3. **Hash Map and Comparing**: Every possible formable string is pre-generated from the base string and loaded into a hash map, then tokens from the text file are compared with the map's entries.
 
-4. **Hash Map and Searching For Partials**: Every possible formable character table is pregenerated from the base string and then used to generate a hasm map of validity values. Each token is looked up within the hash map, and if there's a hit the token is sorted and its subsections are searched for, just as in solution 1.
+4. **Hash Map and Searching For Partials**: Every possible formable character table is pre-generated from the base string and then used to generate a hash map of validity values. Each token is looked up within the hash map, and if there's a hit the token is sorted and its subsections are searched for, just as in solution 1.
 
 5. **Bi-Directional Queue**: A doubly-linked list is generated from the sorted base string. Every character within a particular token is searched for along the bi-directional queue. When a match is found, that char's node is removed from the queue. This proceeds until a token's char cannot be found or the all the characters in the token have been checked.
 
@@ -44,11 +44,11 @@ The program operates on the command line. A typical way to execute it would be t
 
 Where S and F are the base string and the path to the given text-file, respectively. Replace the underline characters with ending of one of the four produced executables (each representing one solution method):
 
-1. WordPercentPartials
-2. WordPercentTable
-3. WordPercentPowerPC
-4. WordPercentPowerHP
-5. WordPercentQueue
+1. WordFormablePartials
+2. WordFormableTable
+3. WordFormablePowerString
+4. WordFormablePowerVInts
+5. WordFormableQueueSearch
 
 Then, printed to the command line, will be the formable word tokens along with some additional data.
 
@@ -107,8 +107,40 @@ However, each solution is designed to stop work on a word token if its length ex
 
 Finally, I tend to use the term 'char array' and 'string' interchangeably. Since this project is done in C, all strings are stored as arrays of characters (known as cstrings to C++ programmers).
 
+Charts
+-------
 
-More On WordPercentSort
+Using the test scripts included, data was collected and then plotted using Python's matplotlib. More tests should be run (running the testing scripts multiple times and combining the data), but what follows are the preliminary results.
+
+### Number of Words
+
+![alt tag](https://github.com/zakagan/WordFormable/blob/master/images/num_words.png)
+
+This chart demonstrates the increase in computation time as the number of words in the dictionary file increases.
+
+The words being read  come from the file of words used for spell checking on unix/linux machines (`/usr/share/dict/words`). That means these results reflect a likely case scenario of scanning a dictionary with a variety of words (different lengths, character variety, etc.). The base string is a random 10 character word, which is kept constant as the size of the dictionaries increase.
+
+### Length of Base String (Average Case)
+
+![alt tag](https://github.com/zakagan/WordFormable/blob/master/images/len_base.png)
+
+This chart demonstrates the increase in computation time as the length of the base string increases.
+
+The dictionary here is constant across different trials (again taken from the spell checking dictionary). Each solution uses the same base string of a specific length.
+
+### Length of Base String (Worst Case)
+
+![alt tag](https://github.com/zakagan/WordFormable/blob/master/images/worst_case_z.png)
+
+This chart models the same situation as above, but instead all of the words in the dictionary 100% match the base string. This means every character must be checked. Each dictionary file used has the same number of words, however across trials the length of the words increase to match the growth of the base string. 
+
+### Load Factor of Hash Map Solutions
+
+![alt tag](https://github.com/zakagan/WordFormable/blob/master/images/load_factor.png)
+
+This chart demonstrates the increase in computation time as the load factor increases (higher load factor means fewer buckets in the hash table).
+
+More On WordPercentPartials
 -------
 
 This was my first solution to this problem. It focuses on dynamically storing, sorting, and searching through character arrays.
@@ -117,7 +149,7 @@ This was my first solution to this problem. It focuses on dynamically storing, s
 
 1. First the text file is opened, and its contents are parsed into tokenized words. A running counter of the word token's length is also kept.
 
-2. When a new tokenizer is found a word counter is incremented and it gets sorted by each character's alphanumeric value using quick sort. If the token's length is greater than that of the base string, the word is unformable and the routine proceeds to the next token.
+2. When a new tokenizer is found a word counter is incremented. If the token's length is greater than that of the base string, the word is unformable and the routine proceeds to the next token. Otherwise it gets sorted by each character's alphanumeric value using quick sort.
 
 3. Since the token is sorted, duplicate characters are grouped together. These repeated characters are gathered into another string called partial (since it is a substring of the sorted token). 
 
@@ -154,7 +186,7 @@ This solution takes advantage of a structs, arrays, and vector-like operations i
 	w : 1
 	```
 
-This visualization omits characters with zero values.
+This visualization omits characters with zero values. The table has slots for each possible character.
 
 2. The initial character table is copied into a secondary table that will be used for comparisons. 
 
@@ -176,10 +208,10 @@ So the time complexity of each individual token comparison is fairly constant, l
 
 Thus WordPercentTable is dependent primarily on the total number of words within the file. This leads to a somewhat unexpected result where, given two files with identical file size, the calculation will complete faster for the file with a larger M. That's because the text-file's size is proportional to N*M, so the file with longer words will also have a fewer total number of words.
 
-More On WordPercentPrecomputeSort
+More On WordPercentPowerString
 -------
 
-The third solution stores every formable character array within a hash map, with collisions resolved via chaining. As one might imagine, the longer the base string the larger the total amount of formable strings. In fact, the number of char arrays within the hash map increases exponentially with the base string's length. Thus this solution is best suited for cases with short base strings and a larger number of words in the text file.
+The third solution stores every formable character array (generated via a power set of the base string) within a hash map, with collisions resolved via chaining. As one might imagine, the longer the base string the larger the total amount of formable strings. In fact, the number of char arrays within the hash map increases exponentially with the base string's length. Thus this solution is best suited for cases with short base strings and a larger number of words in the text file.
 
 This method uses a communicative hash function. That means that so long as strings share the same collection of characters, they will be hashed to the same value regardless of ordering. This is useful because it allows the program to only sort strings if there is a possibility that they are formable and their sorted counterparts are present in the hash map.
 
@@ -193,7 +225,7 @@ This method uses a communicative hash function. That means that so long as strin
 
 4. The text file is opened, and its contents is parsed character by character. Each character is added to the buffer, and a running total of the word token length is incremented.
 
-5. If the running word length is nozero and a new tokenizer is encountered, the total word counter is incremented. If the running word length is also less than that of the base string, the completed token string is check with the hash map.
+5. If the running word length is non-zero and a new tokenizer is encountered, the total word counter is incremented. If the running word length is also less than that of the base string, the completed token string is check with the hash map.
 
 7. If there is a hash map miss then the word is not formable. If there is a hash map hit then the char array is sorted (as in the first solution).
 
@@ -201,7 +233,7 @@ This method uses a communicative hash function. That means that so long as strin
 
 9. At the completion of comparing with the hash map, the buffer array is cleared and the running word length is reset to prepare for the next word token.
 
-10. The percentage of formed words is calculated based on the formable count and the number of word tokens, and returned via the command line. The file is then closed, and then the memory used for the comparison character table and the hash map is freed.
+10. The percentage of formed words is calculated based on the formable count and the number of word tokens. It is reported to the command line, the file is then closed, and then the memory used for the comparison character table and the hash map is freed.
 
 ### Computational Complexity:
 
@@ -213,26 +245,69 @@ Once it comes to using the hash map for comparisons, looking up a stored char ar
 
 Best case scenario is that there are few collisions. GNU's strncmp function is linear in complexity, which in this context becomes O(M<sub>k</sub>). When combined with sorting, the complexity of checking a single word token after a hash hit becomes O(M<sub>k</sub>\*Log(M<sub>k</sub>)+M<sub>k</sub>). However, only a fraction of the N<sub>k</sub> words passed through the hash function will actually result in hash hits.
 
-So, as long as the cost of precomputing the base string's power set does not become overwelming and the hash map's load factor is small, this solution should see shorted calculation times than the original sorting solution.
+So, as long as the cost of precomputing the base string's power set does not become overwhelming and the hash map's load factor is small, this solution should see shorter calculation times than the original sorting solution.
 
-More On WordPercentPrecomputeTable
+More On WordPercentPowerVInts
 -------
 
-This fourth solution is very similar to the third, so I won't go over the algorithm step by step. Where it differs is that instead of using char arrays and sorting, it hashes character tables into an array of integers (the hash map's "buckets"). 
+This fourth solution is very similar to the third, so I won't go over the algorithm step by step. Where it differs is that instead of storing the character arrays themselves into the hasp map, it stores a validity integer. That means a bucket in the hash map will hold a 1 if an element of the power set was hashed there, and 0 otherwise.
 
-The character tables themselves are not stored in the hash map when the power set is generated. If an element of the base string character table's power set gets hashed to a particular bucket, the integer in that location is set to 1. Unfilled buckets remain set to 0.
-
-That way, when a token's character table is looked up within the hash map, a hash hit or miss can be easily determined based on the integer value. However, because of collisions, the algorithm cannot be certain that a hash hit guarantees the character table holds a formable word. So, in the case of a hash hit, it then compares the token's character table with a character table formed from the base string. This is done slightly differently than in the initial character table solution, since the routine is checking word by word rather than character by character and then refilling the table at the end of a token.
+Because of collisions it is not enough to simply look up a token within the validity hash map. If there is a hash hit the token is then compared with the base string using the same sorting technique used in the first solution (WordPercentPartials). However a hash map miss does guarantee that a token is not formable.
 
 ### Computational Complexity:
 
-Like in the previous solution, calculating the power set from the base string has complexity on the order of O(2^K). However comparing character tables in the case of a hash hit is O(1). And, unlike in the previous precomputing solution, multiple elements hashed to the same bucket does not result in the need for additional checks.
+Like in the previous solution, calculating the power set from the base string has complexity on the order of O(2^K). Then comparing the token with the base string has complexity O(M<sub>k</sub>\*Log(M<sub>k</sub>)+(K+M<sub>k</sub>)), from the first solution.
 
-Thus the complexity of checking for formable words after precomputing will be on the same order as the second solution. Computation times should be faster in comparison, so long as the the costs of precomputing are not overwhelming (ie the base string is relatively short).
+However, so long as K is small these factors do not become a major issue. Looking up tokens in the hash map is O(1) in time, and so long as not all of the words in the dictionary are formable there should be significant time savings when compared with WordFormablePartials.
 
-Do you even understand computational complexity anyway?
+More On WordPercentQueueSearch
 -------
 
-Not really. I'm still learning the theory, and as it turns out reality can be very different. 
+The fifth solution uses a bi-directional queue to keep track of all of the characters in the base string. As a token is compared with the base string, character nodes are disconnected from the bi-directional queue. When a character node can no longer be found, the token is unformable. However if the end of the token is reached without missing a character node, the word is formable.
 
-The solutions that use character tables tend to be slower than those using sorted character arrays. This seems strange, since sorting (even quick sort) is more intensive than filling tables. However the GCC functions used for the two sorting solutions are very well optimized, and my character tables probably aren't.
+### Basic algorithm:
+
+1. The base string is sorted and then loaded into a bi-directional queue, with nodes for each character. An index is kept so that the connections/edges can be reformed after each token.
+
+2. The text file is opened, and its contents are parsed into tokenized words. A running counter of the word token's length is also kept.
+
+3. When a new tokenizer is found a word counter is incremented. It is not sorted. If the token's length is greater than that of the base string, the word is unformable and the routine proceeds to the next token.
+
+3. The first character of the token is then compared with the middle character of the bi-directional queue. If the token's character is earlier in the alphabet the queue is searched up. Otherwise the queue is searched down. In either case, if the end of the queue is reached then the token is unformable. If the right character node is found it is then removed from the queue, and the next character in the token is searched in the same way, starting from this new place in the queue.
+
+4. This process continues until all of the characters in the token have been found or the token is determined to be unformable (in which case the formed word counter is incremented).
+
+5. Using the index, the bi-directional queue is reformed and the next token is checked.
+
+6. The percentage of formed words is calculated based on the two counters, and returned via the command line. The queue is freed and the file is then closed.
+
+### Computational Complexity:
+
+The worse case scenario is when the token is itself the base string and all characters must be looked up. For the first character at most half of the bi-directional queue will be traversed. This continues for every character, but the queue gets smaller and smaller as more character nodes are removed.
+
+Resetting the bi-directional queue is dependent on the length of the base string, but is the same after each token. The limiting factor here is the process of crawling along the queue data structure.
+
+Other Solutions
+-------
+
+More advanced AIs for Scrabble-like games use more complicated data structures in order to find words, like DAWGs and GADDAGs. Those data structures are both refinements of a data structure called tries. A trie is like a tree except instead of storing keys in the nodes, the keys (or words strings) are stored based on the position in the trie.
+
+The best way to understand the concept is to look at a visual representation of an example trie.
+
+![alt tag](https://github.com/zakagan/WordFormable/blob/master/images/250px-Trie_example.svg.png)
+A trie for keys "A","to", "tea", "ted", "ten", "i", "in", and "inn", taken from [the wikipedia page on the trie data structure](https://en.wikipedia.org/wiki/Trie).
+
+Moving from the root node down, more and more of the word becomes spelled out. The leaves themselves represent each of the formable words.
+
+Thus a possible solution for the scrabble problem is to load the entire dictionary into a trie and then search for formable words by traveling towards using a table of characters from the base string. This proves to be very fast as searching through strings is quit time efficient.
+
+However loading the dictionary into a trie can take up a lot of space. Both DAWGs and GAGDAGs are designed to reduce any redundant paths from the trie (for example, formable words are no longer given each their own leaf, so "cats" and "cat" do not form separate branches).
+
+Future work on this project could involve implementing a trie-based solution for dictionary loading and searching formable words.
+
+For more info on how DAWGs and GAGDAGs can be used to solve scrabble-like word forming problems, see these academic papers:
+
+1. [The World’s Fastest Scrabble Program by ANDREW W. APPEL AND GUY J. JACOBSON](https://pdfs.semanticscholar.org/da31/cb24574f7c881a5dbf008e52aac7048c9d9c.pdf) (DAWGs)
+
+2. [A Faster Scrabble Move Generation Algorithm by STEVEN A. GORDON](http://ericsink.com/downloads/faster-scrabble-gordon.pdf) (GADDAGs)
+
