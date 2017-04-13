@@ -295,6 +295,7 @@ More advanced AIs for Scrabble-like games use more complicated data structures i
 The best way to understand the concept is to look at a visual representation of an example trie.
 
 ![alt tag](https://github.com/zakagan/WordFormable/blob/master/images/250px-Trie_example.svg.png)
+
 A trie for keys "A","to", "tea", "ted", "ten", "i", "in", and "inn", taken from [the wikipedia page on the trie data structure](https://en.wikipedia.org/wiki/Trie).
 
 Moving from the root node down, more and more of the word becomes spelled out. The leaves themselves represent each of the formable words.
