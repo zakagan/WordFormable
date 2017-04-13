@@ -1,17 +1,17 @@
 WordFormable
 =============
 
-Computing gives us several tools for comparing and analyzing different solutions to the same problem. In this repo I explore one fairly straight-forward computer science problem, as well as five separate solutions to it.
+Computing gives us several tools for comparing and analyzing multiple solutions to the same problem. In this repo I explore one fairly straight-forward computer science problem, as well as five separate solutions to it.
 
-While all solutions are not equal, each one presented has its own strengths and weaknesses. Through them I explore different types of basic data structures and their uses.
+While all solutions are not equal, each presented has its own strengths and weaknesses. Through them I explore different types of basic data structures and their uses.
 
-The actual programming for this project comes in three parts:
+The programming for this project comes in three parts:
 
 1. The actual executables that solve the problem (detailed below), written in C
 
 2. The testing scripts used to generate data to compare the different solutions, written in Bash
 
-3. The plotting scripts used to graph the results of testing data, written in Python.
+3. The plotting scripts used to graph the results of the testing scripts, written in Python
 
 The Problem
 -------
@@ -20,13 +20,13 @@ Given a text file, determine all the words contained within that are formable fr
 
 This includes the frequency of a given character. For example, "Mississippi" is not formable if there is only one "s" character in the base string. At least four separate "s" chars must be present, along with all of the rest of the required letters, in order to form that word.
 
-I sometimes describe this as the "scrabble problem". Imagine you are playing a version of scrabble in which the dictionary of valid words could change every game. How could you determine what valid words you could play, given your tiles and the specific dictionary being used?
+I sometimes describe this as the "scrabble problem". Imagine you are playing a version of scrabble in which the dictionary of valid words could change every game. How could you determine what valid words you could play given your tiles and the specific dictionary being used?
 
 The real challenge of this problem lies with efficiently determining the formability of a word token. This project explores five different methods:
 
 1. **Searching For Partials**: The base string and tokenized words from the text file are alphabetized via quick sort. Then subsections of the token are searched for within the sorted base string.
 
-2. **Character Tables**: The base string is loaded into a table using a based on it's ASCII table value, and then each tokenized word from the text file is compared with this table.
+2. **Character Tables**: The base string is loaded into a table based on it's ASCII table value, and then each tokenized word from the text file is compared with this table.
 
 3. **Hash Map and Comparing**: Every possible formable string is pre-generated from the base string and loaded into a hash map, then tokens from the text file are compared with the map's entries.
 
