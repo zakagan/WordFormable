@@ -11,7 +11,7 @@ The actual programming for this project comes in three parts:
 
 2. The testing scripts used to generate data to compare the different solutions, written in Bash
 
-3. The plotting scripts used to the graph the results of testing data, written in Python.
+3. The plotting scripts used to graph the results of testing data, written in Python.
 
 The Problem
 -------
